@@ -51,29 +51,32 @@ view: metric1 {
     sql: ${TABLE}.Step ;;
   }
 
-# Within a conversation how many times a particular page is triggered?
+  # Within a conversation how many times a particular page is triggered?
   # Use → SessionID + InsertID + PageID
   dimension: dk_session_id_insert_id_page_id{
     type: string
     sql:  CONCAT(${session_id},${insert_id},${page_id}) ;;
   }
 
-  # Across all the conversation how many times a page was triggered?
+  # Across all the conversation, how many times a page was triggered?
   dimension: dk_session_id_page_id {
+    hidden: yes
     type: string
     sql: CONCAT(${session_id},${page_id}} ;;
   }
 
-  # Within a conversation how many times a particular flow is invoked?
+  # Within a conversation, how many times a particular flow is invoked?
   # Use → SessionID + InsertID + FlowID
   dimension: dk_session_id_insert_id_flowid{
+    hidden: yes
     type: string
     sql:  CONCAT(${session_id},${insert_id},${flowid}) ;;
   }
 
-  # Across all the conversation how many conversations invoked a contact agent?
+  # Across all the conversation, how many conversations invoked a contact agent?
   # Use Session Level → not include InsertID
   dimension: dk_session_id_flowid {
+    hidden: yes
     type: string
     sql: CONCAT(${session_id},${flowid}} ;;
   }
