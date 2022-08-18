@@ -51,8 +51,58 @@ view: metric1 {
     sql: ${TABLE}.Step ;;
   }
 
+# Within a conversation how many times a particular page is triggered?
+  # Use → SessionID + InsertID + PageID
+  dimension: dk_session_id_insert_id_page_id{
+    type: string
+    sql:  CONCAT(${session_id},${insert_id},${page_id}) ;;
+  }
+
+  # Across all the conversation how many times a page was triggered?
+  dimension: dk_session_id_page_id {
+    type: string
+    sql: CONCAT(${session_id},${page_id}} ;;
+  }
+
+  # Within a conversation how many times a particular flow is invoked?
+  # Use → SessionID + InsertID + FlowID
+  dimension: dk_session_id_insert_id_flowid{
+    type: string
+    sql:  CONCAT(${session_id},${insert_id},${flowid}) ;;
+  }
+
+  # Across all the conversation how many conversations invoked a contact agent?
+  # Use Session Level → not include InsertID
+  dimension: dk_session_id_flowid {
+    type: string
+    sql: CONCAT(${session_id},${flowid}} ;;
+  }
+
+  # of times a page was triggered
+  measure: distinct_page_count {
+    type: count_distinct
+    sql: ${dk_session_id_insert_id_page_id} ;;
+  }
+
+  measure: distinct_flow_count {
+    type: count_distinct
+    sql: ${dk_session_id_insert_id_flowid} ;;
+  }
+
+  measure: total_flow_count {
+    type: count_distinct
+    sql: ${dk_session_id_flowid} ;;
+  }
+
+  measure: total_page_count {
+    type: count_distinct
+    sql: ${dk_session_id_page_id} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [flowname, page_name]
   }
+
+
 }
