@@ -62,7 +62,7 @@ view: metric1 {
   dimension: dk_session_id_page_id {
     hidden: yes
     type: string
-    sql: CONCAT(${session_id},${page_id}} ;;
+    sql: CONCAT(${session_id},${page_id}}) ;;
   }
 
   # Within a conversation, how many times a particular flow is invoked?
