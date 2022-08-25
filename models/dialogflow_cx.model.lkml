@@ -15,3 +15,5 @@ explore: scrubbed_dialogflow_cx_agent_logs {}
 explore: metric1 {}
 
 explore: metric3 {}
+
+explore: metric5 {}
