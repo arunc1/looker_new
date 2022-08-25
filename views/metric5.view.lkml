@@ -22,8 +22,23 @@ view: metric5 {
     sql: ${TABLE}.session_id ;;
   }
 
+  dimension: call_status {
+    case: {
+      when: {
+        sql: ${TABLE}.operation = "TRANSFER" ;;
+        label: "TRANSFER"}
+      else: "DISCONNECT"
+    }
+  }
+
+  dimension: end_call {
+    description: "Conversations that end in End_Call Page"
+  }
+
   measure: count {
     type: count
     drill_fields: []
   }
 }
+
+#  description: "Conversations that end in Escalate Page"
