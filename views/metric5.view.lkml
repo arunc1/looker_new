@@ -26,8 +26,8 @@ view: metric5 {
     case: {
       when: {
         sql: ${TABLE}.operation = "TRANSFER" ;;
-        label: "TRANSFER"}
-      else: "DISCONNECT"
+        label: "escalate_call"}
+      else: "end_call"
     }
   }
 
