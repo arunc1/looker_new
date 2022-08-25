@@ -31,10 +31,6 @@ view: metric5 {
     }
   }
 
-  dimension: end_call {
-    description: "Conversations that end in End_Call Page"
-  }
-
   measure: count {
     type: count
     drill_fields: []
