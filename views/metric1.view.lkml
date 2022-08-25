@@ -13,7 +13,7 @@ view: metric1 {
   }
 
   dimension: insert_id {
-    label: "ConversationTurn"
+    label: "Conversation Turn"
     type: string
     sql: ${TABLE}.insertId ;;
   }
@@ -43,7 +43,7 @@ view: metric1 {
   }
 
   dimension: session_id {
-    label: "ConversationID"
+    label: "Conversation ID"
     type: string
     sql: ${TABLE}.session_id ;;
   }
