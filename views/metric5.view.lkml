@@ -48,8 +48,6 @@ view: metric5 {
     description: "Conversations that ended in Escalate Page or End_Call Page"
   }
 
-
-
   measure: count {
     type: count
     drill_fields: []
