@@ -17,6 +17,7 @@ view: metric5 {
   }
 
   dimension: insert_id {
+    label: "Conversation Turn"
     type: string
     sql: ${TABLE}.insertId ;;
   }
@@ -34,6 +35,7 @@ view: metric5 {
   }
 
   dimension: session_id {
+    label: "Conversation ID"
     type: string
     sql: ${TABLE}.session_id ;;
   }
