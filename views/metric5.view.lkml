@@ -23,6 +23,7 @@ view: metric5 {
   }
 
   dimension: last_text {
+    description: "Last text before call transfer / call disconnect"
     type: string
     sql: ${TABLE}.last_text ;;
   }
