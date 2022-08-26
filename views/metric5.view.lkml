@@ -2,6 +2,20 @@ view: metric5 {
   sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric5`
     ;;
 
+  dimension_group: receive_timestamp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.receiveTimestamp ;;
+  }
+
   dimension: insert_id {
     type: string
     sql: ${TABLE}.insertId ;;
@@ -13,6 +27,8 @@ view: metric5 {
   }
 
   dimension: operation {
+    label: ""
+    description: "Call Transfer, Disconnect, Hangup"
     type: string
     sql: ${TABLE}.operation ;;
   }
@@ -29,7 +45,10 @@ view: metric5 {
         label: "escalate_call"}
       else: "end_call"
     }
+    description: "Conversations that ended in Escalate Page or End_Call Page"
   }
+
+
 
   measure: count {
     type: count
