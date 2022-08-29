@@ -75,7 +75,7 @@ view: metric1 {
     sql:  CONCAT(${session_id},${insert_id},${flowid}) ;;
   }
 
-  # Across all the conversation, how many conversations invoked a contact agent?
+  # Across all the conversation
   # Use Session Level → not include InsertID
   dimension: dk_session_id_flowid {
     hidden: yes
