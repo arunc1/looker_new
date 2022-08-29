@@ -29,8 +29,8 @@ view: metric5 {
   }
 
   dimension: operation {
-    label: ""
     description: "Call Transfer, Disconnect, Hangup"
+    hidden: yes
     type: string
     sql: ${TABLE}.operation ;;
   }
@@ -41,20 +41,25 @@ view: metric5 {
     sql: ${TABLE}.session_id ;;
   }
 
-  dimension: call_status {
+  dimension: call_type {
     case: {
       when: {
         sql: ${TABLE}.operation = "TRANSFER" ;;
-        label: "escalate_call"}
-      else: "end_call"
+        label: "TRANSFER"}
+      when: {
+        sql: ${TABLE}.operation = "HANGUP" ;;
+        label: "HANGUP"
+      }
+      else: "DISCONNECT"
     }
-    description: "Conversations that ended in Escalate Page or End_Call Page"
+    description: "Call Transfer, Disconnect, Hangup"
   }
 
+
+
   measure: count {
+    label: "Total Count"
     type: count
     drill_fields: []
   }
 }
-
-#  description: "Conversations that end in Escalate Page"
