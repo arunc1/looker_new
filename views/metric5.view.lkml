@@ -36,7 +36,6 @@ view: metric5 {
   dimension: operation {
     label: "Call Type"
     description: "Call Transfer, Disconnect, Hangup"
-    hidden: no
     type: string
     sql: ${TABLE}.operation ;;
   }
