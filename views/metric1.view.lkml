@@ -87,7 +87,15 @@ view: metric1 {
     sql: CONCAT(${session_id},${page_id}) ;;
   }
 
-  # Within a conversation
+  # Across all the conversation
+  # Use Session Level → not include InsertID
+  dimension: dk_session_id_matchedIntent {
+    hidden: yes
+    type: string
+    sql: CONCAT(${session_id},${matched_intent}) ;;
+  }
+
+  # Within a conversation, including conversation turn
   measure: distinct_flow_count {
     type: count_distinct
     sql: ${dk_session_id_insert_id_flowid} ;;
@@ -99,9 +107,9 @@ view: metric1 {
     sql: ${dk_session_id_flowid} ;;
   }
 
-  measure: distinct_matchedIntent {
+  measure: total_count_matchedIntent {
     type: count_distinct
-    sql:${matched_intent} ;;
+    sql:${dk_session_id_matchedIntent} ;;
   }
 
   # of times a page was triggered
@@ -116,6 +124,7 @@ view: metric1 {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [flowname, page_name]
   }
