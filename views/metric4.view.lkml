@@ -69,6 +69,7 @@ view: metric4 {
    }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [flowname, page_name]
   }
