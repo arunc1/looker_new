@@ -59,7 +59,7 @@ view: metric5 {
   dimension: call_status {
     case: {
       when: {
-        sql: ${TABLE}.operation = "DISCONNECT" OR ${TABLE}.operation = "HANGUP";;
+        sql: ${TABLE}.operation = "DISCONNECT" AND ${TABLE}.operation = "HANGUP";;
         label: "Contained"}
       else: "Escalated"
     }
