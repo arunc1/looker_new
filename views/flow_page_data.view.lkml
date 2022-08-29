@@ -76,6 +76,7 @@ view: metric1 {
   # Within a conversation how many times a particular page is triggered?
   # Use → SessionID + InsertID + PageID
   dimension: dk_session_id_insert_id_page_id{
+    hidden: yes
     type: string
     sql:  CONCAT(${session_id},${insert_id},${page_id}) ;;
   }
@@ -101,6 +102,12 @@ view: metric1 {
     sql: ${dk_session_id_insert_id_flowid} ;;
   }
 
+  measure: session_count {
+    label: "Conversation Count"
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
+
   # Across all the conversation
   measure: total_flow_count {
     type: count_distinct
@@ -112,7 +119,7 @@ view: metric1 {
     sql:${dk_session_id_matchedIntent} ;;
   }
 
-  # of times a page was triggered
+  # # Within a conversation how many times a particular page is triggered?
   measure: distinct_page_count {
     type: count_distinct
     sql: ${dk_session_id_insert_id_page_id} ;;
