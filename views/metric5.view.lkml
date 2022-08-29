@@ -53,7 +53,7 @@ view: metric5 {
         label: "Escalated"}
       else: "Contained"
     }
-    description: "Call Escalated vs Call Contained"
+    description: "Escalated and Contained Conversations. A conversation is considered contained if it was never passed to a human agent."
   }
 
   measure: count_session {
@@ -63,7 +63,6 @@ view: metric5 {
   }
   measure: count {
     hidden: yes
-    label: "Total Count"
     type: count
     drill_fields: []
   }
