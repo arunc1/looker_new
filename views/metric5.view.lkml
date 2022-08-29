@@ -56,6 +56,16 @@ view: metric5 {
     description: "Escalated and Contained Conversations. A conversation is considered contained if it was never passed to a human agent."
   }
 
+  dimension: call_status {
+    case: {
+      when: {
+        sql: ${TABLE}.operation = "DISCONNECT" OR "HANGUP";;
+        label: "Contained"}
+      else: "Escalated"
+    }
+    description: "Escalated and Contained Conversations. A conversation is considered contained if it was never passed to a human agent."
+  }
+
   measure: count_session {
     label: "Conversation Count"
     type: count_distinct
