@@ -125,6 +125,7 @@ view: metric1 {
     sql: ${dk_session_id_insert_id_page_id} ;;
   }
 
+  # Across all conversations
   measure: total_page_count {
     type: count_distinct
     sql: ${dk_session_id_page_id} ;;

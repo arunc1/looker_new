@@ -16,4 +16,6 @@ explore: metric1 {}
 
 explore: metric3 {}
 
+explore: metric4 {}
+
 explore: metric5 {}

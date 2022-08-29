@@ -16,6 +16,11 @@ view: metric5 {
     sql: ${TABLE}.receiveTimestamp ;;
   }
 
+  dimension: matched_intent {
+    type: string
+    sql: ${TABLE}.matchedIntent ;;
+  }
+
   dimension: insert_id {
     label: "Conversation Turn"
     type: string
@@ -29,8 +34,9 @@ view: metric5 {
   }
 
   dimension: operation {
+    label: "Call Type"
     description: "Call Transfer, Disconnect, Hangup"
-    hidden: yes
+    hidden: no
     type: string
     sql: ${TABLE}.operation ;;
   }
@@ -41,23 +47,23 @@ view: metric5 {
     sql: ${TABLE}.session_id ;;
   }
 
-  dimension: call_type {
+  dimension: escalated_contained {
     case: {
       when: {
         sql: ${TABLE}.operation = "TRANSFER" ;;
-        label: "TRANSFER"}
-      when: {
-        sql: ${TABLE}.operation = "HANGUP" ;;
-        label: "HANGUP"
-      }
-      else: "DISCONNECT"
+        label: "Escalated"}
+      else: "Contained"
     }
-    description: "Call Transfer, Disconnect, Hangup"
+    description: "Call Escalated vs Call Contained"
   }
 
-
-
+  measure: count_session {
+    label: "Conversation Count"
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
   measure: count {
+    hidden: yes
     label: "Total Count"
     type: count
     drill_fields: []

@@ -8,6 +8,11 @@ view: metric3 {
     sql: ${TABLE}.insertid ;;
   }
 
+  dimension: matched_intent {
+    type: string
+    sql: ${TABLE}.matchedIntent ;;
+  }
+
   dimension: parameter_name {
     type: string
     sql: ${TABLE}.parameter_name ;;
