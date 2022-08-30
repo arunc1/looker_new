@@ -3,6 +3,7 @@ view: events {
     ;;
 
   dimension: insert_id {
+    label: "Conversation Turn"
     type: string
     sql: ${TABLE}.insertId ;;
   }
@@ -22,16 +23,19 @@ view: events {
   }
 
   dimension: request_type {
+    description: "request/response"
     type: string
     sql: ${TABLE}.Request_type ;;
   }
 
   dimension: session_id {
+    label: "Conversation Id"
     type: string
     sql: ${TABLE}.session_id ;;
   }
 
   dimension: source {
+    description: "Agent or Customer"
     type: string
     sql: ${TABLE}.Source ;;
   }
