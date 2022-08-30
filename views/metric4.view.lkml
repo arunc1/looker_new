@@ -62,6 +62,7 @@ view: metric4 {
     type: string
     sql: ${TABLE}.session_id ;;
   }
+
    measure: session_count {
     label: "Conversation Count"
     type: count_distinct

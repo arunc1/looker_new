@@ -54,6 +54,12 @@ view: metric3 {
     sql: ${dk_sessionid_insertid_parametername} ;;
   }
 
+  measure: session_count {
+    label: "Conversation Count"
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
+
   measure: count {
     hidden: yes
     type: count
