@@ -46,27 +46,6 @@ view: metric5 {
     sql: ${TABLE}.session_id ;;
   }
 
-  dimension: escalated_contained {
-    case: {
-      when: {
-        sql: ${TABLE}.operation = "TRANSFER" ;;
-        label: "Escalated"}
-      else: "Contained"
-    }
-    description: "Escalated and Contained Conversations. A conversation is considered contained if it was never passed to a human agent."
-  }
-
-  dimension: call_status {
-    # allow_fill: no
-    case: {
-      when: {
-        sql: ${operation} = "DISCONNECT" AND ${operation} = "HANGUP";;
-        label: "Contained"}
-      else: "Escalated"
-    }
-    description: "Escalated and Contained Conversations. A conversation is considered contained if it was never passed to a human agent."
-  }
-
   measure: count_session {
     label: "Conversation Count"
     type: count_distinct

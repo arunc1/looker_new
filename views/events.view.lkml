@@ -45,6 +45,13 @@ view: events {
     sql: ${TABLE}.Text ;;
   }
 
+  dimension: operation {
+    label: "Call Type"
+    description: "Call Transfer, Disconnect, Hangup"
+    type: string
+    sql: ${TABLE}.operation ;;
+  }
+
   measure: count_session {
     label: "Conversation Count"
     type: count_distinct
