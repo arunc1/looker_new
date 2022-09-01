@@ -10,8 +10,6 @@ datagroup: dialogflow_cx_default_datagroup {
 
 persist_with: dialogflow_cx_default_datagroup
 
-explore: scrubbed_dialogflow_cx_agent_logs {}
-
 explore: metric1 {}
 
 explore: metric3 {}

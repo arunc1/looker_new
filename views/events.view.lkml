@@ -22,6 +22,27 @@ view: events {
     sql: ${TABLE}.receiveTimestamp ;;
   }
 
+
+
+  measure: minimum_timestamp {
+    label: "Start Call Time"
+    type: date_time
+    sql: MIN(${receive_timestamp_raw}) ;;
+  }
+
+  measure: maximum_timestamp {
+    label: "End Call Time"
+    type: date_time
+    sql: MAX(${receive_timestamp_raw}) ;;
+  }
+
+  measure: duration {
+    hidden: yes
+    type: date_time
+    sql: DATETIME_DIFF(${minimum_timestamp}, ${maximum_timestamp}, MINUTE);;
+  }
+
+
   dimension: request_type {
     description: "request/response"
     type: string
@@ -52,12 +73,23 @@ view: events {
     sql: ${TABLE}.operation ;;
   }
 
+  dimension: dk_sessionid_insertid {
+    hidden: yes
+    type: string
+    sql: CONCAT(${session_id}, ${insert_id}) ;;
+  }
+
   measure: count_session {
     label: "Conversation Count"
     type: count_distinct
     sql: ${session_id} ;;
   }
 
+  measure: count_insertid_per_session {
+    label: "Conversation Turn Count"
+    type: count_distinct
+    sql: ${dk_sessionid_insertid} ;;
+  }
   measure: count {
     hidden: yes
     type: count
