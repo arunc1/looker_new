@@ -19,3 +19,5 @@ explore: metric4 {}
 explore: metric5 {}
 
 explore: events {}
+
+explore: event {}

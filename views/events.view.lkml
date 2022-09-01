@@ -22,8 +22,6 @@ view: events {
     sql: ${TABLE}.receiveTimestamp ;;
   }
 
-
-
   measure: minimum_timestamp {
     label: "Start Call Time"
     type: date_time
@@ -42,6 +40,10 @@ view: events {
     sql: DATETIME_DIFF(${minimum_timestamp}, ${maximum_timestamp}, MINUTE);;
   }
 
+  dimension: matched_intent {
+    type: string
+    sql: ${TABLE}.matchedIntent ;;
+  }
 
   dimension: request_type {
     description: "request/response"
