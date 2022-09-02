@@ -68,6 +68,18 @@ view: event {
     sql: ${operation} = "TRANSFER";;
   }
 
+  dimension: escalated_contained{
+    description: "Escalated vs Contained Calls"
+    type: string
+    sql: ${operation};;
+    html:
+      {% if value == "DISCONNECT" or value == "HANGUP" %}
+        CONTAINED
+      {% else %}
+        ESCALATED
+      {% endif %} ;;
+  }
+
   measure: minimum_timestamp {
     label: "Start Call Time"
     type: date_time
