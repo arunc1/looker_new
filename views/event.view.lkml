@@ -69,15 +69,17 @@ view: event {
   }
 
   dimension: status{
-    description: "Escalated vs Contained Calls"
+    type:  string
+    sql: CASE WHEN ${operation} in ("DISCONNECT", "HANGUP") THEN "CONTAINED"
+        ELSE "ESCALATED" END;;
+  }
+
+  # Across all the conversation
+  # Use Session Level → not include InsertID
+  dimension: dk_session_id_matchedIntent {
+    hidden: yes
     type: string
-    sql: ${operation};;
-    html:
-      {% if value == "DISCONNECT" or value == "HANGUP" %}
-        CONTAINED
-      {% else %}
-        ESCALATED
-      {% endif %} ;;
+    sql: CONCAT(${session_id},${matched_intent}) ;;
   }
 
   measure: minimum_timestamp {
@@ -94,6 +96,7 @@ view: event {
 
   measure: duration_minutes {
     label: "Duration Minutes"
+    type: number
     description: "Call duration in minutes"
     sql:TIMESTAMP_DIFF(CAST(MAX(${receive_timestamp_raw}) AS TIMESTAMP),CAST(MIN(${receive_timestamp_raw}) AS TIMESTAMP), MINUTE)  ;;
   }
@@ -109,9 +112,35 @@ view: event {
     type: count_distinct
     sql: ${dk_sessionid_insertid} ;;
   }
+  measure: total_count_matchedIntent {
+    type: count_distinct
+    sql:${dk_session_id_matchedIntent} ;;
+  }
+
   measure: count {
     hidden: yes
     type: count
     drill_fields: []
   }
+
+# Timestamp
+# Conversation ID
+# Call Type
+# Matched Intent
+# Duration of the conversation
+# Conversation turn
+# Source (agent/client)
+
+  set: conversation_lookup {
+    fields: [
+      minimum_timestamp,
+      maximum_timestamp,
+      duration_minutes,
+      session_id,
+      operation,
+      status,
+      matched_intent,
+      insert_id,
+      source
+    ]}
 }
