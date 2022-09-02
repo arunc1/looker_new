@@ -22,24 +22,6 @@ dimension_group: receive_timestamp {
   sql: ${TABLE}.receiveTimestamp ;;
 }
 
-measure: minimum_timestamp {
-  label: "Start Call Time"
-  type: date_time
-  sql: MIN(${receive_timestamp_raw}) ;;
-}
-
-measure: maximum_timestamp {
-  label: "End Call Time"
-  type: date_time
-  sql: MAX(${receive_timestamp_raw}) ;;
-}
-
-measure: duration {
-  hidden: yes
-  type: date_time
-  sql: DATETIME_DIFF(${minimum_timestamp}, ${maximum_timestamp}, MINUTE);;
-}
-
 dimension: matched_intent {
   type: string
   sql: ${TABLE}.matchedIntent ;;
@@ -70,7 +52,7 @@ dimension: text {
 
 dimension: operation {
   label: "Call Type"
-  description: "Call Transfer, Disconnect, Hangup"
+  description: "Whether conversation was a Transfer, Disconnect, or Hangup"
   type: string
   sql: ${TABLE}.operation ;;
 }
@@ -80,6 +62,24 @@ dimension: dk_sessionid_insertid {
   type: string
   sql: CONCAT(${session_id}, ${insert_id}) ;;
 }
+
+  measure: minimum_timestamp {
+    label: "Start Call Time"
+    type: date_time
+    sql: MIN(${receive_timestamp_raw}) ;;
+  }
+
+  measure: maximum_timestamp {
+    label: "End Call Time"
+    type: date_time
+    sql: MAX(${receive_timestamp_raw}) ;;
+  }
+
+  measure: duration {
+    hidden: yes
+    type: date_time
+    sql: DATETIME_DIFF(${minimum_timestamp}, ${maximum_timestamp}, MINUTE);;
+  }
 
 measure: count_session {
   label: "Conversation Count"

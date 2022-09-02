@@ -10,14 +10,13 @@ datagroup: dialogflow_cx_default_datagroup {
 
 persist_with: dialogflow_cx_default_datagroup
 
-explore: metric1 {}
-
-explore: metric3 {}
-
-explore: metric4 {}
-
-explore: metric5 {}
-
-explore: events {}
 
 explore: event {}
+
+explore: metric_1 {}
+
+explore: metric_3 {}
+
+explore: metric_4 {}
+
+explore: metric_5 {}
