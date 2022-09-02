@@ -34,6 +34,7 @@ view: event {
   }
 
   dimension: session_id {
+    drill_fields: [conversation_lookup*]
     label: "Conversation Id"
     type: string
     sql: ${TABLE}.session_id ;;
@@ -122,14 +123,6 @@ view: event {
     type: count
     drill_fields: []
   }
-
-# Timestamp
-# Conversation ID
-# Call Type
-# Matched Intent
-# Duration of the conversation
-# Conversation turn
-# Source (agent/client)
 
   set: conversation_lookup {
     fields: [
