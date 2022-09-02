@@ -71,13 +71,19 @@ view: event {
   measure: minimum_timestamp {
     label: "Start Call Time"
     type: date_time
-    sql: MIN(${receive_timestamp_raw}) ;;
+    sql: CAST(MIN(${receive_timestamp_raw}) AS TIMESTAMP) ;;
   }
 
   measure: maximum_timestamp {
     label: "End Call Time"
     type: date_time
-    sql: MAX(${receive_timestamp_raw}) ;;
+    sql: CAST(MAX(${receive_timestamp_raw}) AS TIMESTAMP) ;;
+  }
+
+  measure: duration_minutes {
+    label: "Duration Minutes"
+    description: "Call duration in minutes"
+    sql:TIMESTAMP_DIFF(CAST(MAX(${receive_timestamp_raw}) AS TIMESTAMP),CAST(MIN(${receive_timestamp_raw}) AS TIMESTAMP), MINUTE)  ;;
   }
 
   measure: count_session {
