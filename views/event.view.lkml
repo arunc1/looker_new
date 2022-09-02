@@ -68,7 +68,7 @@ view: event {
     sql: ${operation} = "TRANSFER";;
   }
 
-  dimension: escalated_contained{
+  dimension: status{
     description: "Escalated vs Contained Calls"
     type: string
     sql: ${operation};;
