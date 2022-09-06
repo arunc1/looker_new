@@ -70,6 +70,7 @@ view: event {
   }
 
   dimension: status{
+    description: "Escalated (Transfer) vs Contained (Disconnect, Hangup)"
     type:  string
     sql: CASE WHEN ${operation} in ("DISCONNECT", "HANGUP") THEN "CONTAINED"
         ELSE "ESCALATED" END;;
