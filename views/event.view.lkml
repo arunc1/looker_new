@@ -103,6 +103,7 @@ view: event {
   }
 
   measure: count_session {
+    drill_fields: [conversation_lookup*]
     label: "Conversation Count"
     type: count_distinct
     sql: ${session_id} ;;
@@ -127,13 +128,10 @@ view: event {
   set: conversation_lookup {
     fields: [
       minimum_timestamp,
-      maximum_timestamp,
-      duration_minutes,
-      session_id,
       operation,
       status,
       matched_intent,
-      insert_id,
+      duration_minutes,
       source
     ]}
 }
