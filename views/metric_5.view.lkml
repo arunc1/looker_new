@@ -46,6 +46,12 @@ dimension: session_id {
   sql: ${TABLE}.session_id ;;
 }
 
+  dimension: status{
+    type:  string
+    sql: CASE WHEN ${operation} in ("DISCONNECT", "HANGUP") THEN "CONTAINED"
+      ELSE "ESCALATED" END;;
+  }
+
 measure: count_session {
   label: "Conversation Count"
   type: count_distinct
