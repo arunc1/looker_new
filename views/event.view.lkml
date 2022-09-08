@@ -41,7 +41,7 @@ view: event {
   }
 
   dimension: source {
-    description: "Agent or Customer"
+    description: "Agent/Customer"
     type: string
     sql: ${TABLE}.Source ;;
   }
@@ -85,6 +85,7 @@ view: event {
   }
 
   measure: count_calltype {
+    hidden: yes
     type: count_distinct
     sql: ${operation} ;;
   }
