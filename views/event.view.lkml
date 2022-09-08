@@ -84,6 +84,10 @@ view: event {
     sql: CONCAT(${session_id},${matched_intent}) ;;
   }
 
+  measure: count_calltype {
+    type: count_distinct
+    sql: ${operation} ;;
+  }
   measure: minimum_timestamp {
     label: "Start Call Time"
     type: date_time
