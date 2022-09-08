@@ -1,4 +1,4 @@
-view: metric_4 {
+view: event_type {
   sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric_4`
     ;;
 

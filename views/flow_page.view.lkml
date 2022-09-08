@@ -1,4 +1,4 @@
-view: metric_1 {
+view: flow_page {
   sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric_1`
     ;;
 

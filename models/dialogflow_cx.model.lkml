@@ -13,10 +13,10 @@ persist_with: dialogflow_cx_default_datagroup
 
 explore: event {}
 
-explore: metric_1 {}
+explore: flow_page {}
 
-explore: metric_3 {}
+explore: parameters {}
 
-explore: metric_4 {}
+explore: event_type {}
 
-explore: metric_5 {}
+explore: conversation_status {}

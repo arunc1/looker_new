@@ -1,4 +1,4 @@
-view: metric_5 {
+view: conversation_status {
   sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric_5`
     ;;
 
