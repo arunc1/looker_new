@@ -20,3 +20,5 @@ explore: parameters {}
 explore: event_type {}
 
 explore: conversation_status {}
+
+week_start_day: sunday
