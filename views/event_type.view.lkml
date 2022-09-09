@@ -1,5 +1,5 @@
 view: event_type {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric_4`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.event_type`
     ;;
 
   dimension: event_type {

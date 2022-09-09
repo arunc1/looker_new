@@ -1,5 +1,5 @@
 view: conversation_status {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.metric_5`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.conversation_status`
     ;;
 
   dimension_group: receive_timestamp {
