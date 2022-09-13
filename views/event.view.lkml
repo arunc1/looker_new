@@ -89,8 +89,8 @@ view: event {
     "intent.subscription.refund","intent.reinstall","intent.subscription.renew","intent.spam","intent.subscription.cancel","intent.subscription.info",
     "intent.subscription.manage","intent.liveagent.technical","intent.liveagent.technical","intent.liveagent.technical","intent.update.account",
     "intent.update.address","intent.update.billing","intent.email.update","intent.update.phone","intent.subscription.upgrade","intent.vpn","intent.vpn.issues",
-    "intent.lostwallet","intent.collections","intent.virus") THEN "Full Solution"
-              WHEN ${matched_intent} in ("intent.billing.questions", "intent.accountinfo","intent.billing.charge", "intent.subscription.manage",
+    "intent.lostwallet","intent.collections","intent.virus") THEN "Full Solution",
+              WHEN ${matched_intent} in ("intent.billing.questions","intent.accountinfo","intent.billing.charge","intent.subscription.manage",
     "intent.subscription.info","intent.billing.confirmpayment","intent.activate","intent.billing.issue","intent.billing.date","intent.activation.issue",
     "intent.billing.fop") THEN "Partial Solution"
       ELSE "NO SOLUTION" END;;
