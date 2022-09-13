@@ -77,9 +77,19 @@ view: event {
   }
 
   dimension: intent_type{
-    description: "Full, Partial Solution & No Use Case"
+    description: "Full, Partial Solution,No Use Case & Speak with agent"
     type:  string
-    sql: CASE WHEN ${matched_intent} in ("intent.subscription.cancel", "intent.update.billing","intent.update.phone") THEN "Full Solution"
+    sql: CASE WHEN ${matched_intent} in ("intent.account.duplicate","intent.accountinfo","intent.account.setup","intent.activate","intent.activation.issue",
+    "intent.alert","intent.billing.issue","intent.billing.questions","intent.billing.charge","intent.billing.date","intent.billing.fop",
+    "intent.billing.confirmpayment","intent.subscription.buy","intent.call.return","intent.case","intent.cloudbackup","intent.cloudbackup.issue",
+    "intent.cloudbackup.restore","intent.cloudbackup.setup","intent.nortonsecurity","intent.nortonsecurity.error","intent.download","intent.download.issue",
+    "intent.identity.protection","intent.identity.theft","intent.install.status","intent.courtrecords","intent.creditscore","intent.darkweb","intent.databreach",
+    "intent.hometitle","intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.license.issue","intent.liveagent","intent.liveagent.technical",
+    "intent.liveupdate","intent.liveupdate.issue","intent.login.issue","intent.productkey","intent.productkey.find","intent.productkey.issue",
+    "intent.subscription.refund","intent.reinstall","intent.subscription.renew","intent.spam","intent.subscription.cancel","intent.subscription.info",
+    "intent.subscription.manage","intent.liveagent.technical","intent.liveagent.technical","intent.liveagent.technical","intent.update.account",
+    "intent.update.address","intent.update.billing","intent.email.update","intent.update.phone","intent.subscription.upgrade","intent.vpn","intent.vpn.issues",
+    "intent.lostwallet","intent.collections","intent.virus") THEN "Full Solution"
       ELSE "NO SOLUTION" END;;
   }
 
