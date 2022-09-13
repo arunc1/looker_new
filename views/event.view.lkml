@@ -76,6 +76,13 @@ view: event {
         ELSE "ESCALATED" END;;
   }
 
+  dimension: intent_type{
+    description: "Full, Partial Solution & No Use Case"
+    type:  string
+    sql: CASE WHEN ${matched_intent} in ("intent.subscription.cancel", "intent.update.billing","intent.update.phone") THEN "Full Solution"
+      ELSE "NO SOLUTION" END;;
+  }
+
   # Across all the conversation
   # Use Session Level → not include InsertID
   dimension: dk_session_id_matchedIntent {
