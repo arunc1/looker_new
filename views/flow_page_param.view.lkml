@@ -1,5 +1,5 @@
 view: flow_page_param {
- sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.event_type` ;;
+ sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.flow_page_param` ;;
 
 #Flow
   dimension: flowid {
