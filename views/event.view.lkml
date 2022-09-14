@@ -98,8 +98,15 @@ view: event {
                                      THEN "No Use Case"
               WHEN ${matched_intent} in ("intent.liveagent","intent.liveagent.technical","intent.subscription.upgrade")
                                      THEN "Speak with an Agent"
-        ELSE "NULL" END;;
+        ELSE ${matched_intent} END;;
   }
+
+  dimension: intent_name{
+    description: "Intent Name"
+    type:  string
+    sql:concat(upper(substring(substring(${matched_intent},7, length(${matched_intent})),1,1)),substring(substring(${matched_intent},7,
+    length(${matched_intent})),2,length(${matched_intent})));;
+    }
 
   # Across all the conversation
   # Use Session Level → not include InsertID
