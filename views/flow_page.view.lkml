@@ -33,16 +33,6 @@ view: flow_page {
     sql: ${TABLE}.pageName ;;
   }
 
-  dimension: parameter_name {
-    type: string
-    sql: ${TABLE}.parameter_name ;;
-  }
-
-  dimension: parameter_value {
-    type: string
-    sql: ${TABLE}.parameter_value ;;
-  }
-
   dimension_group: receive_timestamp {
     type: time
     timeframes: [
