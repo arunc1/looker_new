@@ -21,4 +21,6 @@ explore: event_type {}
 
 explore: conversation_status {}
 
+explore: flow_page_param {}
+
 week_start_day: sunday
