@@ -80,7 +80,7 @@ view: event {
     description: "Full, Partial Solution,No Use Case & Speak with agent"
     type:  string
     sql: CASE WHEN ${matched_intent} in ("intent.account.duplicate","intent.accountinfo","intent.account.setup","intent.activate","intent.activation.issue",
-    "intent.alert","intent.billing.issue","intent.billing.questions","intent.billing.charge","intent.billing.date","intent.billing.fop",
+    "intent.alert","intent.billing.issue","intent.billing.charge","intent.billing.date","intent.billing.fop",
     "intent.billing.confirmpayment","intent.subscription.buy","intent.call.return","intent.case","intent.cloudbackup","intent.cloudbackup.issue",
     "intent.cloudbackup.restore","intent.cloudbackup.setup","intent.nortonsecurity","intent.nortonsecurity.error","intent.download","intent.download.issue",
     "intent.identity.protection","intent.identity.theft","intent.install.status","intent.courtrecords","intent.creditscore","intent.darkweb","intent.databreach",
