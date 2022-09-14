@@ -86,11 +86,11 @@ view: event {
                                      THEN "Full Solution"
               WHEN ${matched_intent} in ("intent.billing.charge","intent.subscription.manage","intent.subscription.info",
                                          "intent.billing.confirmpayment","intent.activate","intent.billing.issue","intent.billing.date","intent.activation.issue",
-                                         "intent.billing.fop","intent.spam","intent.sexoffender","intent.billing.questions","intent.activate")
+                                         "intent.billing.fop","intent.billing.questions")
                                      THEN "Partial Solution"
               WHEN ${matched_intent} in ("intent.subscription.renew","intent.call.return","intent.identity.theft","intent.identity.protection",
                                          "intent.subscription.refund","intent.case","intent.liveupdate","intent.subscription.buy","intent.nortonsecurity",
-                                        "intent.account.duplicate", "intent.account.setup", "intent.case", "intent.cloudbackup", "intent.cloudbackup.issue",
+                                        "intent.account.duplicate", "intent.account.setup", "intent.cloudbackup", "intent.cloudbackup.issue",
                                         "intent.cloudbackup.restore", "intent.cloudbackup.setup", "intent.nortonsecurity.error", "intent.install.status",
                                         "intent.license.issue", "intent.liveupdate.issue", "intent.lostwallet", "intent.productkey", "intent.productkey.find",
                                         "intent.reinstall", "intent.vpn", "intent.vpn.issues",
@@ -100,13 +100,6 @@ view: event {
                                      THEN "Speak with an Agent"
         ELSE ${matched_intent} END;;
   }
-
-  dimension: intent_name{
-    description: "Intent Name"
-    type:  string
-    sql:concat(upper(substring(substring(${matched_intent},7, length(${matched_intent})),1,1)),substring(substring(${matched_intent},7,
-    length(${matched_intent})),2,length(${matched_intent})));;
-    }
 
   # Across all the conversation
   # Use Session Level → not include InsertID
