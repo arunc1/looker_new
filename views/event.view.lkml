@@ -79,12 +79,12 @@ view: event {
   dimension: intent_type{
     description: "Full, Partial Solution,No Use Case & Speak with agent"
     type:  string
-    sql: CASE WHEN ${matched_intent} in ("intent.accountinfo","intent.alert","intent.collections","intent.courtrecords","intent.creditscore","intent.darkweb",
+    sql: CASE WHEN ${matched_intent} in ("intent.alert","intent.collections","intent.courtrecords","intent.creditscore","intent.darkweb",
                                           "intent.databreach","intent.download","intent.download.issue","intent.email.update","intent.hometitle","intent.login.issue",
                                           "intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.spam","intent.subscription.cancel","intent.update.account",
                                           "intent.update.address","intent.update.billing","intent.update.phone","intent.virus")
                                      THEN "Full Solution"
-              WHEN ${matched_intent} in ("intent.billing.charge","intent.subscription.manage","intent.subscription.info",
+              WHEN ${matched_intent} in ("intent.accountinfo","intent.billing.charge","intent.subscription.manage","intent.subscription.info",
                                          "intent.billing.confirmpayment","intent.activate","intent.billing.issue","intent.billing.date","intent.activation.issue",
                                          "intent.billing.fop","intent.billing.questions")
                                      THEN "Partial Solution"
