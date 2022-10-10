@@ -74,4 +74,12 @@ view: event_type {
     type: count
     drill_fields: [flowname, page_name]
   }
+  # Measure created to count Ghost calls
+
+  measure: ghost_calls {
+    label: "Ghost Calls"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [event_type: "sys.no-input-3"]
+  }
 }
