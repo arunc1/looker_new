@@ -80,6 +80,6 @@ view: event_type {
     label: "Ghost Calls"
     type: count_distinct
     sql: ${session_id} ;;
-    filters: [event_value: "sys.no-input-3"]
+    filters: [event_value: "sys.no-input-3", flowname: "Default Start Flow"]
   }
 }
