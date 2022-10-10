@@ -101,8 +101,8 @@ view: event {
         ELSE ${matched_intent} END;;
   }
 
-  measure: escalation {
-    label: "Escalation"
+  measure: escalated {
+    label: "Escalated"
     type: count_distinct
     sql: ${session_id} ;;
     filters: [status: "ESCALATED"]
@@ -113,6 +113,13 @@ view: event {
     type: count_distinct
     sql: ${session_id} ;;
     filters: [status: "CONTAINED"]
+  }
+
+  measure: containment {
+    label: "Containment"
+    type: number
+    value_format_name: percent_2
+    sql: ${contained}/${count_session} ;;
   }
 
   # Across all the conversation
