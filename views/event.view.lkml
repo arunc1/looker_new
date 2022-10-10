@@ -101,6 +101,20 @@ view: event {
         ELSE ${matched_intent} END;;
   }
 
+  measure: escalation {
+    label: "Escalation"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [status: "ESCALATED"]
+  }
+
+  measure: contained {
+    label: "Contained"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [status: "CONTAINED"]
+  }
+
   # Across all the conversation
   # Use Session Level → not include InsertID
   dimension: dk_session_id_matchedIntent {
@@ -165,4 +179,5 @@ view: event {
       duration_minutes,
       source
     ]}
+
 }
