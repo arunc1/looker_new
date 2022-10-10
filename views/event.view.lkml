@@ -119,7 +119,7 @@ view: event {
     label: "Containment"
     type: number
     value_format_name: percent_2
-    sql: ${contained}/${count_session} ;;
+    sql: ${contained}/(${contained}+${escalated}) ;;
   }
 
   # Across all the conversation
