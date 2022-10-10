@@ -21,4 +21,6 @@ explore: event_type {}
 
 explore: conversation_status {}
 
+explore: test {}
+
 week_start_day: sunday
