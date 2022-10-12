@@ -71,7 +71,7 @@ view: event_type {
     sql: CASE WHEN ${event_value} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
     WHEN ${event_value} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
 
-      ELSE "no_ani_lookup" END;;
+      ELSE 0 END;;
   }
 
   measure: session_count {
