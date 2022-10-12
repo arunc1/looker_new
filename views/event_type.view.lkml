@@ -87,11 +87,7 @@ view: event_type {
 
   #Measure to count ani_status/conversation
 
-  measure: ani_status_count {
-  label: "Ani Status Count"
-  type: count_distinct
-  sql: ${session_id};;
-  }
+
 
 
   # Measure created to count Ghost calls
