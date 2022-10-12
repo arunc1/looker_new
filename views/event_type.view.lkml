@@ -70,8 +70,7 @@ view: event_type {
     type:  string
     sql: CASE WHEN ${event_value} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
     WHEN ${event_value} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
-
-      ELSE "n/a" END;;
+  END;;
   }
 
   measure: session_count {
