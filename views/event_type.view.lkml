@@ -84,6 +84,16 @@ view: event_type {
     type: count
     drill_fields: [flowname, page_name]
   }
+
+  #Measure to count ani_status/conversation
+
+  measure: ani_status_count {
+  label: "Ani Status Count"
+  type: count_distinct
+  sql: ${session_id};;
+  }
+
+
   # Measure created to count Ghost calls
 
   measure: ghost_calls {
