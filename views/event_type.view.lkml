@@ -63,6 +63,17 @@ view: event_type {
     sql: ${TABLE}.session_id ;;
   }
 
+  # Dimesion to identify the status of ANI lookup
+
+  dimension: ani_status{
+    description: "Ani Lookup SUCCESS/FAIL"
+    type:  string
+    sql: CASE WHEN ${event_type} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
+    WHEN ${event_type} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
+
+      ELSE "no_ani_lookup" END;;
+  }
+
   measure: session_count {
     label: "Conversation Count"
     type: count_distinct
