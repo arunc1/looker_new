@@ -68,8 +68,8 @@ view: event_type {
   dimension: ani_status{
     description: "Ani Lookup SUCCESS/FAIL"
     type:  string
-    sql: CASE WHEN ${event_type} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
-    WHEN ${event_type} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
+    sql: CASE WHEN ${event_value} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
+    WHEN ${event_value} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
 
       ELSE "no_ani_lookup" END;;
   }
