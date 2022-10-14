@@ -76,6 +76,16 @@ view: event_type {
     sql: ${TABLE}.session_id ;;
   }
 
+  # Dimesion to identify the status of ANI lookup
+
+  dimension: ani_status{
+    description: "Ani Lookup SUCCESS/FAIL"
+    type:  string
+    sql: CASE WHEN ${event_value} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
+    WHEN ${event_value} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
+  END;;
+  }
+
   measure: session_count {
     label: "Conversation Count"
     type: count_distinct
@@ -86,5 +96,19 @@ view: event_type {
     hidden: yes
     type: count
     drill_fields: [flowname, page_name]
+  }
+
+  #Measure to count ani_status/conversation
+
+
+
+
+  # Measure created to count Ghost calls
+
+  measure: ghost_calls {
+    label: "Ghost Calls"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [event_value: "sys.no-input-3", flowname: "Default Start Flow"]
   }
 }

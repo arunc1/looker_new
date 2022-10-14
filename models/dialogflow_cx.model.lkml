@@ -11,7 +11,13 @@ datagroup: dialogflow_cx_default_datagroup {
 persist_with: dialogflow_cx_default_datagroup
 
 
-explore: event {}
+explore: event {
+  join: event_type {
+    type: left_outer
+    sql_on: ${event.session_id}=${event_type.session_id} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: flow_page {}
 
@@ -21,6 +27,5 @@ explore: event_type {}
 
 explore: conversation_status {}
 
-explore: flow_page_param {}
 
 week_start_day: sunday
