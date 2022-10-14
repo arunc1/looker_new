@@ -118,14 +118,6 @@ view: event_type {
     }
   }
 
-  #Dimension to identify Add Member intent with partial solution & no solution depending on the tfn
-
-  dimension: add_member_type{
-    label: "Add Member Type EB"
-    type: string
-    sql: ${TABLE}.matchedIntent in "intent.add.member" AND ${TABLE}.EventType in "welcome_eb_us" ;;
-  }
-
   measure: session_count {
     label: "Conversation Count"
     type: count_distinct
