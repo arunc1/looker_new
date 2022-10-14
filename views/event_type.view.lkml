@@ -43,6 +43,19 @@ view: event_type {
     sql: ${TABLE}.pageName ;;
   }
 
+  dimension: origin_tfn {
+    type: string
+    sql: CASE WHEN ${event_value} in ("welcome_norton") THEN "Norton"
+              WHEN ${event_value} in ("welcome_norton_priority") THEN "Norton Priority"
+              WHEN ${event_value} in ("welcome_lifelock") THEN "LifeLock"
+              WHEN ${event_value} in ("welcome_lifelock_priority") THEN "LifeLock Priority"
+              WHEN ${event_value} in ("welcome_norton_tech") THEN "Norton Tech"
+              WHEN ${event_value} in ("welcome_eb_us") THEN "Employee Benefits"
+              WHEN ${event_value} in ("welcome_norton_loggedin") THEN "Norton HC Logged In"
+          ELSE ${event_value};;
+  }
+
+
   dimension_group: receive_timestamp {
     type: time
     timeframes: [

@@ -45,6 +45,7 @@ view: conversation_status {
                                      THEN "Speak with an Agent"
         ELSE ${matched_intent} END;;
   }
+
   dimension: insert_id {
     label: "Conversation Turn"
     type: string
