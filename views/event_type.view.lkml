@@ -120,11 +120,20 @@ view: event_type {
 
   #Dimension to identify Add Member intent with partial solution & no solution depending on the tfn
 
-  measure: add_member_em {
-    label: "Add Member EM"
-    type: count_distinct
-    sql: ${session_id} ;;
-    filters: [matched_intent: "intent.add.member", event_type: "welcome_eb_us"]
+  dimension: add_member_type{
+    description: "Add Member Type"
+    type:  string
+    case: {
+      when: {
+        sql: ${matched_intent} in "intent.add.member" AND ${event_type} in "welcome_eb_us" ;;
+        label: "Add Member EB"
+      }
+      when: {
+        sql: ${matched_intent} in ("intent.add.member") AND NOT ${event_type} in "welcome_eb_us"  ;;
+        label: "Add Member (no EB)"
+      }
+      else: "Other"
+    }
   }
 
   measure: session_count {
