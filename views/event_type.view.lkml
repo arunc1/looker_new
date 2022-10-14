@@ -125,7 +125,7 @@ view: event_type {
     type:  string
     case: {
       when: {
-        sql: ${matched_intent} in ("intent.add.member"), ${event_value} in ("welcome_eb_us") ;;
+        sql: ${matched_intent} in ("intent.add.member") AND ${event_value} in ("welcome_eb_us") ;;
         label: "Add Member-EM"
       }
       else: "Add Member(no EM)"
