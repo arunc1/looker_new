@@ -27,11 +27,11 @@ view: conversation_status {
     sql: CASE WHEN ${matched_intent} in ("intent.alert","intent.collections","intent.courtrecords","intent.creditscore","intent.darkweb",
                                           "intent.databreach","intent.download","intent.download.issue","intent.email.update","intent.hometitle","intent.login.issue",
                                           "intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.spam","intent.subscription.cancel","intent.update.account",
-                                          "intent.update.address","intent.update.billing","intent.update.phone","intent.virus")
+                                          "intent.update.address","intent.update.billing","intent.update.phone","intent.virus","intent.utilityaccount")
                                      THEN "Full Solution"
               WHEN ${matched_intent} in ("intent.accountinfo","intent.billing.charge","intent.subscription.manage","intent.subscription.info",
                                          "intent.billing.confirmpayment","intent.activate","intent.billing.issue","intent.billing.date","intent.activation.issue",
-                                         "intent.billing.fop","intent.billing.questions","intent.financialmonitoring.error","intent.utilityaccount","intent.add.member")
+                                         "intent.billing.fop","intent.billing.questions","intent.financialmonitoring.error","intent.add.member")
                                      THEN "Partial Solution"
               WHEN ${matched_intent} in ("intent.subscription.renew","intent.call.return","intent.identity.theft","intent.identity.protection",
                                          "intent.subscription.refund","intent.case","intent.liveupdate","intent.subscription.buy","intent.nortonsecurity",
