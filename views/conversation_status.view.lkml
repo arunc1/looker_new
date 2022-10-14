@@ -38,7 +38,7 @@ view: conversation_status {
                                         "intent.account.duplicate", "intent.account.setup", "intent.cloudbackup", "intent.cloudbackup.issue",
                                         "intent.cloudbackup.restore", "intent.cloudbackup.setup", "intent.nortonsecurity.error", "intent.install.status",
                                         "intent.license.issue", "intent.liveupdate.issue", "intent.lostwallet", "intent.productkey", "intent.productkey.find",
-                                        "intent.reinstall", "intent.vpn", "intent.vpn.issues", "intent.productkey.issue", "intent.add.member", "intent.redeem.uhd"
+                                        "intent.reinstall", "intent.vpn", "intent.vpn.issues", "intent.productkey.issue", "intent.add.member", "intent.redeem.uhd",
                                         "intent.redeem.tuneup")
                                      THEN "No Use Case"
               WHEN ${matched_intent} in ("intent.liveagent","intent.liveagent.technical","intent.subscription.upgrade")
