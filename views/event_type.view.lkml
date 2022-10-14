@@ -52,7 +52,7 @@ view: event_type {
               WHEN ${event_value} in ("welcome_norton_tech") THEN "Norton Tech"
               WHEN ${event_value} in ("welcome_eb_us") THEN "Employee Benefits"
               WHEN ${event_value} in ("welcome_norton_loggedin") THEN "Norton HC Logged In"
-          ELSE ${event_value};;
+          ELSE "other tfn";;
   }
 
 
