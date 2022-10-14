@@ -10,13 +10,7 @@ datagroup: dialogflow_cx_default_datagroup {
 
 persist_with: dialogflow_cx_default_datagroup
 
-explore: event {
-  join: event_type {
-    type: left_outer
-    sql_on: ${event.session_id}=${event_type.session_id} ;;
-    relationship: many_to_one
-  }
-}
+explore: event {}
 
 explore: flow_page {}
 
@@ -38,6 +32,11 @@ explore: conversation_status {
   join: flow_page {
     type: left_outer
     sql_on: ${conversation_status.session_id} =${flow_page.session_id};;
+    relationship: many_to_many
+  }
+  join: event {
+    type: left_outer
+    sql_on: ${conversation_status.session_id} =${event.session_id};;
     relationship: many_to_many
   }
 }
