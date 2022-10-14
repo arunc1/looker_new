@@ -128,11 +128,7 @@ view: event_type {
         sql: ${matched_intent} in "intent.add.member" AND ${event_type} in "welcome_eb_us" ;;
         label: "Add Member EB"
       }
-      when: {
-        sql: ${matched_intent} in ("intent.add.member") AND NOT ${event_type} in "welcome_eb_us"  ;;
-        label: "Add Member (no EB)"
-      }
-      else: "Other"
+      else: "Add Member(no EB)"
     }
   }
 
