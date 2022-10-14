@@ -45,14 +45,38 @@ view: event_type {
 
   dimension: origin_tfn {
     type: string
-    sql: CASE WHEN ${event_value} in ("welcome_norton") THEN "Norton"
-              WHEN ${event_value} in ("welcome_norton_priority") THEN "Norton Priority"
-              WHEN ${event_value} in ("welcome_lifelock") THEN "LifeLock"
-              WHEN ${event_value} in ("welcome_lifelock_priority") THEN "LifeLock Priority"
-              WHEN ${event_value} in ("welcome_norton_tech") THEN "Norton Tech"
-              WHEN ${event_value} in ("welcome_eb_us") THEN "Employee Benefits"
-              WHEN ${event_value} in ("welcome_norton_loggedin") THEN "Norton HC Logged In"
-          ELSE "other tfn";;
+    case: {
+      when: {
+        sql: ${event_value} in ("welcome_norton") ;;
+        label: "Norton"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_norton_priority") ;;
+        label: "Norton Priority"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_lifelock") ;;
+        label: "LifeLock"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_lifelock_priority") ;;
+        label: "LifeLock Priority"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_norton_tech") ;;
+        label: "Norton Tech"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_eb_us") ;;
+        label: "Employee Benefits"
+      }
+      when: {
+        sql: ${event_value} in ("welcome_norton_loggedin") ;;
+        label: "Norton HC Logged In Benefits"
+      }
+      # possibly more when statements
+      else: "Other"
+    }
   }
 
 
