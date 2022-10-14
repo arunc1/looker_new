@@ -105,9 +105,17 @@ view: event_type {
   dimension: ani_status{
     description: "Ani Lookup SUCCESS/FAIL"
     type:  string
-    sql: CASE WHEN ${event_value} = "account.lookup_by_ani.success" THEN "ANI Lookup Success"
-    WHEN ${event_value} = "account.lookup_by_ani.failed" THEN "ANI Lookup Failed"
-  END;;
+    case: {
+      when: {
+        sql: ${event_value} in ("account.lookup_by_ani.success") ;;
+        label: "ANI Lookup Success"
+      }
+      when: {
+        sql: ${event_value} in ("account.lookup_by_ani.failed") ;;
+        label: "ANI Lookup Failed"
+      }
+     else: "Other"
+    }
   }
 
   measure: session_count {
