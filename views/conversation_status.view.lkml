@@ -100,8 +100,4 @@ view: conversation_status {
     drill_fields: []
   }
 
-  measure: test {
-    label: "test"
-    type: count
-  }
 }
