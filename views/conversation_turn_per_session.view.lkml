@@ -1,0 +1,42 @@
+view: conversation_turn_per_session {
+  derived_table: {
+    sql: SELECT
+          (DATE(conversation_status.receiveTimestamp , 'America/Los_Angeles')) AS conversation_status_receive_timestamp_date,
+          conversation_status.session_id,
+          COUNT(DISTINCT conversation_status.insertId) as conversation_turn_count
+      FROM `support-df-cx-26hwzn7k.df_cx_iva.conversation_status`
+           AS conversation_status
+      WHERE ((( conversation_status.receiveTimestamp  ) >= ((TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY, 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL -1 DAY), 'America/Los_Angeles'))) AND ( conversation_status.receiveTimestamp  ) < ((TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY, 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL -1 DAY), 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL 1 DAY), 'America/Los_Angeles')))))
+      GROUP BY
+          conversation_status_receive_timestamp_date,
+          conversation_status.session_id
+      ORDER BY
+          conversation_turn_count DESC
+       ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
+  dimension: conversation_status_receive_timestamp_date {
+    type: date
+    datatype: date
+    sql: ${TABLE}.conversation_status_receive_timestamp_date ;;
+  }
+
+  dimension: session_id {
+    type: string
+    sql: ${TABLE}.session_id ;;
+  }
+
+  dimension: conversation_turn_count {
+    type: number
+    sql: ${TABLE}.conversation_turn_count ;;
+  }
+
+  set: detail {
+    fields: [conversation_status_receive_timestamp_date, session_id, conversation_turn_count]
+  }
+}

@@ -18,6 +18,8 @@ explore: parameters {}
 
 explore: event_type {}
 
+explore: conversation_turn_per_session  {}
+
 explore: conversation_status {
   join: event_type {
     type: left_outer
@@ -39,6 +41,7 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id} =${event.session_id};;
     relationship: many_to_many
   }
+
 }
 
 
