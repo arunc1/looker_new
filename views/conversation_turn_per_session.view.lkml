@@ -42,13 +42,6 @@ view: conversation_turn_per_session {
     sql: ${TABLE}.conversation_turn_count ;;
   }
 
-  dimension: operation {
-    label: "Call Type"
-    description: "Call Transfer, Disconnect, Hangup"
-    type: string
-    sql: ${TABLE}.operation ;;
-  }
-
   set: detail {
     fields: [conversation_status_receive_timestamp_date, session_id, conversation_turn_count]
   }
