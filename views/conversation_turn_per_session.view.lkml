@@ -15,20 +15,6 @@ view: conversation_turn_per_session {
        ;;
   }
 
-  dimension_group: receive_timestamp {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.receiveTimestamp ;;
-  }
-
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -41,6 +27,7 @@ view: conversation_turn_per_session {
   }
 
   dimension: conversation_status_receive_timestamp_date {
+    label: "Receive Timestamp Date"
     type: date
     datatype: date
     sql: ${TABLE}.conversation_status_receive_timestamp_date ;;
