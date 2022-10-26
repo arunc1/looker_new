@@ -20,6 +20,12 @@ view: conversation_turn_per_session {
     drill_fields: [detail*]
   }
 
+  measure: count_session {
+    label: "Conversation Count"
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
+
   dimension: conversation_status_receive_timestamp_date {
     type: date
     datatype: date
