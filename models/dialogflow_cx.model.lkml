@@ -41,7 +41,6 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id} =${event.session_id};;
     relationship: many_to_many
   }
-
 }
 
 

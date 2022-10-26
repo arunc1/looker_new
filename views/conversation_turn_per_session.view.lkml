@@ -6,7 +6,7 @@ view: conversation_turn_per_session {
           COUNT(DISTINCT conversation_status.insertId) as conversation_turn_count
       FROM `support-df-cx-26hwzn7k.df_cx_iva.conversation_status`
            AS conversation_status
-      WHERE ((( conversation_status.receiveTimestamp  ) >= ((TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY, 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL -1 DAY), 'America/Los_Angeles'))) AND ( conversation_status.receiveTimestamp  ) < ((TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP(DATETIME_ADD(DATETIME(TIMESTAMP_TRUNC(CURRENT_TIMESTAMP(), DAY, 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL -1 DAY), 'America/Los_Angeles'), 'America/Los_Angeles'), INTERVAL 1 DAY), 'America/Los_Angeles')))))
+
       GROUP BY
           conversation_status_receive_timestamp_date,
           conversation_status.session_id
