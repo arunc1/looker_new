@@ -20,13 +20,13 @@ view: conversation_status {
   measure: max_timestamp {
     hidden: yes
     type: date_time
-    sql: MAX(${receive_timestamp_raw}) ;;
+    sql: MAX(${receive_timestamp_time}) ;;
   }
 
   measure: min_timestamp {
     hidden: yes
     type: date_time
-    sql: MIN(${receive_timestamp_raw}) ;;
+    sql: MIN(${receive_timestamp_time}) ;;
   }
 
   dimension_group: max_timestamp {
