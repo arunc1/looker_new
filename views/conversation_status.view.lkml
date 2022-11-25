@@ -20,13 +20,13 @@ view: conversation_status {
   measure: max_timestamp {
     hidden: yes
     type: date_time
-    sql: MAX(${receive_timestamp_time}) ;;
+    sql: MAX(${receive_timestamp_raw}) ;;
   }
 
   measure: min_timestamp {
     hidden: yes
     type: date_time
-    sql: MIN(${receive_timestamp_time}) ;;
+    sql: MIN(${receive_timestamp_raw}) ;;
   }
 
   dimension_group: max_timestamp {
@@ -46,8 +46,8 @@ view: conversation_status {
     label: "Session Duration (Seconds)"
     description: "Number of seconds from beginning to end of session"
     type: duration_second
-    sql_start: ${min_timestamp_time} ;;
-    sql_end: ${max_timestamp_time} ;;
+    sql_start: ${min_timestamp_raw} ;;
+    sql_end: ${max_timestamp_raw} ;;
     group_label: "Duration"
   }
 
