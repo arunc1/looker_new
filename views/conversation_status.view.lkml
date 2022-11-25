@@ -46,8 +46,8 @@ view: conversation_status {
     label: "Session Duration (Seconds)"
     description: "Number of seconds from beginning to end of session"
     type: duration_second
-    sql_start: ${min_timestamp_raw} ;;
-    sql_end: ${max_timestamp_raw} ;;
+    sql_start: ${min_timestamp_time} ;;
+    sql_end: ${max_timestamp_time} ;;
     group_label: "Duration"
   }
 
