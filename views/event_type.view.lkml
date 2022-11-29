@@ -122,7 +122,7 @@ view: event_type {
     label: "Lookup Success"
     type: count_distinct
     sql:${event_value} in ("account.lookup_by_ani.success","account.lookup_by_email.success","account.lookup_by_ssn4_yob_ani.success",
-"account.lookup_by_ssn4_yob_zip.success") where ${page_name} != "%autheticate" ;;
+"account.lookup_by_ssn4_yob_zip.success") where ${page_name} != "%authenticate" ;;
   }
 
   measure: session_count {
