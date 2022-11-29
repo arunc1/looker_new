@@ -106,7 +106,7 @@ view: conversation_status {
     type:  string
     sql: CASE WHEN ${matched_intent} in ("intent.alert","intent.collections","intent.courtrecords","intent.creditscore","intent.darkweb",
                                           "intent.databreach","intent.download","intent.download.issue","intent.email.update","intent.hometitle","intent.login.issue",
-                                          "intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.spam","intent.subscription.cancel","intent.update.account",
+                                          "intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.spam", "intent.update.account",
                                           "intent.update.address","intent.update.billing","intent.update.phone","intent.virus","intent.utilityaccount")
                                      THEN "Full Solution"
               WHEN ${matched_intent} in ("intent.accountinfo","intent.billing.charge","intent.subscription.manage","intent.subscription.info",
@@ -118,7 +118,7 @@ view: conversation_status {
                                         "intent.account.duplicate", "intent.account.setup", "intent.cloudbackup", "intent.cloudbackup.issue",
                                         "intent.cloudbackup.restore", "intent.cloudbackup.setup", "intent.nortonsecurity.error", "intent.install.status",
                                         "intent.license.issue", "intent.liveupdate.issue", "intent.lostwallet", "intent.productkey", "intent.productkey.find",
-                                        "intent.reinstall", "intent.vpn", "intent.vpn.issues", "intent.productkey.issue", "intent.hacked")
+                                        "intent.reinstall", "intent.vpn", "intent.vpn.issues", "intent.productkey.issue", "intent.subscription.cancel", "intent.hacked")
                                      THEN "No Use Case"
               WHEN ${matched_intent} in ("intent.liveagent","intent.liveagent.technical","intent.subscription.upgrade")
                                      THEN "Speak with an Agent"
