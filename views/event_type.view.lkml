@@ -79,6 +79,10 @@ view: event_type {
     }
   }
 
+  #Brand Split by Welcome event value
+
+
+
 
   dimension_group: receive_timestamp {
     type: time
