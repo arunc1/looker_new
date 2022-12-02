@@ -80,7 +80,18 @@ view: event_type {
   }
 
   #Brand Split by Welcome event value
-
+  dimension: brand {
+    type: string
+    label: "Brand"
+    case: {
+      when: {
+        sql: ${event_value} in ("%lifelock") ;;
+        label: "Lifelock"
+      }
+      # possibly more when statements
+      else: "Norton"
+    }
+  }
 
 
 
