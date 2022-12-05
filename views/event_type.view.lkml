@@ -85,7 +85,7 @@ view: event_type {
     label: "Brand"
     case: {
       when: {
-        sql: ${event_value} in ("%lifelock") ;;
+        sql: ${event_value} = "%lifelock" ;;
         label: "Lifelock"
       }
       # possibly more when statements
