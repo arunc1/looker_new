@@ -154,6 +154,7 @@ view: event {
 
   set: conversation_lookup {
     fields: [
+      session_id,
       minimum_timestamp,
       operation,
       status,
