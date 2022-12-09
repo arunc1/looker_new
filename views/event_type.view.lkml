@@ -71,8 +71,8 @@ view: event_type {
         label: "Employee Benefits"
       }
       when: {
-        sql: ${event_value} in ("welcome_norton_loggedin") ;;
-        label: "Norton HC Logged In Benefits"
+        sql: ${event_value} in ("welcome_sp_otp") ;;
+        label: "Norton HC Logged In"
       }
       # possibly more when statements
       else: "Other"
