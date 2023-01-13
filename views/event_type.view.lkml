@@ -74,6 +74,10 @@ view: event_type {
         sql: ${event_value} in ("welcome_sp_otp") ;;
         label: "Norton HC Logged In"
       }
+      when: {
+        sql: ${event_value} in ("welcome_l2_alerts") ;;
+        label: "L2 Alerts"
+      }
       # possibly more when statements
       else: "Other"
     }
