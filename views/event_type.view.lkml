@@ -94,6 +94,10 @@ view: event_type {
         sql: ${event_value} in ("welcome_lifelock_priority", "welcome_lifelock") ;;
         label: "Lifelock"
       }
+      when: {
+        sql: ${event_value} in ("welcome__l2_alerts") ;;
+        label: "L2ALerts"
+      }
       # possibly more when statements
       else: "Norton"
     }
