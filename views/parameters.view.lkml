@@ -69,11 +69,6 @@ view: parameters {
     filters: [parameter_value: "l2_alerts"]
   }
 
-  measure: l1_calls {
-  label: "L1 Calls"
-  type: number
-  sql: ${session_id} - ${l2_alerts_calls} ;;
-}
 
   measure: count {
     hidden: yes
