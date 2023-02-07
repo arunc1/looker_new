@@ -117,6 +117,7 @@ view: event_type {
         sql:${origin_tfn} in ("L2 Alerts") ;;
         label: "L2"
       }
+      else: "Other"
     }
   }
 
