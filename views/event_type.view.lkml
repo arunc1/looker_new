@@ -95,7 +95,7 @@ view: event_type {
         label: "Lifelock"
       }
       when: {
-        sql: ${event_value} in ("welcome__l2_alerts") ;;
+        sql: ${event_value} in ("welcome_l2_alerts") ;;
         label: "L2ALerts"
       }
       # possibly more when statements
