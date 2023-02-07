@@ -109,7 +109,7 @@ view: event_type {
     type:  string
     case: {
       when: {
-        sql: ${origin_tfn} in ("Norton", "Norton Priority","Lifelock", "LifeLock Priority",
+        sql: ${origin_tfn} in ("Norton", "Norton Priority","LifeLock", "LifeLock Priority",
         "Norton Tech", "Employee Benefits","Norton HC Logged In") ;;
         label: "L1"
       }
