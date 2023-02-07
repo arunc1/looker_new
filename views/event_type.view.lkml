@@ -96,7 +96,7 @@ view: event_type {
       }
       when: {
         sql: ${event_value} in ("welcome_l2_alerts") ;;
-        label: "L2ALerts"
+        label: "L2 ALerts"
       }
       # possibly more when statements
       else: "Norton"
