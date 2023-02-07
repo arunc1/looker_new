@@ -104,6 +104,12 @@ view: event_type {
   }
 
 
+  dimension: l1_l2{
+    label: "Call Type(L1/L2)"
+    type:  string
+    sql: CASE WHEN ${origin_tfn} in ("L2 Alerts") THEN "L2"
+      ELSE "L1" END;;
+}
 
   dimension_group: receive_timestamp {
     type: time
