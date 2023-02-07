@@ -114,7 +114,7 @@ view: event_type {
         label: "L1"
       }
       when: {
-        sql:${origin_tfn} in ("L2Alerts") ;;
+        sql:${origin_tfn} in ("L2 Alerts") ;;
         label: "L2"
       }
     }
