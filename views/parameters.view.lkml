@@ -83,6 +83,6 @@ view: parameters {
 
   dimension: has_l1 {
     type: yesno
-    sql: ${parameter_value} is_null OR ${parameter_value} != 'l2_alerts' ;;
+    sql: ${parameter_value} != 'l2_alerts' ;;
   }
 }
