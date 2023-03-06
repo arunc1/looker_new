@@ -75,4 +75,14 @@ view: parameters {
     type: count
     drill_fields: [parameter_name]
   }
+
+  dimension: has_l2 {
+    type: yesno
+    sql: ${parameter_value} = 'l2_alerts' ;;
+  }
+
+  dimension: has_l1 {
+    type: yesno
+    sql: ${parameter_value} is_null OR ${parameter_value} != 'l2_alerts' ;;
+  }
 }
