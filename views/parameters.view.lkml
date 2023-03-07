@@ -49,9 +49,16 @@ view: parameters {
     sql: CONCAT(${session_id}, ${insertid}, ${parameter_name}) ;;
   }
 
+  dimension: is_l2 {
+    description: "Is session a L2 one"
+    type: yesno
+    sql: ${parameter_value} = 'alerts_l2' ;;
+  }
 
 
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
+
+
 
 
   measure: total_parameter_count {
