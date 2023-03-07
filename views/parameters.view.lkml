@@ -66,7 +66,14 @@ view: parameters {
     label: "L2Alerts Calls"
     type: count_distinct
     sql: ${session_id} ;;
-    filters: [parameter_value: "l2_alerts"]
+    filters: [parameter_value: "alerts_l2"]
+  }
+
+  measure: l1_test {
+    label: "L1"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [parameter_name: "use_case"]
   }
 
 
