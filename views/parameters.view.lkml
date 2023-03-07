@@ -58,7 +58,7 @@ view: parameters {
   dimension: is_l2 {
     description: "Is session a L2 one"
     type: yesno
-    sql: ${dk_sessionid_insertid_parametername} = 'use_case-alerts_l2';;
+    sql: ${temp_is_l2} = 'use_case-alerts_l2';;
   }
 
 
