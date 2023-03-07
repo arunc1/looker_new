@@ -49,20 +49,17 @@ view: parameters {
     sql: CONCAT(${session_id}, ${insertid}, ${parameter_name}) ;;
   }
 
-  dimension: is_l1_session {
-    label: "L1SessionIds"
-    type: string
-    sql: (
-          SELECT distinct session_id FROM ${TABLE}
-      where ${TABLE}.parameter_name ='use_case'
-      and ${TABLE}.session_id not in (
-      SELECT distinct session_id FROM ${TABLE}
-      where ${TABLE}.parameter_value ='alerts_l2')
-    );;
-  }
 
 
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
+
+
+  measure: is_l2 {
+    description: "Is session a L2 one"
+    type: yesno
+    sql: ${parameter_value} = 'alerts_l2' ;;
+  }
+
   measure: total_parameter_count {
     description: "Within a conversation, total parameter count"
     type: count_distinct
