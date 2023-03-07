@@ -51,7 +51,7 @@ view: parameters {
 
   dimension: temp_is_l2 {
     hidden: yes
-    type: yesno
+    type: string
     sql: CONCAT(${parameter_name},"-",${parameter_value});;
   }
 
