@@ -49,15 +49,15 @@ view: parameters {
     sql: CONCAT(${session_id}, ${insertid}, ${parameter_name}) ;;
   }
 
-  dimension: l1_session_ids {
+  dimension: is_l1_session {
     label: "L1SessionIds"
     type: string
     sql: (
-          SELECT distinct session_id FROM `support-df-cx-26hwzn7k.df_cx_iva.parameters`
-      where parameter_name ='use_case'
-      and session_id not in (
-      SELECT distinct session_id FROM `support-df-cx-26hwzn7k.df_cx_iva.parameters`
-      where parameter_value ='alerts_l2')
+          SELECT distinct session_id FROM ${TABLE}
+      where ${TABLE}.parameter_name ='use_case'
+      and ${TABLE}.session_id not in (
+      SELECT distinct session_id FROM ${TABLE}
+      where ${TABLE}.parameter_value ='alerts_l2')
     );;
   }
 
