@@ -82,11 +82,17 @@ view: parameters {
     filters: [parameter_value: "alerts_l2"]
   }
 
-  measure: l1_test {
-    label: "L1"
+  measure: count_use_case {
+    label: "count_use_case"
     type: count_distinct
     sql: ${session_id} ;;
     filters: [parameter_name: "use_case"]
+  }
+
+  measure: l1 {
+    label: "test_l1"
+    type: string
+    sql: ${count_use_case}-${l2_alerts_calls} ;;
   }
 
 
