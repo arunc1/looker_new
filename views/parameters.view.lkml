@@ -54,12 +54,6 @@ view: parameters {
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
 
 
-  measure: is_l2 {
-    description: "Is session a L2 one"
-    type: yesno
-    sql: ${parameter_value} = 'alerts_l2' ;;
-  }
-
   measure: total_parameter_count {
     description: "Within a conversation, total parameter count"
     type: count_distinct
