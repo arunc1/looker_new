@@ -85,6 +85,26 @@ view: conversation_status {
     sql: CONCAT(${session_id}, ${insert_id}) ;;
   }
 
+  dimension: liveagent_only_intent {
+    label: "LiveAgent Intent-only"
+    type: string
+    sql: SELECT COUNT(*) AS sessions_with_only_liveagent_intent
+          FROM (
+            SELECT
+              session_id
+            FROM
+              `df_cx_iva.maintable`
+            WHERE
+              matchedIntent IS NOT NULL
+            GROUP BY
+              session_id
+            HAVING
+              array_length(array_agg(DISTINCT matchedIntent)) = 1 AND
+              array_agg(DISTINCT matchedIntent)[ORDINAL(1)] = 'intent.liveagent'
+            ORDER BY session_id
+              ) ;;
+  }
+
   measure: count_insertid_per_session {
     label: "Conversation Turn Count"
     type: count_distinct
