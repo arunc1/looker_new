@@ -88,21 +88,18 @@ view: conversation_status {
   dimension: liveagent_only_intent {
     label: "LiveAgent Intent-only"
     type: string
-    sql: SELECT COUNT(*) AS sessions_with_only_liveagent_intent
-          FROM (
-            SELECT
-              session_id
-            FROM
-              `df_cx_iva.maintable`
+    sql: SELECT
+              ${session_id}
             WHERE
-              matchedIntent IS NOT NULL
+              ${matched_intent} IS NOT NULL
             GROUP BY
-              session_id
+              ${session_id}
             HAVING
-              array_length(array_agg(DISTINCT matchedIntent)) = 1 AND
-              array_agg(DISTINCT matchedIntent)[ORDINAL(1)] = 'intent.liveagent'
-            ORDER BY session_id
-              ) ;;
+              array_length(array_agg(DISTINCT ${matched_intent})) = 1 AND
+              array_agg(DISTINCT ${matched_intent})[ORDINAL(1)] = 'intent.liveagent'
+            ORDER BY ${session_id}
+               ;;
+
   }
 
   measure: count_insertid_per_session {
