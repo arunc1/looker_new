@@ -54,7 +54,7 @@ view: parameters {
     type:  string
     sql: CASE WHEN ${TABLE}.parameter_name="is_l2_alerts_call" AND ${TABLE}.parameter_value="false"
                                      THEN "L1"
-              WHEN IF ${TABLE}.parameter_name="is_l2_alerts_call" AND ${TABLE}.parameter_value="true"
+              WHEN ${TABLE}.parameter_name="is_l2_alerts_call" AND ${TABLE}.parameter_value="true"
                                      THEN "L2"
         ELSE "Other"
         END;;
