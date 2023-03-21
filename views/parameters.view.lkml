@@ -52,9 +52,9 @@ view: parameters {
   dimension: call_level_type{
     description: "Call Level Type"
     type:  string
-    sql: CASE WHEN ${parameter_name} in ("is_l2_alerts_call") AND ${parameter_value}="FALSE"
+    sql: CASE WHEN ${parameter_name} ="is_l2_alerts_call" AND ${parameter_value}="FALSE"
                                      THEN "L1"
-              WHEN ${parameter_name} in ("is_l2_alerts_call") AND ${parameter_value}="TRUE"
+              WHEN ${parameter_name} = "is_l2_alerts_call" AND ${parameter_value}="TRUE"
                                      THEN "L2"
         ELSE "Other" END;;
   }
