@@ -85,22 +85,6 @@ view: conversation_status {
     sql: CONCAT(${session_id}, ${insert_id}) ;;
   }
 
-  dimension: liveagent_only_intent {
-    label: "LiveAgent Intent-only"
-    type: string
-    sql: SELECT
-              ${session_id}
-            WHERE
-              ${matched_intent} IS NOT NULL
-            GROUP BY
-              ${session_id}
-            HAVING
-              array_length(array_agg(DISTINCT ${matched_intent})) = 1 AND
-              array_agg(DISTINCT ${matched_intent})[ORDINAL(1)] = 'intent.liveagent'
-            ORDER BY ${session_id}
-               ;;
-
-  }
 
   measure: count_insertid_per_session {
     label: "Conversation Turn Count"
