@@ -49,7 +49,15 @@ view: parameters {
     sql: CONCAT(${session_id}, ${insertid}, ${parameter_name}) ;;
   }
 
-
+  dimension: call_level_type{
+    description: "Call Level Type"
+    type:  string
+    sql: CASE WHEN ${parameter_name} in ("is_l2_alerts_call") AND ${parameter_value}="FALSE"
+                                     THEN "L1"
+              WHEN ${parameter_name} in ("is_l2_alerts_call") AND ${parameter_value}="TRUE"
+                                     THEN "L2"
+        ELSE "Other" END;;
+  }
 
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
 
@@ -79,11 +87,6 @@ view: parameters {
     filters: [parameter_name: "use_case"]
   }
 
-  measure: l1 {
-    label: "test_l1"
-    type: string
-    sql: ${count_use_case}-${l2_alerts_calls} ;;
-  }
 
 
   measure: count {
