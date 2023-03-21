@@ -52,12 +52,13 @@ view: parameters {
   dimension: call_level_type{
     description: "Call Level Type"
     type:  string
-    sql: CASE WHEN ${parameter_name} ="is_l2_alerts_call" AND ${parameter_value}="FALSE"
-                                     THEN "L1"
-              WHEN ${parameter_name} = "is_l2_alerts_call" AND ${parameter_value}="TRUE"
-                                     THEN "L2"
+    sql: CASE WHEN (${parameter_name}="is_l2_alerts_call" AND ${parameter_value}="FALSE"
+                                     THEN "L1")
+              WHEN (${parameter_name} = "is_l2_alerts_call" AND ${parameter_value}="TRUE"
+                                     THEN "L2")
         ELSE "Other" END;;
   }
+
 
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
 
