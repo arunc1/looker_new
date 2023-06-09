@@ -68,6 +68,7 @@ view: conversation_status {
   }
 
   dimension: session_id {
+    drill_fields: [conversation_lookup*]
     label: "Conversation ID"
     type: string
     sql: ${TABLE}.session_id ;;
@@ -105,5 +106,14 @@ view: conversation_status {
     type: count
     drill_fields: []
   }
+  set: conversation_lookup {
+    fields: [
+      session_id,
+      event.source,
+      receive_timestamp_date,
+      operation,
+      status,
+      matched_intent
+    ]}
 
 }
