@@ -10,4 +10,6 @@
     - name: Transcripts
       explore: event
       type: looker_grid
-      fields: []
+      fields: [session_id,operation]
+      header_font_size: 12
+      rows_font_size: 12

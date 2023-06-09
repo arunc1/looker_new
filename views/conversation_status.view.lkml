@@ -118,10 +118,9 @@ view: conversation_status {
   set: conversation_id_lookup {
     fields: [
       session_id,
-      receive_timestamp_time,
-      last_text,
-      operation,
-      status
+      receive_timestamp_raw,
+      last_text
+
     ]}
 
 }
