@@ -119,7 +119,7 @@ view: conversation_status {
     fields: [
       session_id,
       receive_timestamp_time,
-      event.text,
+      last_text,
       operation,
       status
     ]}
