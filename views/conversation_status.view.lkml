@@ -94,6 +94,7 @@ view: conversation_status {
   }
 
   measure: count_session {
+    drill_fields: [conversation_lookup*]
     label: "Conversation Count"
     type: count_distinct
     sql: ${session_id} ;;
@@ -109,7 +110,6 @@ view: conversation_status {
   set: conversation_lookup {
     fields: [
       session_id,
-      event.source,
       receive_timestamp_date,
       operation,
       status,
