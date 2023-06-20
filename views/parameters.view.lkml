@@ -60,6 +60,16 @@ view: parameters {
         END;;
   }
 
+  dimension: is_ghost_chat {
+    label: "Is Ghost Chat?"
+    type: string
+    sql:  CASE WHEN ${TABLE}.parameter_name="is_ghost_chat" AND ${TABLE}.parameter_value="true"
+                                     THEN "YES"
+          CASE WHEN ${TABLE}.parameter_name="is_ghost_chat" AND ${TABLE}.parameter_value="no"
+                                     THEN "NO"
+        ELSE "Other"
+        END;;
+  }
 
   # Ability to count # of times a parameter was set to a particular value, within a conversation.
 
@@ -88,7 +98,6 @@ view: parameters {
     sql: ${session_id} ;;
     filters: [parameter_name: "use_case"]
   }
-
 
 
   measure: count {
