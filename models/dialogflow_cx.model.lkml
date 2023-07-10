@@ -48,5 +48,11 @@ explore: conversation_status {
   }
 }
 
+explore: web_sp_otp_conv {
+  join: event_type {
+    type: left_outer
+    sql_on: ${web_sp_otp_conv.receive_timestamp_date} =${event_type.receive_timestamp_date};;
+    relationship: one_to_many
+  } }
 
 week_start_day: sunday
