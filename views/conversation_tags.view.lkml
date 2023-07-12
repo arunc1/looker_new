@@ -3,7 +3,15 @@ view: conversation_tags {
 
   dimension_group: created {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [
+        raw,
+        time,
+        date,
+        week,
+        month,
+        quarter,
+        year
+      ]
     sql: ${TABLE}.created_at ;;
   }
   dimension: session_id {
@@ -14,6 +22,51 @@ view: conversation_tags {
     type: string
     sql: ${TABLE}.tags ;;
   }
+
+#measure authentication successfully OTP
+
+  measure: auth_success {
+    label: "Authentication Success OTP"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%event:custom_event:session.auth_by_otp.success%"]
+  }
+
+##measure created to define the conversations that started on the TFN mentioned on the support portal and for which we generate an OTP
+
+  measure: welcome_sp_otp_count {
+    label: "Norton HC Logged In Count"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%event:custom_event:welcome_sp_otp%"]
+  }
+
+  dimension: welcome_sp_otp {
+    label: "Norton HC Logged In"
+    type: yesno
+    sql: ${tags}="%event:custom_event:welcome_sp_otp%";;
+}
+
+#measures for escalation and containment using tags
+
+  measure: contained {
+    label: "Contained Conversations"
+    description: "Conversations that haven't been transfered to live agent.
+    It can have two statuses: disconnect and hangup"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%operation:disconnect, operation:hangup%"]
+  }
+
+  measure: escalated {
+    label: "Escalated Conversations"
+    description: "Conversations that have been transfered to a live agent"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%operation:transfer%"]
+  }
+
+
   measure: count {
     type: count
   }

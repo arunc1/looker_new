@@ -48,5 +48,7 @@ explore: conversation_status {
   }
 }
 
+explore: conversation_tags {}
+
 
 week_start_day: sunday
