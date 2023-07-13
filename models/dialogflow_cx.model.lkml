@@ -10,17 +10,24 @@ datagroup: dialogflow_cx_default_datagroup {
 
 persist_with: dialogflow_cx_default_datagroup
 
-explore: event {}
-
-explore: flow_page {}
-
-explore: parameters {}
-
-explore: event_type {}
-
-explore: conversation_turn_per_session  {}
+explore: event {
+  hidden: yes
+}
+explore: flow_page {
+  hidden: yes
+}
+explore: parameters {
+  hidden: yes
+}
+explore: event_type {
+  hidden: yes
+}
+explore: conversation_turn_per_session  {
+  hidden: yes
+}
 
 explore: conversation_status {
+  label: "IVA-Conversations"
   join: event_type {
     type: left_outer
     sql_on: ${conversation_status.session_id} =${event_type.session_id};;
@@ -48,7 +55,9 @@ explore: conversation_status {
   }
 }
 
-explore: conversation_tags {}
+explore: conversation_tags {
+  label: "IVA-Conversation Tags"
+}
 
 
 week_start_day: sunday
