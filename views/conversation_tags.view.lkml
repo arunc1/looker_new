@@ -25,11 +25,17 @@ view: conversation_tags {
 
 #measure authentication successfully OTP
 
-  measure: auth_success {
-    label: "Authentication Success OTP"
+  measure: auth_success_otp_count {
+    label: "Authentication Success OTP-Count"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
     filters:[tags:"%event:custom_event:session.auth_by_otp.success%"]
+  }
+
+  dimension: auth_success_otp {
+    label: "Auth Success OTP"
+    type: yesno
+    sql: ${tags} LIKE "%event:custom_event:session.auth_by_otp.success%";;
   }
 
 ##measure created to define the conversations that started on the TFN mentioned on the support portal and for which we generate an OTP
@@ -44,10 +50,10 @@ view: conversation_tags {
   dimension: welcome_sp_otp {
     label: "Norton HC Logged In"
     type: yesno
-    sql: ${tags}="%event:custom_event:welcome_sp_otp%";;
+    sql: ${tags} LIKE "%event:custom_event:welcome_sp_otp%";;
 }
 
-#measures for escalation and containment using tags
+#measures and dimensions for escalation and containment using tags
 
   measure: contained {
     label: "Contained Conversations"
@@ -64,6 +70,12 @@ view: conversation_tags {
     type: count_distinct
     sql: ${TABLE}.session_id ;;
     filters:[tags:"%operation:transfer%"]
+  }
+
+  dimension: welcome_sp_otp_escalated {
+    label: "Norton HC Logged In Escalated"
+    type: yesno
+    sql: ${tags} LIKE "%event:custom_event:welcome_sp_otp%" AND ${tags} LIKE "%operation:transfer%";;
   }
 
 

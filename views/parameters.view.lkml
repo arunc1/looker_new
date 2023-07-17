@@ -41,6 +41,7 @@ view: parameters {
     label: "ConversationID"
     type: string
     sql: ${TABLE}.session_id ;;
+    drill_fields: [receive_timestamp_date,session_id]
   }
 
   dimension: dk_sessionid_insertid_parametername {
