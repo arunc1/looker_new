@@ -80,6 +80,16 @@ view: event_type {
         label: "L2 Alerts"
       }
 
+      when: {
+        sql: ${event_value} in ("welcome_avast") ;;
+        label: "Avast"
+      }
+
+      when: {
+        sql: ${event_value} in ("welcome_avg") ;;
+        label: "AVG"
+      }
+
       # possibly more when statements
       else: "Other"
     }
@@ -141,29 +151,12 @@ view: event_type {
     sql: ${TABLE}.session_id ;;
   }
 
-  # Dimesion to identify the status of ANI lookup
-
-  dimension: ani_status{
-    description: "Ani Lookup SUCCESS/FAIL"
-    type:  string
-    case: {
-      when: {
-        sql: ${event_value} in ("account.lookup_by_ani.success") ;;
-        label: "ANI Lookup Success"
-      }
-      when: {
-        sql: ${event_value} in ("account.lookup_by_ani.failed") ;;
-        label: "ANI Lookup Failed"
-      }
-     else: "Other"
-    }
-  }
-
   measure: ani_lookup_success {
     label: "Lookup Success"
     type: count_distinct
-    sql:${event_value} in ("account.lookup_by_ani.success","account.lookup_by_email.success","account.lookup_by_ssn4_yob_ani.success",
-"account.lookup_by_ssn4_yob_zip.success") where ${page_name} != "%authenticate" ;;
+    sql:${event_value} IN ("account.lookup_by_ani.success","account.lookup_by_email.success","account.lookup_by_ssn4_yob_ani.success",
+"account.lookup_by_ssn4_yob_zip.success")
+      AND ${page_name} != "%authenticate" ;;
   }
 
   measure: session_count {
@@ -177,11 +170,6 @@ view: event_type {
     type: count
     drill_fields: [flowname, page_name]
   }
-
-  #Measure to count ani_status/conversation
-
-
-
 
   # Measure created to count Ghost calls
 
