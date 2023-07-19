@@ -59,5 +59,9 @@ explore: conversation_tags {
   label: "IVA-Conversation Tags"
 }
 
+explore: conversation_tags_static {
+  label: "IVA-Conversation Tags Static"
+}
+
 
 week_start_day: sunday
