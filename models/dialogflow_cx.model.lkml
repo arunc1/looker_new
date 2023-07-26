@@ -1,5 +1,5 @@
 connection: "voice_stage"
-label: "IVA"
+label: "Automation-IVA"
 
 # include all the views
 include: "/views/**/*.view"
