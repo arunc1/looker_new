@@ -96,9 +96,8 @@ view: conversation_tags_static {
   measure: contained {
     label: "Contained Conversations"
     description:"for avast only"
-    type: count_distinct
-    sql: ${TABLE}.session_id ;;
-    filters:[tags:"%operation:disconnect, operation:hangup%"]
+    type: number
+    sql: ${count_conversation}-${escalated};;
   }
 
   measure: escalated {

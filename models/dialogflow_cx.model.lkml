@@ -1,4 +1,5 @@
 connection: "voice_stage"
+label: "IVA"
 
 # include all the views
 include: "/views/**/*.view"
