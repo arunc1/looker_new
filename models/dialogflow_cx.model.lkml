@@ -56,7 +56,7 @@ explore: conversation_status {
   }
 }
 
-explore: conversation_tags_static {
+explore: conversation_tags {
   label: "IVA-Conversation Tags"
 }
 
