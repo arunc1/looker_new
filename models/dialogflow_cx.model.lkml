@@ -56,12 +56,8 @@ explore: conversation_status {
   }
 }
 
-explore: conversation_tags {
-  label: "IVA-Conversation Tags"
-}
-
 explore: conversation_tags_static {
-  label: "IVA-Conversation Tags Static"
+  label: "IVA-Conversation Tags"
 }
 
 
