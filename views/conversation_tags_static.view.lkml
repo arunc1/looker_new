@@ -73,63 +73,70 @@ view: conversation_tags_static {
       }
       when: {
         sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
-        label: "Disconnect"
+        label: "Terminate"
+      }
+
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: escalation_reason {
+    label: "Escalation Reason"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:escalation_reason:no-intent-match%";;
+        label: "No Match"
       }
       when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;
-        label: "Hangup"
+        sql:  ${tags} LIKE "%parameter:escalation_reason:solution_provided%";;
+        label: "Solution Provided"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:escalation_reason:no_solution_provided%";;
+        label: "No Solution Provided"
       }
       # possibly more when statements
       else: "Other"
     }
   }
 
-
-#measure authentication successfully OTP
-
-  measure: auth_success_otp_count {
-    label: "Authentication Success OTP-Count"
-    type: count_distinct
-    sql: ${TABLE}.session_id ;;
-    filters:[tags:"%event:custom_event:session.auth_by_otp.success%"]
-  }
-
-  dimension: auth_success_otp {
-    label: "Auth Success OTP"
-    type: yesno
-    sql: ${tags} LIKE "%event:custom_event:session.auth_by_otp.success%";;
-  }
-
-##measure created to define the conversations that started on the TFN mentioned on the support portal and for which we generate an OTP
-
-  measure: welcome_sp_otp_count {
-    label: "Norton HC Logged In Count"
-    type: count_distinct
-    sql: ${TABLE}.session_id ;;
-    filters:[tags:"%event:custom_event:welcome_sp_otp%"]
-  }
-
-  dimension: welcome_sp_otp {
-    label: "Norton HC Logged In"
-    type: yesno
-    sql: ${tags} LIKE "%event:custom_event:welcome_sp_otp%";;
+  dimension: termination_reason {
+    label: "Termination Reason"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:termination_reason:ghost%";;
+        label: "Ghost Call"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;
+        label: "Robocall"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;
+        label: "Resolved"
+      }
+      # possibly more when statements
+      else: "Other"
+    }
   }
 
 #measures and dimensions for escalation and containment using tags
-
   measure: contained {
     label: "Contained Conversations"
-    description:"for avast only"
     type: number
     sql: ${count_conversation}-${escalated};;
   }
+
 
   measure: escalated {
     label: "Escalated Conversations"
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
-    filters:[tags:"%operation:transfer%, %parameter:call_resolution:escalated%"]
+    filters:[tags:"%parameter:call_resolution:escalation%"]
   }
 
   dimension: welcome_sp_otp_escalated {
