@@ -61,6 +61,30 @@ view: conversation_tags_static {
     }
   }
 
+##dimensions - call resolution status(parameters)
+
+  dimension: call_resolution {
+    label: "Call Resolution Status"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:escalation%";;
+        label: "Escalation"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
+        label: "Disconnect"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;
+        label: "Hangup"
+      }
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+
 #measure authentication successfully OTP
 
   measure: auth_success_otp_count {
