@@ -30,7 +30,7 @@ view: conversation_status {
     sql: CASE WHEN ${matched_intent} in ("intent.alert","intent.collections","intent.courtrecords","intent.creditscore","intent.darkweb",
                                           "intent.databreach","intent.download","intent.download.issue","intent.email.update","intent.hometitle","intent.login.issue",
                                           "intent.paydayloan","intent.publicrecord","intent.sexoffender","intent.spam", "intent.update.account",
-                                          "intent.update.address","intent.update.billing","intent.update.phone","intent.virus","intent.utilityaccount")
+                                          "intent.update.address","intent.update.billing","intent.update.phone","intent.virus","intent.utilityaccount","intent.genie")
                                      THEN "Full Solution"
               WHEN ${matched_intent} in ("intent.accountinfo","intent.billing.charge","intent.subscription.manage","intent.subscription.info",
                                          "intent.billing.confirmpayment","intent.activate","intent.billing.issue","intent.billing.date","intent.activation.issue",
