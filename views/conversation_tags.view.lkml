@@ -139,10 +139,59 @@ view: conversation_tags {
     filters:[tags:"%parameter:call_resolution:escalation%"]
   }
 
+  measure: containment {
+    label: "Containment"
+    type: number
+    value_format_name: percent_2
+    sql: ${contained}/${count_conversation} ;;
+
+  }
+
   dimension: welcome_sp_otp_escalated {
     label: "Norton HC Logged In Escalated"
     type: yesno
     sql: ${tags} LIKE "%event:custom_event:welcome_sp_otp%" AND ${tags} LIKE "%operation:transfer%";;
   }
 
+
+
+##Routing after escalation
+
+dimension: routing_queue {
+  label: "Routing Queue"
+  type: string
+  case: {
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:55.0%";;
+      label: "AVAST-Account Services"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:54.0%%";;
+      label: "AVAST-Tech"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:56.0%%";;
+      label: "AVAST-Refund"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:50.0%%";;
+      label: "AVAST-PTS"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:43.0%%";;
+      label: "AVG-Account Services"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:42.0%%";;
+      label: "AVG-Tech"
+    }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:44.0%%";;
+      label: "AVG-Refund"
+    }
+
+    # possibly more when statements
+    else: "Other"
+  }
+}
 }
