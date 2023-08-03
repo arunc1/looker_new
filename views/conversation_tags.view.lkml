@@ -25,6 +25,7 @@ view: conversation_tags {
     label: "Conversation Count"
     type: count_distinct
     sql: ${session_id} ;;
+    drill_fields: [created_date,session_id]
   }
 
   #brand
@@ -128,6 +129,8 @@ view: conversation_tags {
     label: "Contained Conversations"
     type: number
     sql: ${count_conversation}-${escalated};;
+    drill_fields: [created_date,session_id]
+
   }
 
 
@@ -137,6 +140,8 @@ view: conversation_tags {
     type: count_distinct
     sql: ${TABLE}.session_id ;;
     filters:[tags:"%parameter:call_resolution:escalation%"]
+    drill_fields: [created_date,session_id]
+
   }
 
   measure: containment {
@@ -163,31 +168,31 @@ dimension: routing_queue {
   case: {
     when: {
       sql:  ${tags} LIKE "%parameter:menu_id:55.0%";;
-      label: "AVAST-Account Services"
+      label: "AVAST-Account Services(55)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:54.0%%";;
-      label: "AVAST-Tech"
+      sql:  ${tags} LIKE "%parameter:menu_id:54.0%";;
+      label: "AVAST-Tech(54)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:56.0%%";;
-      label: "AVAST-Refund"
+      sql:  ${tags} LIKE "%parameter:menu_id:56.0%";;
+      label: "AVAST-Refund(56)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:50.0%%";;
-      label: "AVAST-PTS"
+      sql:  ${tags} LIKE "%parameter:menu_id:50.0%";;
+      label: "AVAST-PTS(50)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:43.0%%";;
-      label: "AVG-Account Services"
+      sql:  ${tags} LIKE "%parameter:menu_id:43.0%";;
+      label: "AVG-Account Services(43)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:42.0%%";;
-      label: "AVG-Tech"
+      sql:  ${tags} LIKE "%parameter:menu_id:42.0%";;
+      label: "AVG-Tech(42)"
     }
     when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:44.0%%";;
-      label: "AVG-Refund"
+      sql:  ${tags} LIKE "%parameter:menu_id:44.0%";;
+      label: "AVG-Refund(44)"
     }
 
     # possibly more when statements
