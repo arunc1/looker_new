@@ -54,6 +54,11 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id} =${conversation_turn_per_session.session_id};;
     relationship: many_to_many
   }
+  join: conversation_tags {
+    type: left_outer
+    sql_on: ${conversation_status.session_id}=${conversation_tags.session_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: conversation_tags {
