@@ -65,5 +65,9 @@ explore: conversation_tags {
   label: "IVA-Conversation Tags"
 }
 
+explore: conversation_intents {
+  label: "IVA-Conversation Intents"
+}
+
 
 week_start_day: sunday

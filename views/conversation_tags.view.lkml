@@ -194,6 +194,10 @@ dimension: routing_queue {
       sql:  ${tags} LIKE "%parameter:menu_id:44.0%";;
       label: "AVG-Refund(44)"
     }
+    when: {
+      sql:  ${tags} LIKE "%parameter:menu_id:45.0%";;
+      label: "AVG-PTS(45)"
+    }
 
     # possibly more when statements
     else: "Other"
