@@ -179,4 +179,10 @@ view: event_type {
     sql: ${session_id} ;;
     filters: [event_value: "sys.no-input-3", flowname: "Default Start Flow"]
   }
+  measure: ghost_calls_percentage {
+    label: "%Ghost Calls"
+    type: number
+    value_format_name: percent_2
+    sql: ${ghost_calls}/${session_count} ;;
+  }
 }
