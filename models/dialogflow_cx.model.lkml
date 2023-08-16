@@ -49,24 +49,20 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id} =${event.session_id};;
     relationship: many_to_many
   }
-  join: conversation_turn_per_session {
-    type: left_outer
-    sql_on: ${conversation_status.session_id} =${conversation_turn_per_session.session_id};;
-    relationship: many_to_many
-  }
   join: conversation_tags {
     type: left_outer
     sql_on: ${conversation_status.session_id}=${conversation_tags.session_id} ;;
+    relationship: many_to_one
+  }
+  join: conversations_agent_environment {
+    type: left_outer
+    sql_on: ${conversation_status.session_id}=${conversations_agent_environment.session_id} ;;
     relationship: many_to_one
   }
 }
 
 explore: conversation_tags {
   label: "IVA-Conversation Tags"
-}
-
-explore: conversation_intents {
-  label: "IVA-Conversation Intents"
 }
 
 
