@@ -16,4 +16,22 @@ view: conversations_agent_environment {
   measure: count {
     type: count
   }
+  dimension: environment_prod {
+    label: "Environment-Prod"
+    type: string
+    case: {
+      when: {
+        sql:  ${environment_id} = "d3aa2cbe-708d-4651-9b68-6267af4f225b";;
+        label: "Agent-CCAI-IVA"}
+      when: {
+        sql:  ${environment_id} = "742212b1-aa52-4dc7-916f-e006bb1ac3c9";;
+        label: "Agent-IVA"}
+      when: {
+        sql: ${environment_id} = "7a42f901-bf6c-44eb-b6b7-fce7a18c4d4d" ;;
+        label: "Agent-IVA-Avast-AVG"}
+      when: {
+        sql: ${environment_id} = "eadb0652-414b-43f4-8d76-114f5fd5f911" ;;
+        label: "Agent-CCAIP-SecureIVR"}
+      }
+    }
 }
