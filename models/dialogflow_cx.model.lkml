@@ -52,7 +52,7 @@ explore: conversation_status {
   join: conversation_tags {
     type: left_outer
     sql_on: ${conversation_status.session_id}=${conversation_tags.session_id} ;;
-    relationship: many_to_many
+    relationship: many_to_one
   }
   join: conversations_agent_environment {
     type: left_outer

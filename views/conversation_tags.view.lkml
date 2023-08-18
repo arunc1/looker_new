@@ -57,9 +57,7 @@ view: conversation_tags {
         sql:  ${tags} LIKE "%parameter:tfn_company:avg%";;
         label: "AVG"
       }
-      # possibly more when statements
-      else: "Other"
-    }
+      }
   }
 
 ##dimensions - call resolution status(parameters)
