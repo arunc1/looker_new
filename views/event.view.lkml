@@ -77,11 +77,12 @@ view: event {
   }
 
   measure: escalated {
-    label: "Escalated"
+    label: "escalated"
     type: count_distinct
     sql: ${session_id} ;;
     filters: [status: "ESCALATED"]
   }
+
 
   measure: contained {
     label: "Contained"

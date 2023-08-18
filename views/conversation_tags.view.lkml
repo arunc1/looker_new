@@ -126,13 +126,13 @@ view: conversation_tags {
   measure: contained {
     label: "Contained Conversations"
     type: number
-    sql: ${count_conversation}-${escalated};;
+    sql: ${count_conversation}-${total_escalated_calls};;
     drill_fields: [created_date,session_id]
 
   }
 
-
-  measure: escalated {
+## 2 types of escalation from before and after Avaya cutover(17Aug2023)
+  measure: escalated_call_resolution {
     label: "Escalated Conversations"
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
@@ -140,6 +140,21 @@ view: conversation_tags {
     filters:[tags:"%parameter:call_resolution:escalation%"]
     drill_fields: [created_date,session_id]
 
+  }
+
+  measure: escalated_operation {
+    label: "escalated_operation"
+    description: "Conversations that have been transfered to a live agent"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%operation:transfer%"]
+    drill_fields: [created_date,session_id]
+  }
+
+  measure: total_escalated_calls {
+    label: "Total Escalated Calls"
+    type: number
+    sql: ${escalated_operation}+${escalated_call_resolution} ;;
   }
 
   measure: containment {
