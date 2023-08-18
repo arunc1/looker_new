@@ -122,6 +122,20 @@ view: conversation_tags {
     }
   }
 
+  measure: ghost_call {
+    label: "Ghost Calls"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [termination_reason: "Ghost Call"]
+  }
+
+  measure: ghost_call_percent {
+    label: "%Ghost Calls"
+    type: number
+    value_format_name: percent_2
+    sql: ${ghost_call}/${count_conversation} ;;
+  }
+
 #measures and dimensions for escalation and containment using tags
   measure: contained {
     label: "Contained Conversations"
@@ -133,7 +147,7 @@ view: conversation_tags {
 
 ## 2 types of escalation from before and after Avaya cutover(17Aug2023)
   measure: escalated_call_resolution {
-    label: "Escalated Conversations"
+    label: "Escalated-Parameters"
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
@@ -143,7 +157,7 @@ view: conversation_tags {
   }
 
   measure: escalated_operation {
-    label: "escalated_operation"
+    label: "Escalated-Operation"
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
@@ -171,6 +185,12 @@ view: conversation_tags {
     sql: ${tags} LIKE "%event:custom_event:welcome_sp_otp%" AND ${tags} LIKE "%operation:transfer%";;
   }
 
+  dimension: authentication_success {
+    label: "Authentication-Success"
+    type: yesno
+    sql: ${tags} LIKE "%event:custom_event:session.auth.success%"
+    AND ${tags} LIKE "%page_name:authenticate%";;
+  }
 
 
 ##Routing after escalation
@@ -211,9 +231,13 @@ dimension: routing_queue {
       sql:  ${tags} LIKE "%parameter:menu_id:45.0%";;
       label: "AVG-PTS(45)"
     }
-
     # possibly more when statements
     else: "Other"
   }
 }
+  dimension: call_id_test {
+    label: "Test Call ID"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:call_id:1.0%";;
+  }
 }
