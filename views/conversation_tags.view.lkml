@@ -57,6 +57,7 @@ view: conversation_tags {
         sql:  ${tags} LIKE "%parameter:tfn_company:avg%";;
         label: "AVG"
       }
+      else: "Other"
       }
   }
 
