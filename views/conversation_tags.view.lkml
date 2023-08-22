@@ -137,6 +137,19 @@ view: conversation_tags {
     sql: ${ghost_call}/${count_conversation} ;;
   }
 
+  dimension: is_l2_alerts {
+    label: "Is L2 Alerts?"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:is_l2_alerts_call:true%" ;;
+  }
+
+  measure: l2_alerts {
+    label: "L2 Alerts"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [is_l2_alerts: "Yes"]
+  }
+
 #measures and dimensions for escalation and containment using tags
   measure: contained {
     label: "Contained Conversations"
