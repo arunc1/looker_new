@@ -14,6 +14,7 @@ view: conversation_tags {
     sql: ${TABLE}.created_at ;;
   }
   dimension: session_id {
+    label: "Conversation Id"
     type: string
     sql: ${TABLE}.session_id ;;
   }

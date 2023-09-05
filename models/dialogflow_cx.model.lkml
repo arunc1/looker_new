@@ -65,5 +65,8 @@ explore: conversation_tags {
   label: "IVA-Conversation Tags"
 }
 
+explore: last_use_case {
+  label: "Conversations-Last Use Case"
+}
 
 week_start_day: sunday
