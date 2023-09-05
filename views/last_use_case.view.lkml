@@ -13,7 +13,7 @@ view: last_use_case {
     sql: ${TABLE}.created_at ;;
   }
   dimension: queue {
-    label: "Routing Queue"
+    label: "Routing Queue(no)"
     type: string
     sql: ${TABLE}.queue ;;
   }
@@ -32,6 +32,46 @@ view: last_use_case {
    type: count_distinct
    sql: ${TABLE}.session_id ;;
  }
+  dimension: routing_queue {
+    label: "Routing Queue"
+    type: string
+    case: {
+      when: {
+        sql:  ${queue}="55.0";;
+        label: "AVAST-Account Services(55)"
+      }
+      when: {
+        sql:  ${queue}="54.0";;
+        label: "AVAST-Tech(54)"
+      }
+      when: {
+        sql:  ${queue}="56.0";;
+        label: "AVAST-Refund(56)"
+      }
+      when: {
+        sql:  ${queue}="50.0";;
+        label: "AVAST-PTS(50)"
+      }
+      when: {
+        sql:  ${queue}="43.0";;
+        label: "AVG-Account Services(43)"
+      }
+      when: {
+        sql:  ${queue}="42.0";;
+        label: "AVG-Tech(42)"
+      }
+      when: {
+        sql:  ${queue}="44.0";;
+        label: "AVG-Refund(44)"
+      }
+      when: {
+        sql:  ${queue}="45.0";;
+        label: "AVG-PTS(45)"
+      }
+      # possibly more when statements
+      else: "Other"
+    }
+  }
 
 
 }
