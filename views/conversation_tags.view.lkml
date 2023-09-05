@@ -128,7 +128,7 @@ view: conversation_tags {
     label: "Ghost Calls"
     type: count_distinct
     sql: ${session_id} ;;
-    filters: [termination_reason: "Ghost Call"]
+    filters: [is_ghost_call: "Yes"]
   }
 
   measure: ghost_call_percent {
@@ -143,6 +143,13 @@ view: conversation_tags {
     type: yesno
     sql: ${tags} LIKE "%parameter:is_l2_alerts_call:true%" ;;
   }
+
+  dimension: is_ghost_call {
+    label: "Is Ghost Call"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:resolution_reason:ghost%" ;;
+  }
+
 
   measure: l2_alerts {
     label: "L2 Alerts"
