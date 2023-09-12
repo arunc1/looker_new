@@ -262,4 +262,13 @@ dimension: routing_queue {
     type: yesno
     sql: ${tags} LIKE "%parameter:call_id:1.0%";;
   }
+
+  ##dimension created to catch the conversations where the customer hangup while he/she was still in the default start flow
+  dimension: hangup_default_stage {
+    label: "Hangup-Default Start Flow"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:call_resolution:hangup%"
+    AND ${tags} LIKE "%parameter:resolution_reason:customer_hangup%"
+    AND ${tags} LIKE "%parameter:resolution_source:dsf%";;
+  }
 }
