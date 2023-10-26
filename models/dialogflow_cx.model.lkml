@@ -39,6 +39,11 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id} =${parameters.session_id};;
     relationship: many_to_many
   }
+  join: conversation_call_id {
+    type: left_outer
+    sql_on: ${conversation_status.session_id} =${conversation_call_id.session_id};;
+    relationship: one_to_one
+  }
   join: flow_page {
     type: left_outer
     sql_on: ${conversation_status.session_id} =${flow_page.session_id};;
