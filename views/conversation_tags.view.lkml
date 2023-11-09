@@ -76,7 +76,18 @@ view: conversation_tags {
         sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
         label: "Terminate"
       }
-
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;
+        label: "Hangup"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:escalation_default_quque%";;
+        label: "Escalation Default Queue"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
+        label: "Disconnect"
+      }
       # possibly more when statements
       else: "Other"
     }
