@@ -28,6 +28,22 @@ view: conversation_tags {
     sql: ${session_id} ;;
     drill_fields: [created_date,session_id]
   }
+  #channel type
+  dimension: channel {
+    label: "Channel"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:ccaip_channel:voice%";;
+        label: "Voice"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:ccaip_channel:chat%";;
+        label: "Chat"
+      }
+      else: "Other"
+    }
+  }
 
   #brand
   dimension: origin_tfn {
@@ -264,7 +280,7 @@ dimension: routing_queue {
       sql:  ${tags} LIKE "%parameter:menu_id:45.0%";;
       label: "AVG-PTS(45)"
     }
-    # possibly more when statements
+# possibly more when statements
     else: "Other"
   }
 }
@@ -272,6 +288,33 @@ dimension: routing_queue {
     label: "Test Call ID"
     type: yesno
     sql: ${tags} LIKE "%parameter:call_id:1.0%";;
+  }
+#calls flow (for the moment we have only Sales but more values will follow)
+
+  dimension: call_flow{
+    label: "Call Flow"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:entry:sales_flow";;
+        label: "Sales"
+      }
+      else: "Other"
+    }
+  }
+
+  measure: calls_sent_to_automation {
+    label: "Calls Sent to Automation"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%parameter:fromivr:true%"]
+    }
+
+  dimension: sales_calls_disconnected {
+    label: "Sales Calls Disconnected"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:resolution_reason:spam_msg_read%"
+      AND ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;
   }
 
 }
