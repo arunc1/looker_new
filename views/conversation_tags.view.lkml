@@ -299,6 +299,10 @@ dimension: routing_queue {
         sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;
         label: "Sales"
       }
+      when: {
+        sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;
+        label: "Basic"
+      }
       else: "Other"
     }
   }
