@@ -312,6 +312,7 @@ dimension: routing_queue {
     type: count_distinct
     sql: ${TABLE}.session_id ;;
     filters:[tags:"%parameter:fromivr:true%"]
+    drill_fields: [created_date, session_id]
     }
 
   dimension: is_disconnected_call {
