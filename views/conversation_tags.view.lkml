@@ -296,7 +296,7 @@ dimension: routing_queue {
     type: string
     case: {
       when: {
-        sql:  ${tags} LIKE "%parameter:entry:sales_flow";;
+        sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;
         label: "Sales"
       }
       else: "Other"
