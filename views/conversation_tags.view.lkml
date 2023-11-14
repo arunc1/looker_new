@@ -314,8 +314,8 @@ dimension: routing_queue {
     filters:[tags:"%parameter:fromivr:true%"]
     }
 
-  dimension: sales_calls_disconnected {
-    label: "Sales Calls Disconnected"
+  dimension: calls_disconnected {
+    label: "Calls Disconnected"
     type: yesno
     sql: ${tags} LIKE "%parameter:resolution_reason:spam_msg_read%"
       AND ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;
