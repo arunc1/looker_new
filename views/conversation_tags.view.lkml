@@ -315,8 +315,8 @@ dimension: routing_queue {
     drill_fields: [created_date, session_id]
     }
 
-  dimension: is_disconnected_call {
-    label: "Is Disconnected Call?"
+  dimension: is_sales_disconnected_call {
+    label: "Is Sales Disconnected Call?"
     type: yesno
     sql: ${tags} LIKE "%parameter:resolution_reason:spam_msg_read%"
       AND ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;
