@@ -212,7 +212,7 @@ view: conversation_tags {
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
-    filters:[tags:"%parameter:call_resolution:escalation%"]
+    filters:[tags:"%parameter:call_resolution:escalation%" ]
     drill_fields: [created_date,session_id]
 
   }
@@ -229,7 +229,7 @@ view: conversation_tags {
   measure: total_escalated_calls {
     label: "Total Escalated Calls"
     type: number
-    sql: ${escalated_operation}+${escalated_call_resolution} ;;
+    sql: ${escalated_call_resolution} ;;
   }
 
   measure: containment {
