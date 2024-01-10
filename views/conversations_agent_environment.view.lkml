@@ -17,7 +17,7 @@ view: conversations_agent_environment {
     type: count
   }
   dimension: environment_prod {
-    label: "Environment-Prod"
+    label: "DF Agent"
     type: string
     case: {
       when: {
