@@ -327,6 +327,12 @@ dimension: routing_queue {
     drill_fields: [created_date, session_id]
     }
 
+  dimension: automation_call {
+    label: "Automation Call"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:entry:welcome%";;
+  }
+
   dimension: is_sales_disconnected_call {
     label: "Is Sales Disconnected Call?"
     type: yesno
