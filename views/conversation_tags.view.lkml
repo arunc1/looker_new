@@ -317,7 +317,7 @@ dimension: routing_queue {
       }
       when: {
         sql:  ${tags} LIKE "%parameter:entry:welcome%";;
-        label: "Basic"
+        label: "Automation"
       }
       else: "Other"
     }
