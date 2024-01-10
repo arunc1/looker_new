@@ -139,11 +139,23 @@ view: conversation_tags {
         label: "Ghost Call"
       }
       when: {
+        sql:  ${tags} LIKE "%parameter:resolution_reason:ghost%";;
+        label: "Ghost Call"
+      }
+      when: {
         sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;
         label: "Robocall"
       }
       when: {
+        sql:  ${tags} LIKE "%parameter:resolution_reason:robocall%";;
+        label: "Ghost Call"
+      }
+      when: {
         sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;
+        label: "Resolved"
+      }
+      when: {
+        sql:  ${tags} LIKE "%parameter:resolution_reason:resolved%";;
         label: "Resolved"
       }
       # possibly more when statements
