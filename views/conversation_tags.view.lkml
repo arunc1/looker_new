@@ -337,6 +337,14 @@ dimension: routing_queue {
     sql: ${tags} LIKE "%parameter:entry:welcome%";;
   }
 
+  measure: total_automation_calls{
+    label: "Count - Automation Calls"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%parameter:entry:welcome%"]
+    drill_fields: [created_date, session_id]
+  }
+
   dimension: is_sales_disconnected_call {
     label: "Is Sales Disconnected Call?"
     type: yesno
