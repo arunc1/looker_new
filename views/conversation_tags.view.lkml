@@ -331,6 +331,30 @@ dimension: routing_queue {
     drill_fields: [created_date, session_id]
     }
 
+  measure: lookup_attempted {
+    label: "Lookup Attempted"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%parameter:lookup_status:success%,failed%"]
+    drill_fields: [created_date, session_id]
+  }
+
+  measure: lookup_success {
+    label: "Lookup Success"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%parameter:lookup_status:success%"]
+    drill_fields: [created_date, session_id]
+  }
+
+  measure: auth_success {
+    label: "Auth Success"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+    filters:[tags:"%parameter:auth_status:success%"]
+    drill_fields: [created_date, session_id]
+  }
+
   dimension: automation_call {
     label: "Automation Call"
     type: yesno
