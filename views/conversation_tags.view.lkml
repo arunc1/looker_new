@@ -254,48 +254,7 @@ view: conversation_tags {
   }
 
 
-##Routing after escalation
 
-dimension: routing_queue {
-  label: "Routing Queue"
-  type: string
-  case: {
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:55.0%";;
-      label: "AVAST-Account Services(55)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:54.0%";;
-      label: "AVAST-Tech(54)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:56.0%";;
-      label: "AVAST-Refund(56)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:50.0%";;
-      label: "AVAST-PTS(50)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:43.0%";;
-      label: "AVG-Account Services(43)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:42.0%";;
-      label: "AVG-Tech(42)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:44.0%";;
-      label: "AVG-Refund(44)"
-    }
-    when: {
-      sql:  ${tags} LIKE "%parameter:menu_id:45.0%";;
-      label: "AVG-PTS(45)"
-    }
-# possibly more when statements
-    else: "Other"
-  }
-}
   dimension: call_id_test {
     label: "Test Call ID"
     type: yesno
@@ -376,4 +335,36 @@ dimension: routing_queue {
       AND ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;
   }
 
+
+
+##Routing after escalation
+
+dimension: routing_queue {
+  label: "Routing Queue"
+  type: string
+  case: {
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;label: "AVAST -  Account Services (55)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;label: "AVAST -  Account Services (55)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:54%";;label: "AVAST -  Tech (54)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%";;label: "AVAST - Refund (56)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:43%";;label: "AVG -  Account Services (43)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:42%";;label: "AVG -  Tech (42)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:44%";;label: "AVG - Refund (44)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:331%";;label: "EB US ACCOUNT (331)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:121%";;label: "UHD Services Queue (121)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:138%";;label: "Computer Tuneup Queue (138)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:60%";;label: "LifeLock Alerts (60)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%";;label: "LifeLock IPA (56)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;label: "Acct Service Queue (80)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;label: "MAC (89)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;label: "Mobile (90)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:53%";;label: "IPA Upsell (53)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:88%";;label: "US WinSecurity (88)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;label: "LifeLock Retention (306)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;label: "Norton Renewals (308)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:81%";;label: "EN US CSP (81)"}
+# possibly more when statements
+    else: "Other"
+  }
+}
 }
