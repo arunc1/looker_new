@@ -363,6 +363,9 @@ dimension: routing_queue {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;label: "LifeLock Retention (306)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;label: "Norton Renewals (308)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:81%";;label: "EN US CSP (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:7%";;label: "Sales High (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:8%";;label: "Sales Mid (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:9%";;label: "Sales Low (81)"}
 # possibly more when statements
     else: "Other"
   }
