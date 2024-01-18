@@ -382,6 +382,18 @@ view: conversation_tags {
     }
   }
 
+  dimension: brand{
+    label: "Gen Brand"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:brand:norton%";;                  label: "Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:brand:lifelock%";;                label: "LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:brand:avast%";;                   label: "Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:brand:avg%";;                     label: "AVG"}
+      else: "Other"
+    }
+  }
+
   dimension: chat_site_of_entry{
     label: "Chat Site"
     type: string
