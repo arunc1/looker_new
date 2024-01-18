@@ -386,13 +386,13 @@ view: conversation_tags {
     label: "Chat Site"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hc";;           label: "Help Center"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:ngp";;          label: "NGP"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hp";;           label: "Brand Home Page"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:nsl";;          label: "NSL"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:app";;          label: "App"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:sp";;           label: "SP Web App"}
-      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:empower";;      label: "Empower"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hc%";;           label: "Help Center"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:ngp%";;          label: "NGP"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hp%";;           label: "Brand Home Page"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:nsl%";;          label: "NSL"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:app%";;          label: "App"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:sp%";;           label: "SP Web App"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:empower%";;      label: "Empower"}
       else: "Other"
     }
   }
@@ -401,12 +401,12 @@ view: conversation_tags {
     label: "Chat Page"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:home";;        label: "Home Page"}
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:kb";;          label: "KB Page"}
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:search";;      label: "Search Page"}
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:contactus";;   label: "Contact Us Page"}
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:dl";;          label: "Download Page"}
-      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:arood";;       label: "AROOD"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:home%";;        label: "Home Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:kb%";;          label: "KB Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:search%";;      label: "Search Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:contactus%";;   label: "Contact Us Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:dl%";;          label: "Download Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:arood%";;       label: "AROOD"}
       else: "Other"
     }
   }
