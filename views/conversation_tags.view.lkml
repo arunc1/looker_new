@@ -104,6 +104,11 @@ view: conversation_tags {
         sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
         label: "Disconnect"
       }
+      when: {
+        sql:  ${tags} LIKE "%parameter:call_resolution:contactus_link%";;
+        label: "Link to Contact Us"
+      }
+
       # possibly more when statements
       else: "Other"
     }
