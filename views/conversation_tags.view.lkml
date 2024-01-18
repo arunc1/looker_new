@@ -368,6 +368,16 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_norton%";;        label: "NGP Arood Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_lifelock%";;      label: "NGP Arood Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_home_norton%";;        label: "SP Home Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_home_lifelock%";;      label: "SP Home LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_search_norton%";;      label: "SP Search Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_search_lifelock%";;    label: "SP Search LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_kb_norton%";;          label: "SP KB Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_kb_lifelock%";;        label: "SP KB LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_contactus_norton%";;   label: "SP Contactus Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_contactus_lifelock%";; label: "SP Contactus Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_contactus_avast%";;    label: "SP Contactus Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:sp_contactus_avg%";;      label: "SP Contactus Avg"}
       else: "Other"
     }
   }
