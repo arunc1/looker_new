@@ -339,35 +339,35 @@ view: conversation_tags {
     label: "Chat Origin"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_home_avast%";;           label: "HC Home Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_kb_avast%";;             label: "HC KB Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_search_avast%";;         label: "HC Search Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_home_avg%";;             label: "HC Home Avg"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_kb_avg%";;               label: "HC KB Avg"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_search_avg%";;           label: "HC Search Avg"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_home_lifelock%";;        label: "HC Home Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_kb_lifelock%";;          label: "HC KB Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_search_lifelock%";;      label: "HC Search Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_home_norton%";;          label: "HC Home Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_kb_norton%";;            label: "HC KB Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_search_norton%";;        label: "HC Search Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_contactus_norton%";;     label: "HC Contactus Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_contactus_lifelock%";;   label: "HC Contactus Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_contactus_avast%";;      label: "HC Contactus Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hc_contactus_avg%";;        label: "HC Contactus Avg"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hp_home_norton%";;          label: "Sales Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hp_home_lifelock%";;        label: "Sales Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hp_home_avast%";;           label: "Sales Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:hp_home_avg%";;             label: "Sales Avg"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:ngp_dl_norton%";;           label: "NGP DL Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:ngp_dash_norton%";;         label: "NGP Dashboard Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:ngp_dash_lifelock%";;       label: "NGP Dashboard Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:nsl_home_norton%";;         label: "NSL Home Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:nsl_home_lifelock%";;       label: "NSL Home Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:empower_dash_norton%";;     label: "Empower"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:ngp_arood_norton%";;        label: "NGP Arood Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:menu_id:ngp_arood_lifelock%";;      label: "NGP Arood Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_avast%";;           label: "HC Home Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_kb_avast%";;             label: "HC KB Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_search_avast%";;         label: "HC Search Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_avg%";;             label: "HC Home Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_kb_avg%";;               label: "HC KB Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_search_avg%";;           label: "HC Search Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_lifelock%";;        label: "HC Home Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_kb_lifelock%";;          label: "HC KB Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_search_lifelock%";;      label: "HC Search Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_norton%";;          label: "HC Home Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_kb_norton%";;            label: "HC KB Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_search_norton%";;        label: "HC Search Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_norton%";;     label: "HC Contactus Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_lifelock%";;   label: "HC Contactus Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_avast%";;      label: "HC Contactus Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_avg%";;        label: "HC Contactus Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_norton%";;          label: "Sales Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_lifelock%";;        label: "Sales Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_avast%";;           label: "Sales Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_avg%";;             label: "Sales Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dl_norton%";;           label: "NGP DL Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dash_norton%";;         label: "NGP Dashboard Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dash_lifelock%";;       label: "NGP Dashboard Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:nsl_home_norton%";;         label: "NSL Home Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:nsl_home_lifelock%";;       label: "NSL Home Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:empower_dash_norton%";;     label: "Empower"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_norton%";;        label: "NGP Arood Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_lifelock%";;      label: "NGP Arood Lifelock"}
       else: "Other"
     }
   }
