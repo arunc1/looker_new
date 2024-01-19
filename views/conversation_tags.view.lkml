@@ -73,55 +73,93 @@ view: conversation_tags {
 ##dimensions - call resolution status(parameters)
 
   dimension: call_resolution {
-    label: "Call Resolution Status"
+    label: "Call Resolution"
     type: string
     case: {
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:escalation%" OR ${tags} LIKE "%parameter:call_resolution:escalated%";;
-        label: "Escalation"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
-        label: "Terminate"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;
-        label: "Hangup"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:escalation_default_quque%";;
-        label: "Escalation Default Queue"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;
-        label: "Disconnect"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:call_resolution:contactus_link%";;
-        label: "Link to Contact Us"
-      }
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation%" OR ${tags} LIKE "%parameter:call_resolution:escalated%";;     label: "Escalation"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;                                                                 label: "User Hangup"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation_default_quque%";;                                               label: "Escalation Default Queue"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;                                                             label: "Disconnect"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:contactus_link%";;                                                         label: "Link to Contact Us"}
 
       # possibly more when statements
       else: "Other"
     }
   }
 
-  dimension: escalation_reason {
-    label: "Escalation Reason"
+  dimension: resolution_reason {
+    label: "Resolution Reason"
     type: string
     case: {
-      when: {
-        sql:  ${tags} LIKE "%parameter:escalation_reason:no-intent-match%";;
-        label: "No Match"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:escalation_reason:solution_provided%";;
-        label: "Solution Provided"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:escalation_reason:no_solution_provided%";;
-        label: "No Solution Provided"
-      }
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:asked_for_agent%";;           label: "Asked For Agent"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:no_match_dtmf%";;             label: "No Match DTMF"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:productkey_detail%";;         label: "Productkey Detail"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:ghost%";;                     label: "Ghost"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:roboall%";;                   label: "Robocall"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:no_otp%";;                    label: "No OTP"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:escalated_from_bcf%";;        label: "Escalated from Basic Call Flow"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:no_match%";;                  label: "No Match"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:no_input%";;                  label: "No Input"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:escalated_from_sales%";;      label: "Escalated From Sales"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:custome_hangup%";;            label: "Customer Hangup"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:customer_hangup%";;           label: "Customer Hangup"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:invalid_dtmf%";;              label: "Invalid Dtmf"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:otp_sent_but_not_received%";; label: "Otp Sent But Not Received"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:product_key_dtmf%";;          label: "Product Key Dtmf"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:spam_msg_read%";;             label: "Spam Msg Read"}
+        when: {sql:  ${tags} LIKE "%parameter:resolution_reason:resolved%";;                  label: "Resolved"}
+        when: {sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;                 label: "Resolved"}
+        when: {sql:  ${tags} LIKE "%parameter:termination_reason:ghost%";;                    label: "Ghost"}
+        when: {sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;                 label: "Robocall"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: resolution_source {
+    label: "Resolution Source"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_flow%";;                   label: "Lookup Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:agent_technical_get_devicetype%";;label: "Agent Technical Get Device type"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_by_email_failed%";;        label: "Lookup By Email Failed"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:alerts_flow%";;                   label: "Alerts Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_collect_pii_yob%";;        label: "Lookup by PII YOB"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:login_issues_flow%";;             label: "Login Issues Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:download_issue_flow%";;           label: "Download Issue Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:technical_get_devicetype%";;      label: "Technical Get Devicetype"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:agent_flow%";;                    label: "Agent Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:update_billing_flow%";;           label: "Update Billing Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:dsf_dtmf%";;                      label: "Default Start Flow - DTMF"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:bcf%";;                           label: "Basic Call Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:resolved_flow%";;                 label: "Resolved Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_by_pii_flow%";;            label: "Lookup By PII Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:sales_flow%";;                    label: "Sales Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:\lookup_v2_flow%";;               label: "Lookup V2 Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:subscription_flow%";;             label: "Subscription Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:technical_flow%";;                label: "Technical Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:download_issue_kid%";;            label: "Download Issue Kid"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:agent_technical_get_issue%";;     label: "Agent Technical Get Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:billing_flow%";;                  label: "Billing Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:update_account_flow%";;           label: "Update Account Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:account_information_flow%";;      label: "Account Information Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:itps_flow%";;                     label: "ITPS Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:dtmf_orchestrator_flow%";;        label: "DTMF Orchestrator Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:activation_and_install_flow%";;   label: "Activation And Install Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:otp_verify_sp%";;                 label: "OTP Verify SP"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_by_pii_ssn%";;             label: "Lookup by PII SSN"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_by_pii_yob%";;             label: "Lookup by PII YOB"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:product_key%";;                   label: "Product Key"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:otp_verify_url%";;                label: "OTP Verify URL"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:basic_call_flow%";;               label: "Basic Call Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_collect_pii_ssn%";;        label: "Lookup by PII SSN"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:notifications_flow%";;            label: "Notifications Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:otp_timeout%";;                   label: "Otp Timeout"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:dsf%";;                           label: "Default Start Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:sales_menu%";;                    label: "Sales Menu"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:misc_flow%";;                     label: "Misc Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;               label: "Sales Spam Info"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:auth_by_otp_flow%";;              label: "Auth by OTP Flow"}
       # possibly more when statements
       else: "Other"
     }
@@ -131,44 +169,26 @@ view: conversation_tags {
     label: "Termination Reason"
     type: string
     case: {
-      when: {
-        sql:  ${tags} LIKE "%parameter:termination_reason:ghost%";;
-        label: "Ghost Call"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:resolution_reason:ghost%";;
-        label: "Ghost Call"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;
-        label: "Robocall"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:resolution_reason:robocall%";;
-        label: "Ghost Call"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;
-        label: "Resolved"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:resolution_reason:resolved%";;
-        label: "Resolved"
-      }
+      when: {sql:  ${tags} LIKE "%parameter:termination_reason:ghost%";;        label: "Ghost Call"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:ghost%";;         label: "Ghost Call"}
+      when: {sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;     label: "Robocall"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:robocall%";;      label: "Robocall"}
+      when: {sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;     label: "Resolved"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:resolved%";;      label: "Resolved"}
       # possibly more when statements
       else: "Other"
     }
   }
 
   measure: ghost_call {
-    label: "Ghost Calls"
+    label: "Ghost Calls Count"
     type: count_distinct
     sql: ${session_id} ;;
     filters: [is_ghost_call: "Yes"]
   }
 
   measure: ghost_call_percent {
-    label: "%Ghost Calls"
+    label: "% of Ghost Calls"
     type: number
     value_format_name: percent_2
     sql: ${ghost_call}/${count_conversation} ;;
@@ -183,7 +203,10 @@ view: conversation_tags {
   dimension: is_ghost_call {
     label: "Is Ghost Call"
     type: yesno
-    sql: ${tags} LIKE "%parameter:resolution_reason:ghost%" ;;
+    sql: ${tags} LIKE "%parameter:resolution_reason:ghost%" OR
+         ${tags} LIKE "%parameter:resolution_reason:robocall%" OR
+         ${tags} LIKE "%parameter:termination_reason:ghost%"OR
+         ${tags} LIKE "%parameter:termination_reason:robocall%";;
   }
 
 
