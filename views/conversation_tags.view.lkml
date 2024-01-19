@@ -362,6 +362,91 @@ view: conversation_tags {
     }
   }
 
+  dimension: intent{
+    label: "Intent"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_duplicate%";;                                    label: "Account Duplicate"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_info%";;                                         label: "Account Information"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_setup%";;                                        label: "Account Setup"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:activation%";;                                           label: "Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:activation_issue%";;                                     label: "Activation Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts%";;                                               label: "Alerts"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_issue%";;                                        label: "Billing Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_question%";;                                     label: "Billing Question"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_charge%";;                                       label: "Billing Question - Charge"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_date%";;                                         label: "Billing Question - Date"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_fop%";;                                          label: "Billing Question - FOP"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_confirmpayment%";;                               label: "Billing Question - Payment"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:license_buy%";;                                          label: "Buy"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:callback%";;                                             label: "Call Return"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:case_number%";;                                          label: "Case"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup%";;                                          label: "Cloud Backup"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_issue%";;                                    label: "Cloud Backup Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_restore%";;                                  label: "Cloud Backup Restore"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_setup%";;                                    label: "Cloud Backup Setup"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:norton_security%";;                                      label: "Device Protection"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:nortonsecurity_issue%";;                                 label: "Device Protection Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:download%";;                                             label: "Download"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:download_issue%";;                                       label: "Download Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:identity_protection%";;                                  label: "Identity Protection"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:identity_theft%";;                                       label: "Identity Theft"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:install_setup%";;                                        label: "Install Status"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:collections%";;                                          label: "ITPS - Collections"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:court_records%";;                                        label: "ITPS - Court Records"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:credit_score%";;                                         label: "ITPS - Credit Score"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dark_web%";;                                             label: "ITPS - Dark Web"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:data_breach%";;                                          label: "ITPS - Data Breach"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:financialmonitoring_error%";;                            label: "ITPS - Financial Monitoring Error"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:home_title%";;                                           label: "ITPS - Home Title"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:payday_loan%";;                                          label: "ITPS - Pay Day Loan"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:public_record%";;                                        label: "ITPS - Public Record"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:sex_offender%";;                                         label: "ITPS - Sex Offender"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:utility_account%";;                                      label: "ITPS - Utility Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:License_issue%";;                                        label: "License issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:live_agent%";;                                           label: "Live Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:tech_agent%";;                                           label: "Live Agent - Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate%";;                                           label: "Live Update"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate_issues%";;                                    label: "Live Update Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw%";;                                                  label: "Login Issue - Online Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_2FA%";;                                              label: "Login Issue - 2FA"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_pwm%";;                                              label: "Login Issue - PWM"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey%";;                                           label: "Product Key"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_find%";;                                      label: "Product Key - Find"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_issue%";;                                     label: "Product Key - Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:refund%";;                                               label: "Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:reinstall%";;                                            label: "Reinstall"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:renewal%";;                                              label: "Renewal"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:spam%";;                                                 label: "Spam"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_cancel%";;                                  label: "Subscription Cancel"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_info%";;                                    label: "Subscription Info"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:manage_subscription%";;                                  label: "Subscription Manage"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_account%";;                                       label: "Update Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_address%";;                                       label: "Update Address"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_bililng%";;                                       label: "Update billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_email%";;                                         label: "Update email"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_phone%";;                                         label: "Update phone"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:upgrade%";;                                              label: "Upgrade"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn%";;                                                  label: "VPN"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn_issues%";;                                           label: "VPN Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:lostwallet%";;                                           label: "Lost Wallet"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:virus removal%";;                                        label: "Virus"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:add_member%";;                                           label: "Add Member"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_uhd%";;                                           label: "Redeem UHD"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_tuneup%";;                                        label: "Redeem Tune Up"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:genie%";;                                                label: "Genie"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:slow_computer%";;                                        label: "Slow Computer"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:browser_errors%";;                                       label: "Browser Errors"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:full_disk%";;                                            label: "Full Disk"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:software_updater%";;                                     label: "Software Updater"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:language_display%";;                                     label: "Language Display"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_validate%";;                                label: "Subscription Validate Days"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:threat%";;                                               label: "Threat"}
+      else: "Other"
+    }
+  }
+
+
   dimension: chat_origin{
     label: "Chat Origin"
     type: string
