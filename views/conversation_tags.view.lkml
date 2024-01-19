@@ -276,16 +276,13 @@ view: conversation_tags {
   dimension: from_ivr{
     label: "From IVR"
     type: string
-    sql: ${tags} LIKE "%parameter:fromIVR:true%" ;;
     case: {
       when: {
         sql:  ${tags} LIKE "%parameter:fromIVR:true%" ;;
         label: "To Ava"
+        }
+        else: "Other"
       }
-
-      else: "Other"
-
-  }
   }
 
   dimension: call_id_test {
