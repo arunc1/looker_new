@@ -340,6 +340,28 @@ view: conversation_tags {
       AND ${tags} LIKE "%parameter:resolution_source:sales_spam_info%";;
   }
 
+  dimension: solution_type_voice{
+    label: "Solution Type - Voice"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_iva:full%";;        label: "Full Solution"}
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_iva:partial%";;     label: "Partial Solution"}
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_iva:escalate%";;    label: "Escalate"}
+      else: "Other"
+    }
+  }
+
+  dimension: solution_type_chat{
+    label: "Solution Type - Chat"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:full%";;        label: "Full Solution"}
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:partial%";;     label: "Partial Solution"}
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:escalate%";;    label: "Escalate"}
+      else: "Other"
+    }
+  }
+
   dimension: chat_origin{
     label: "Chat Origin"
     type: string
