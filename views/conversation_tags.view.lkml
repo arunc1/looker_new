@@ -537,7 +537,6 @@ dimension: routing_queue {
   case: {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;                  label: "AVAST Account Services (55)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;                  label: "AVAST Account Services (55)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%";;                  label: "AVAST Refund (56)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:54%";;                  label: "AVAST Tech (54)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:43%";;                  label: "AVG Account Services (43)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:42%";;                  label: "AVG Tech (42)"}
@@ -546,7 +545,6 @@ dimension: routing_queue {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:121%";;                 label: "UHD Services Queue (121)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:138%";;                 label: "Computer Tuneup Queue (138)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:60%";;                  label: "LifeLock Alerts (60)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%";;                  label: "LifeLock IPA (56)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;                  label: "Acct Service Queue (80)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;                  label: "MAC (89)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;                  label: "Mobile (90)"}
@@ -589,6 +587,8 @@ dimension: routing_queue {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:559%";;                 label: "DWM"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:560%";;                 label: "machine translate"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:567%";;                 label: "LifeLock Identity"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" AND ${tags} LIKE "%parameter:brand:avast%";;                     label: "AVAST Refund (56)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" AND ${tags} LIKE "%parameter:brand:lifelock%";;                  label: "LifeLock IPA (56)"}
 # possibly more when statements
     else: "Other"
   }
