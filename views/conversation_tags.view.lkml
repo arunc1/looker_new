@@ -531,16 +531,11 @@ view: conversation_tags {
 
 ##Routing after escalation
 
-dimension: routing_queue {
-  label: "Routing Queue"
+dimension: routing_queue_nlok {
+  label: "Routing Queue Nlok"
   type: string
   case: {
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;                  label: "AVAST Account Services (55)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;                  label: "AVAST Account Services (55)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:54%";;                  label: "AVAST Tech (54)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:43%";;                  label: "AVG Account Services (43)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:42%";;                  label: "AVG Tech (42)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:44%";;                  label: "AVG Refund (44)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" ;;                 label: "LifeLock IPA (56)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:331%";;                 label: "EB US ACCOUNT (331)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:121%";;                 label: "UHD Services Queue (121)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:138%";;                 label: "Computer Tuneup Queue (138)"}
@@ -587,10 +582,24 @@ dimension: routing_queue {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:559%";;                 label: "DWM"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:560%";;                 label: "machine translate"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:567%";;                 label: "LifeLock Identity"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" AND ${tags} LIKE "%parameter:brand:avast%";;                     label: "AVAST Refund (56)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" AND ${tags} LIKE "%parameter:brand:lifelock%";;                  label: "LifeLock IPA (56)"}
+
 # possibly more when statements
     else: "Other"
   }
 }
+
+  dimension: routing_queue_avast_avg {
+    label: "Routing Queue Avast AVG"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:55%";;                  label: "AVAST Account Services (55)"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:54%";;                  label: "AVAST Tech (54)"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:43%";;                  label: "AVG Account Services (43)"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:42%";;                  label: "AVG Tech (42)"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:44%";;                  label: "AVG Refund (44)"}
+      when: {sql:  ${tags} LIKE "%parameter:menu_id:56%";;                  label: "AVAST Refund (56)"}
+# possibly more when statements
+      else: "Other"
+    }
+  }
 }
