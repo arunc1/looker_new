@@ -135,7 +135,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:resolved_flow%";;                 label: "Resolved Flow"}
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_by_pii_flow%";;            label: "Lookup By PII Flow"}
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:sales_flow%";;                    label: "Sales Flow"}
-      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_v2_flow%";;               label: "Lookup V2 Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_source:lookup_v2_flow%";;                label: "Lookup V2 Flow"}
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:subscription_flow%";;             label: "Subscription Flow"}
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:technical_flow%";;                label: "Technical Flow"}
       when: {sql:  ${tags} LIKE "%parameter:resolution_source:download_issue_kid%";;            label: "Download Issue Kid"}
@@ -273,7 +273,11 @@ view: conversation_tags {
     AND ${tags} LIKE "%page_name:authenticate%";;
   }
 
-
+  dimension: from_ivr{
+    label: "from_ivr"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:fromIVR:true%" ;;
+  }
 
   dimension: call_id_test {
     label: "Test Call ID"
