@@ -51,20 +51,12 @@ view: conversation_tags {
     type: string
     case: {
       when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:norton%" OR ${tags} LIKE "%parameter:tfn_company:nortonvip%";;
+        sql:  ${tags} LIKE "%parameter:tfn_company:norton%" OR ${tags} LIKE "%parameter:tfn_company:nortonvip%" OR ${tags} LIKE "%parameter:tfn_company:login_error_20008%";;
         label: "Norton"
       }
       when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:ll%" OR ${tags} LIKE "%parameter:tfn_company:llvip%";;
+        sql:  ${tags} LIKE "%parameter:tfn_company:ll%" OR ${tags} LIKE "%parameter:tfn_company:llvip%" OR ${tags} LIKE "%parameter:tfn_company:eb_us%";;
         label: "Lifelock"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:eb_us%";;
-        label: "Employee Benefits"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:login_error_20008%";;
-        label: "Login Error"
       }
       when: {
         sql:  ${tags} LIKE "%parameter:tfn_company:avast%";;
@@ -75,7 +67,7 @@ view: conversation_tags {
         label: "AVG"
       }
       else: "Other"
-      }
+    }
   }
 
 ##dimensions - call resolution status(parameters)
