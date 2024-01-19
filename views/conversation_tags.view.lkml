@@ -372,6 +372,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:activation%";;                                           label: "Activation"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:activation_issue%";;                                     label: "Activation Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:alerts%";;                                               label: "Alerts"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts_l2%";;                                            label: "Alerts L2"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_issue%";;                                        label: "Billing Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_question%";;                                     label: "Billing Question"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_charge%";;                                       label: "Billing Question - Charge"}
