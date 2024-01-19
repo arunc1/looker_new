@@ -297,16 +297,16 @@ view: conversation_tags {
     type: string
     case: {
       when: {
+        sql:  ${tags} LIKE "%parameter:entry:welcome%" OR  ${tags} LIKE "%parameter:fromIVR:true%";;
+        label: "Automation"
+      }
+      when: {
         sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;
         label: "Sales"
       }
       when: {
         sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;
         label: "Basic"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:entry:welcome%";;
-        label: "Automation"
       }
       else: "Other"
     }
