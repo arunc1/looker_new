@@ -576,7 +576,7 @@ dimension: routing_queue_nlok {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;                  label: "Acct Service Queue (80)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;                  label: "MAC (89)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;                  label: "Mobile (90)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:53%";;                  label: "IPA Upsell (53)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:53";;                  label: "IPA Upsell (53)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:88%";;                  label: "US WinSecurity (88)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;                 label: "LifeLock Retention (306)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;                 label: "Norton Renewals (308)"}
