@@ -473,7 +473,7 @@ view: conversation_tags {
 
 
   dimension: chat_origin{
-    label: "Chat Origin"
+    label: "Origin"
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_avast%";;           label: "HC Home Avast"}
@@ -515,6 +515,20 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_lifelock%";;   label: "SP Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avast%";;      label: "SP Contactus Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avg%";;        label: "SP Contactus Avg"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_priority%";; label: "IVA Norton Priority"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_tech%";;     label: "IVA Norton Tech"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton%";;          label: "IVA Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_lifelock_priority%";; label: "IVA LifeLock Priority"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_lifelock%";;        label: "IVA LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_sp_otp%";;          label: "IVA SP Logged In"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_eb_us%";;           label: "IVA EB US"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_l2_alerts%";;       label: "IVA L2 Alerts"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_login_error_20008%";; label: "IVA Login Error"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_avast%";;           label: "IVA Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:welcome_avg%";;             label: "IVA AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;         label: "IVR Basic Call Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;              label: "IVR Sales Flow"}
+
       else: "Unknown Entry"
     }
   }
