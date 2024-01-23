@@ -516,7 +516,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_lifelock%";;   label: "SP Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avast%";;      label: "SP Contactus Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avg%";;        label: "SP Contactus Avg"}
-      else: "Other"
+      else: "Unknown Entry"
     }
   }
 
@@ -528,7 +528,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:brand:lifelock%";;                label: "LifeLock"}
       when: {sql:  ${tags} LIKE "%parameter:brand:avast%";;                   label: "Avast"}
       when: {sql:  ${tags} LIKE "%parameter:brand:avg%";;                     label: "AVG"}
-      else: "Other"
+      else: "Unknown Brand"
     }
   }
 
@@ -634,5 +634,10 @@ dimension: routing_queue_nlok {
 # possibly more when statements
       else: "Other"
     }
+  }
+  set: detail {
+    fields: [
+      session_id
+    ]
   }
 }
