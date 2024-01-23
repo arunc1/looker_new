@@ -476,6 +476,7 @@ view: conversation_tags {
     label: "Origin"
     type: string
     case: {
+      ## Help Center Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_home_avast%";;           label: "HC Home Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_kb_avast%";;             label: "HC KB Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_search_avast%";;         label: "HC Search Avast"}
@@ -492,19 +493,20 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_lifelock%";;   label: "HC Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_avast%";;      label: "HC Contactus Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hc_contactus_avg%";;        label: "HC Contactus Avg"}
+      ## Brand Home Page Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_norton%";;          label: "Sales Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_lifelock%";;        label: "Sales Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_avast%";;           label: "Sales Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:hp_home_avg%";;             label: "Sales Avg"}
+      ## NGP Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dl_norton%";;           label: "NGP DL Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dash_norton%";;         label: "NGP Dashboard Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dash_lifelock%";;       label: "NGP Dashboard Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:nsl_home_norton%";;         label: "NSL Home Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:nsl_home_lifelock%";;       label: "NSL Home Lifelock"}
-      when: {sql:  ${tags} LIKE "%parameter:entry:empower_dash_norton%";;     label: "Empower"}
-      when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_norton%";;        label: "NGP Arood Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_arood_lifelock%";;      label: "NGP Arood Lifelock"}
+      ## Support Portal Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_home_norton%";;          label: "SP Home Norton"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_home_lifelock%";;        label: "SP Home LifeLock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_search_norton%";;        label: "SP Search Norton"}
@@ -515,6 +517,10 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_lifelock%";;   label: "SP Contactus Lifelock"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avast%";;      label: "SP Contactus Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sp_contactus_avg%";;        label: "SP Contactus Avg"}
+      ## Other Chat Origin Entry Parameters
+      when: {sql:  ${tags} LIKE "%parameter:entry:empower_dash_norton%";;     label: "Empower"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
+      ## IVA Voice Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_priority%";; label: "IVA Norton Priority"}
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_tech%";;     label: "IVA Norton Tech"}
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton%";;          label: "IVA Norton"}
@@ -526,6 +532,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_login_error_20008%";; label: "IVA Login Error"}
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_avast%";;           label: "IVA Avast"}
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_avg%";;             label: "IVA AVG"}
+      ## IVR Voice Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;         label: "IVR Basic Call Flow"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;              label: "IVR Sales Flow"}
 
