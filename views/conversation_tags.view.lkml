@@ -386,6 +386,16 @@ view: conversation_tags {
     }
   }
 
+  dimension: chat_target{
+    label: "Chat Target"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:chattype:agent%";;        label: "Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:chattype:chatbot%";;      label: "Chatbot"}
+      else: "Other"
+    }
+  }
+
   dimension: intent{
     label: "Intent"
     type: string
