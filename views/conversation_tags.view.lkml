@@ -448,7 +448,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:manage_subscription%";;                                  label: "Subscription Manage"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_account%";;                                       label: "Update Account"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_address%";;                                       label: "Update Address"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:update_bililng%";;                                       label: "Update billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_billing%";;                                       label: "Update billing"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_email%";;                                         label: "Update email"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_phone%";;                                         label: "Update phone"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:upgrade%";;                                              label: "Upgrade"}
@@ -456,6 +456,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:vpn%";;                                                  label: "VPN"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:lostwallet%";;                                           label: "Lost Wallet"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:virus removal%";;                                        label: "Virus"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:virus_removal%";;                                        label: "Virus"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:add_member%";;                                           label: "Add Member"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_uhd%";;                                           label: "Redeem UHD"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_tuneup%";;                                        label: "Redeem Tune Up"}
@@ -467,6 +468,14 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:language_display%";;                                     label: "Language Display"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_validate%";;                                label: "Subscription Validate Days"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:threat%";;                                               label: "Threat"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:tbd%";;                                                  label: "TBD"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:installation_issue%";;                                   label: "Installation Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:acct_info%";;                                            label: "Account Information"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_find_installer%";;                                    label: "Download - Find Installer"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_not_started%";;                                       label: "Download - Not Started"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:install_status%";;                                       label: "Install Status"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:something_else%";;                                       label: "Something Else"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_install_help%";;                                      label: "Download - Install Help"}
       else: "Other"
     }
   }
