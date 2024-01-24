@@ -657,7 +657,7 @@ dimension: routing_queue_nlok {
   }
   set: detail {
     fields: [
-      session_id
+      session_id,call_resolution
     ]
   }
 }
