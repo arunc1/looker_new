@@ -18,6 +18,14 @@ view: conversation_tags {
     type: string
     sql: ${TABLE}.session_id ;;
   }
+
+  dimension: chat_id {
+    label: "Chat ID"
+    type: string
+    sql: ${TABLE}.chat_id ;;
+  }
+
+
   dimension: tags {
     type: string
     sql: ${TABLE}.tags ;;
@@ -750,7 +758,8 @@ dimension: routing_queue_nlok {
   }
   set: detail {
     fields: [
-      session_id,call_resolution
+      session_id,
+      chat_id
     ]
   }
 }
