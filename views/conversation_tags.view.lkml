@@ -54,6 +54,18 @@ view: conversation_tags {
   }
 
   #brand
+  dimension: environment {
+    label: "Environment"
+    type: string
+    case: {
+      when: {
+        sql:  ${tags} LIKE "%parameter:env:prod%" ;;     label: "Prod"
+      }
+      else: "Dev"
+    }
+  }
+
+  #brand
   dimension: origin_tfn {
     label: "Brand"
     type: string
