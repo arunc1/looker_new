@@ -592,6 +592,47 @@ view: conversation_tags {
     }
   }
 
+  dimension: country{
+    label: "Country"
+    type: string
+    case: {
+      ## Help Center Chat Origin Entry Parameters
+      when: {sql:  ${tags} LIKE "%parameter:ct:us%";;         label: "US"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:au%";;         label: "Australia"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:uk%";;         label: "UK"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ca%";;         label: "Canada"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:de%";;         label: "Germany"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:fr%";;         label: "France"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:it%";;         label: "Italian"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:mx%";;         label: "Mexico"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:pt%";;         label: "Portugal"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:br%";;         label: "Brazil"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:in%";;         label: "India"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:nz%";;         label: "New Zealand"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ir%";;         label: "Ireland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
+      when: {sql:  ${tags} LIKE "%parameter:jp:sp%";;         label: "Japan"}
+      else: "Other"
+    }
+  }
+
+  dimension: language{
+    label: "Language"
+    type: string
+    case: {
+      ## Help Center Chat Origin Entry Parameters
+      when: {sql:  ${tags} LIKE "%parameter:lg:en%";;         label: "English"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:de%";;         label: "German"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:fr%";;         label: "French"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:it%";;         label: "Italian"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:es%";;         label: "Spanish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:ja%";;         label: "Japanese"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:po%";;         label: "Polish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:da%";;         label: "Danish"}
+      else: "Other"
+    }
+  }
+
   dimension: brand{
     label: "Gen Brand"
     type: string
