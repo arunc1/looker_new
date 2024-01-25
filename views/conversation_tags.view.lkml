@@ -603,7 +603,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:ct:ca%";;         label: "Canada"}
       when: {sql:  ${tags} LIKE "%parameter:ct:de%";;         label: "Germany"}
       when: {sql:  ${tags} LIKE "%parameter:ct:fr%";;         label: "France"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:it%";;         label: "Italian"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:it%";;         label: "Italy"}
       when: {sql:  ${tags} LIKE "%parameter:ct:mx%";;         label: "Mexico"}
       when: {sql:  ${tags} LIKE "%parameter:ct:pt%";;         label: "Portugal"}
       when: {sql:  ${tags} LIKE "%parameter:ct:br%";;         label: "Brazil"}
