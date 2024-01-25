@@ -559,6 +559,39 @@ view: conversation_tags {
     }
   }
 
+
+  dimension: chat_site{
+    label: "Chat Origin Site"
+    type: string
+    case: {
+      ## Help Center Chat Origin Entry Parameters
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hc%";;               label: "Help Center"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:sp%";;               label: "SP Web App"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:ngp%";;              label: "NGP"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:hp%";;               label: "Sales Home"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:nsl%";;              label: "NSL Login"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:empower%";;          label: "Empower"}
+      when: {sql:  ${tags} LIKE "%parameter:site_of_entry:app%";;              label: "App"}
+      else: "Unknown Origin Site"
+    }
+  }
+
+  dimension: chat_page{
+    label: "Chat Origin Page"
+    type: string
+    case: {
+      ## Help Center Chat Origin Entry Parameters
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:home%";;             label: "Home"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:contactus%";;        label: "Contact Us"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:kb%";;               label: "KB Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:search%";;           label: "Search Results"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:dl%";;               label: "Download Page"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:arood%";;            label: "AROOD"}
+      when: {sql:  ${tags} LIKE "%parameter:point_of_entry:dash%";;             label: "Dashboard"}
+      else: "Unknown Origin Page"
+    }
+  }
+
   dimension: brand{
     label: "Gen Brand"
     type: string
