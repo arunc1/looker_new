@@ -93,7 +93,7 @@ view: conversation_tags {
 ##dimensions - call resolution status(parameters)
 
   dimension: call_resolution {
-    label: "Call Resolution"
+    label: "Contact Resolution"
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:contactus_link%" OR ${tags} LIKE "%parameter:call_resolution:escalation_contactus%";;     label: "Link to Contact Us"}
@@ -319,21 +319,13 @@ view: conversation_tags {
 #calls flow (for the moment we have only Sales but more values will follow)
 
   dimension: call_flow{
-    label: "Call Flow"
+    label: "Contact Type"
     type: string
     case: {
-      when: {
-        sql:  ${tags} LIKE "%parameter:entry:welcome%" OR  ${tags} LIKE "%parameter:fromIVR:true%";;
-        label: "Automation"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;
-        label: "Sales"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;
-        label: "Basic"
-      }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%" OR  ${tags} LIKE "%parameter:fromIVR:true%" OR  ${tags} LIKE "%parameter:chattype:chatbot%";;    label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;                                                                                             label: "Sales Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;                                                                                        label: "Basic Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:agent%";;                                                                                               label: "Direct to Agent Chat"      }
       else: "Other"
     }
   }
@@ -716,7 +708,7 @@ dimension: routing_queue_nlok {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;                  label: "Acct Service Queue (80)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;                  label: "MAC (89)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;                  label: "Mobile (90)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:53";;                  label: "IPA Upsell (53)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:53";;                   label: "IPA Upsell (53)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:88%";;                  label: "US WinSecurity (88)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;                 label: "LifeLock Retention (306)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;                 label: "Norton Renewals (308)"}
