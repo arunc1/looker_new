@@ -576,17 +576,17 @@ view: conversation_tags {
     label: "Device Info"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Android%";;               label: "Android"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Linux%";;                 label: "Linux"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Mac OS%";;                label: "Mac OS"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Intel Mac OS X%";;        label: "Mac OS"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:WOW64%";;                 label: "Windows"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Win64%";;                 label: "Windows"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:CrOS%";;                  label: "Chrome OS"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Linux x86_64%";;          label: "Chrome OS"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:iPad%";;                  label: "iPad"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:iPhone%";;                label: "iPhone"}
-      when: {sql:  ${tags} LIKE "%parameter:browseros:Windows%";;               label: "Windows"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Android%";;               label: "Android"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Linux%";;                 label: "Linux"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Mac OS%";;                label: "Mac OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Intel Mac OS X%";;        label: "Mac OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%WOW64%";;                 label: "Windows"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Win64%";;                 label: "Windows"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%CrOS%";;                  label: "Chrome OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Linux x86_64%";;          label: "Chrome OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%iPad%";;                  label: "iPad"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%iPhone%";;                label: "iPhone"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:%Windows%";;               label: "Windows"}
       else: "Other"
     }
   }
