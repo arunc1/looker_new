@@ -72,7 +72,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:brandname:norton%";;                                                    label: "Norton"}
       when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%";;                                                  label: "LifeLock"}
       when: {sql:  ${tags} LIKE "%parameter:brandname:avast%";;                                                     label: "Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G %" OR ${tags} LIKE "%parameter:brandname:avg%";;        label: "AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:tfn_company:avg %" OR ${tags} LIKE "%parameter:brandname:avg%";;        label: "AVG"}
       else: "Other"
     }
   }
