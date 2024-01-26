@@ -576,6 +576,7 @@ view: conversation_tags {
     label: "Device Info"
     type: string
     case: {
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36%";;label: "Windows"}
       when: {sql:  ${tags} LIKE "%parameter:browseros:Android%";;label: "Android"}
       when: {sql:  ${tags} LIKE "%parameter:browseros:Linux x%";;label: "Linux"}
       when: {sql:  ${tags} LIKE "%parameter:browseros:Mac OS%";;label: "Mac OS"}
