@@ -1,5 +1,5 @@
 view: conversation_tags {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.conversation_tags` ;;
+ sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.conversation_tags` ;;
 
   dimension_group: created {
     type: time
@@ -569,6 +569,25 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;              label: "IVR Sales Flow"}
 
       else: "Unknown Entry"
+    }
+  }
+
+  dimension: device_type{
+    label: "Device Info"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Android%";;               label: "Android"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Linux%";;                 label: "Linux"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Mac OS%";;                label: "Mac OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Intel Mac OS X%";;        label: "Mac OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:WOW64%";;                 label: "Windows"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Win64%";;                 label: "Windows"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:CrOS%";;                  label: "Chrome OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Linux x86_64%";;          label: "Chrome OS"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:iPad%";;                  label: "iPad"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:iPhone%";;                label: "iPhone"}
+      when: {sql:  ${tags} LIKE "%parameter:browseros:Windows%";;               label: "Windows"}
+      else: "Other"
     }
   }
 
