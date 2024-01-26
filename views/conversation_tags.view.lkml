@@ -206,6 +206,13 @@ view: conversation_tags {
     filters: [is_ghost_call: "Yes"]
   }
 
+
+  measure: ghost_calls_count {
+    label: "Ghost Calls Count -New"
+    type: count_distinct
+    sql: ${tags} LIKE "%parameter:resolution_reason:ghost%" ;;
+  }
+
   measure: ghost_call_percent {
     label: "% of Ghost Calls"
     type: number
