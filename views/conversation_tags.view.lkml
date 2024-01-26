@@ -65,26 +65,14 @@ view: conversation_tags {
   }
 
   #brand
-  dimension: origin_tfn {
+  dimension: brand {
     label: "Brand"
     type: string
     case: {
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:norton%" OR ${tags} LIKE "%parameter:tfn_company:nortonvip%" OR ${tags} LIKE "%parameter:tfn_company:login_error_20008%";;
-        label: "Norton"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:ll%" OR ${tags} LIKE "%parameter:tfn_company:llvip%" OR ${tags} LIKE "%parameter:tfn_company:eb_us%";;
-        label: "Lifelock"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:avast%";;
-        label: "Avast"
-      }
-      when: {
-        sql:  ${tags} LIKE "%parameter:tfn_company:avg%";;
-        label: "AVG"
-      }
+      when: {sql:  ${tags} LIKE "%parameter:brandname:norton%";;                                                    label: "Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%";;                                                  label: "LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:avast%";;                                                     label: "Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G %" OR ${tags} LIKE "%parameter:brandname:avg%";;        label: "AVG"}
       else: "Other"
     }
   }
@@ -651,17 +639,6 @@ view: conversation_tags {
     }
   }
 
-  dimension: brand{
-    label: "Gen Brand"
-    type: string
-    case: {
-      when: {sql:  ${tags} LIKE "%parameter:brand:norton%";;                  label: "Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:brand:lifelock%";;                label: "LifeLock"}
-      when: {sql:  ${tags} LIKE "%parameter:brand:avast%";;                   label: "Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:brand:avg%";;                     label: "AVG"}
-      else: "Unknown Brand"
-    }
-  }
 
   dimension: chat_site_of_entry{
     label: "Chat Site"
