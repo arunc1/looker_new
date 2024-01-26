@@ -15,6 +15,7 @@ view: conversation_tags {
   }
   dimension: session_id {
     label: "Conversation Id"
+    primary_key: yes
     type: string
     sql: ${TABLE}.session_id ;;
   }
