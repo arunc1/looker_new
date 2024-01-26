@@ -69,11 +69,11 @@ view: conversation_tags {
     label: "Brand"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:brandname:norton%";;                                                    label: "Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%";;                                                  label: "LifeLock"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:avast%";;                                                     label: "Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%";;                                                      label: "AVG"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:avg%";;                                                       label: "AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:norton%" OR ${tags} LIKE "%parameter:tfn_company:norton%" OR ${tags} LIKE "%parameter:chat_company:norton%";;               label: "Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%" OR ${tags} LIKE "%parameter:tfn_company:lifelock%" OR ${tags} LIKE "%parameter:chat_company:lifelock%";;         label: "LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:avast%" OR ${tags} LIKE "%parameter:tfn_company:avast%" OR ${tags} LIKE "%parameter:chat_company:avast%";;                  label: "Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%" OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%";;                      label: "AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:avg%" OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%";;                        label: "AVG"}
       else: "Other"
     }
   }
