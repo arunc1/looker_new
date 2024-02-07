@@ -491,7 +491,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:language_display%";;                                     label: "Language Display"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_validate%";;                                label: "Subscription Validate Days"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:threat%";;                                               label: "Threat"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:tbd%";;                                                  label: "TBD"}
+      # when: {sql:  ${tags} LIKE "%parameter:use_case:tbd%";;                                                  label: "TBD"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:installation_issue%";;                                   label: "Installation Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:acct_info%";;                                            label: "Account Information"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:dl_find_installer%";;                                    label: "Download - Find Installer"}
