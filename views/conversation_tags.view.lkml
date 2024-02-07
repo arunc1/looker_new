@@ -496,6 +496,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:acct_info%";;                                            label: "Account Information"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:dl_find_installer%";;                                    label: "Download - Find Installer"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:dl_not_started%";;                                       label: "Download - Not Started"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_stuck%";;                                             label: "Download - Stuck"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:install_status%";;                                       label: "Install Status"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:something_else%";;                                       label: "Something Else"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:dl_install_help%";;                                      label: "Download - Install Help"}
