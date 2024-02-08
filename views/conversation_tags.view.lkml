@@ -727,22 +727,6 @@ dimension: routing_queue_nlok {
   label: "Routing Queue Nlok"
   type: string
   case: {
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:56%" ;;                 label: "Voice: LifeLock IPA (56)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:331%";;                 label: "Voice: EB US ACCOUNT (331)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:121%";;                 label: "Voice: UHD Services Queue (121)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:138%";;                 label: "Voice: Computer Tuneup Queue (138)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:60%";;                  label: "Voice: LifeLock Alerts (60)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;                  label: "Voice: Acct Service Queue (80)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;                  label: "Voice: MAC (89)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;                  label: "Voice: Mobile (90)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:53";;                   label: "Voice: IPA Upsell (53)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:88%";;                  label: "Voice: US WinSecurity (88)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;                 label: "Voice: LifeLock Retention (306)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;                 label: "Voice: Norton Renewals (308)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:81%";;                  label: "Voice: EN US CSP (81)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:7%";;                   label: "Voice: Sales High (81)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:8%";;                   label: "Voice: Sales Mid (81)"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:9%";;                   label: "Voice: Sales Low (81)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:362%";;                 label: "Chat: eStore Acquisition"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:515%";;                 label: "Chat: AOL"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:516%";;                 label: "Chat: AROOD"}
@@ -774,6 +758,23 @@ dimension: routing_queue_nlok {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:559%";;                 label: "Chat: DWM"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:560%";;                 label: "Chat: machine translate"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:567%";;                 label: "Chat: LifeLock Identity"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:56" ;;                  label: "Voice: LifeLock IPA (56)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:331%";;                 label: "Voice: EB US ACCOUNT (331)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:121%";;                 label: "Voice: UHD Services Queue (121)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:138%";;                 label: "Voice: Computer Tuneup Queue (138)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:60%";;                  label: "Voice: LifeLock Alerts (60)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:80%";;                  label: "Voice: Acct Service Queue (80)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:89%";;                  label: "Voice: MAC (89)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:90%";;                  label: "Voice: Mobile (90)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:53";;                   label: "Voice: IPA Upsell (53)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:88%";;                  label: "Voice: US WinSecurity (88)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:306%";;                 label: "Voice: LifeLock Retention (306)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:308%";;                 label: "Voice: Norton Renewals (308)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:81%";;                  label: "Voice: EN US CSP (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:7%";;                   label: "Voice: Sales High (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:8%";;                   label: "Voice: Sales Mid (81)"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:9%";;                   label: "Voice: Sales Low (81)"}
+
 
 # possibly more when statements
     else: "Other"
