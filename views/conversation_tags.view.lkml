@@ -633,7 +633,6 @@ view: conversation_tags {
       ## Help Center Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:ct:us%";;         label: "US"}
       when: {sql:  ${tags} LIKE "%parameter:ct:au%";;         label: "Australia"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:uk%";;         label: "UK"}
       when: {sql:  ${tags} LIKE "%parameter:ct:ca%";;         label: "Canada"}
       when: {sql:  ${tags} LIKE "%parameter:ct:de%";;         label: "Germany"}
       when: {sql:  ${tags} LIKE "%parameter:ct:fr%";;         label: "France"}
@@ -646,6 +645,8 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:ct:ir%";;         label: "Ireland"}
       when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
       when: {sql:  ${tags} LIKE "%parameter:jp:sp%";;         label: "Japan"}
+      when: {sql:  ${tags} LIKE "%parameter:jp:za%";;         label: "South Africa"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:uk%" OR ${tags} LIKE "%parameter:ct:gb%";;         label: "UK"}
       else: "Other"
     }
   }
