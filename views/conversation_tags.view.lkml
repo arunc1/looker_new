@@ -408,7 +408,7 @@ view: conversation_tags {
     case: {
       when: {sql:  ${tags} LIKE "%parameter:chattype:agent%";;                  label: "Agent"}
       when: {sql:  ${tags} LIKE "%parameter:chattype:chatbot%";;                label: "Chatbot"}
-      when: {sql:  ${tags} LIKE "%parameter:entry:app_contact_lifelock%";;      label: "Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;      label: "Agent"}
       when: {sql:  ${tags} LIKE "%parameter:entry:ngp_dl_norton%";;             label: "Chatbot"}
       else: "Other"
     }
