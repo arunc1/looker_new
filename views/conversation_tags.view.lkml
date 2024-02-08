@@ -316,10 +316,13 @@ view: conversation_tags {
     label: "Contact Type"
     type: string
     case: {
-      when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%" OR  ${tags} LIKE "%parameter:fromIVR:true%" OR  ${tags} LIKE "%parameter:chattype:chatbot%";;    label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;                                                                                             label: "Sales Call Flow"           }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;                                                                                        label: "Basic Call Flow"           }
-      when: {   sql:  ${tags} LIKE "%parameter:chattype:agent%" OR ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;                                    label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:chatbot%";;             label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:agent%";;               label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:fromIVR:true%";;                 label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%";;                label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;             label: "Sales Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;        label: "Basic Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Direct to Agent Chat"      }
       else: "Other"
     }
   }
