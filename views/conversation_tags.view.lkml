@@ -626,7 +626,7 @@ view: conversation_tags {
     }
   }
 
-  dimension: country{
+   dimension: country{
     label: "Country"
     type: string
     case: {
@@ -646,6 +646,22 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
       when: {sql:  ${tags} LIKE "%parameter:ct:jp%";;         label: "Japan"}
       when: {sql:  ${tags} LIKE "%parameter:ct:za%";;         label: "South Africa"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ar%";;         label: "Argentina"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:es%";;         label: "Spain"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:dk%";;         label: "Denmark"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:hu%";;         label: "Hungary"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ie%";;         label: "Ireland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:me%";;         label: "Montenegro"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:my%";;         label: "Malaysia"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:nl%";;         label: "Netherlands"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:no%";;         label: "Norway"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ph%";;         label: "Phillipines"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:pl%";;         label: "Poland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:pr%";;         label: "Puerto Rico"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:se%";;         label: "Sweden"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:sg%";;         label: "Singapore"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:tr%";;         label: "Turkey"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ie%";;         label: "Ireland"}
       when: {sql:  ${tags} LIKE "%parameter:ct:uk%" OR ${tags} LIKE "%parameter:ct:gb%";;         label: "UK"}
       else: "Other"
     }
