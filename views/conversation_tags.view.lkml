@@ -686,6 +686,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:lg:ja%";;         label: "Japanese"}
       when: {sql:  ${tags} LIKE "%parameter:lg:po%";;         label: "Polish"}
       when: {sql:  ${tags} LIKE "%parameter:lg:da%";;         label: "Danish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:nl%";;         label: "Dutch"}
       else: "Other"
     }
   }
