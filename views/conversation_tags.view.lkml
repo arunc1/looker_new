@@ -684,9 +684,16 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:lg:it%";;         label: "Italian"}
       when: {sql:  ${tags} LIKE "%parameter:lg:es%";;         label: "Spanish"}
       when: {sql:  ${tags} LIKE "%parameter:lg:ja%";;         label: "Japanese"}
-      when: {sql:  ${tags} LIKE "%parameter:lg:po%";;         label: "Polish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:pl%";;         label: "Polish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:pt%";;         label: "Portuguese"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:sv%";;         label: "Swedish"}
       when: {sql:  ${tags} LIKE "%parameter:lg:da%";;         label: "Danish"}
       when: {sql:  ${tags} LIKE "%parameter:lg:nl%";;         label: "Dutch"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:tr%";;         label: "Turkish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:fi%";;         label: "Finnish"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:no%";;         label: "Norwegian"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:ro%";;         label: "Romanian"}
+      when: {sql:  ${tags} LIKE "%parameter:lg:hu%";;         label: "Hungarian"}
       else: "Other"
     }
   }
