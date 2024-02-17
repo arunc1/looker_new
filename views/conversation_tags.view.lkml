@@ -760,11 +760,11 @@ dimension: routing_queue_nlok {
     when: {sql:  ${tags} LIKE "%parameter:menu_id:540%";;                 label: "Chat: Telus Breach"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:541%";;                 label: "Chat: Telus"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:542%";;                 label: "Chat: Threat Removal"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:542%";;                 label: "Chat: threat"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:543%";;                 label: "Chat: UHD Delivery"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:557%";;                 label: "Chat: KDDI"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:567%";;                 label: "Chat: LifeLock App"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:559%";;                 label: "Chat: DWM"}
-    when: {sql:  ${tags} LIKE "%parameter:menu_id:560%";;                 label: "Chat: machine translate"}
+    when: {sql:  ${tags} LIKE "%parameter:menu_id:560%";;                 label: "Chat: Machine Translate"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:567%";;                 label: "Chat: LifeLock Identity"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:56" ;;                  label: "Voice: LifeLock IPA (56)"}
     when: {sql:  ${tags} LIKE "%parameter:menu_id:331%";;                 label: "Voice: EB US ACCOUNT (331)"}
