@@ -668,6 +668,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:ct:sg%";;         label: "Singapore"}
       when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
       when: {sql:  ${tags} LIKE "%parameter:ct:tr%";;         label: "Turkey"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:gb%";;         label: "UK"}
       when: {sql:  ${tags} LIKE "%parameter:ct:uk%";;         label: "UK"}
       when: {sql:  ${tags} LIKE "%parameter:ct:us%";;         label: "US"}
       when: {sql:  ${tags} LIKE "%parameter:ct:za%";;         label: "South Africa"}
