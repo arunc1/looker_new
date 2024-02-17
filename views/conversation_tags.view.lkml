@@ -636,39 +636,41 @@ view: conversation_tags {
     type: string
     case: {
       ## Help Center Chat Origin Entry Parameters
-      when: {sql:  ${tags} LIKE "%parameter:ct:us%";;         label: "US"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:aa%";;         label: "Aruba"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ar%";;         label: "Argentina"}
       when: {sql:  ${tags} LIKE "%parameter:ct:au%";;         label: "Australia"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:br%";;         label: "Brazil"}
       when: {sql:  ${tags} LIKE "%parameter:ct:ca%";;         label: "Canada"}
       when: {sql:  ${tags} LIKE "%parameter:ct:de%";;         label: "Germany"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:fr%";;         label: "France"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:it%";;         label: "Italy"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:mx%";;         label: "Mexico"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:pt%";;         label: "Portugal"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:br%";;         label: "Brazil"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:in%";;         label: "India"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:nz%";;         label: "New Zealand"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:ir%";;         label: "Ireland"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:jp%";;         label: "Japan"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:za%";;         label: "South Africa"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:ar%";;         label: "Argentina"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:es%";;         label: "Spain"}
       when: {sql:  ${tags} LIKE "%parameter:ct:dk%";;         label: "Denmark"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:es%";;         label: "Spain"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:fi%";;         label: "Finland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:fr%";;         label: "France"}
       when: {sql:  ${tags} LIKE "%parameter:ct:hu%";;         label: "Hungary"}
       when: {sql:  ${tags} LIKE "%parameter:ct:ie%";;         label: "Ireland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ie%";;         label: "Ireland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:in%";;         label: "India"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ir%";;         label: "Ireland"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:it%";;         label: "Italy"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:jp%";;         label: "Japan"}
       when: {sql:  ${tags} LIKE "%parameter:ct:me%";;         label: "Montenegro"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:mx%";;         label: "Mexico"}
       when: {sql:  ${tags} LIKE "%parameter:ct:my%";;         label: "Malaysia"}
       when: {sql:  ${tags} LIKE "%parameter:ct:nl%";;         label: "Netherlands"}
       when: {sql:  ${tags} LIKE "%parameter:ct:no%";;         label: "Norway"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:nz%";;         label: "New Zealand"}
       when: {sql:  ${tags} LIKE "%parameter:ct:ph%";;         label: "Phillipines"}
       when: {sql:  ${tags} LIKE "%parameter:ct:pl%";;         label: "Poland"}
       when: {sql:  ${tags} LIKE "%parameter:ct:pr%";;         label: "Puerto Rico"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:pt%";;         label: "Portugal"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:ro%";;         label: "Romania"}
       when: {sql:  ${tags} LIKE "%parameter:ct:se%";;         label: "Sweden"}
       when: {sql:  ${tags} LIKE "%parameter:ct:sg%";;         label: "Singapore"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:sp%";;         label: "Spain"}
       when: {sql:  ${tags} LIKE "%parameter:ct:tr%";;         label: "Turkey"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:ie%";;         label: "Ireland"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:aa%";;         label: "Aruba"}
-      when: {sql:  ${tags} LIKE "%parameter:ct:uk%" OR ${tags} LIKE "%parameter:ct:gb%";;         label: "UK"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:uk%";;         label: "UK"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:us%";;         label: "US"}
+      when: {sql:  ${tags} LIKE "%parameter:ct:za%";;         label: "South Africa"}
       else: "Other"
     }
   }
