@@ -811,4 +811,38 @@ dimension: routing_queue_nlok {
       chat_id
     ]
   }
+  parameter: date_granularity_picker {
+    label: "Date Granularity"
+    type: unquoted
+    allowed_value: {
+      label: "Day"
+      value: "__day__"
+    }
+    allowed_value: {
+      label: "Week"
+      value: "__week__"
+    }
+    allowed_value: {
+      label: "Month"
+      value: "__month__"
+    }
+    allowed_value: {
+      label: "Quarter"
+      value: "__quarter__"
+    }
+    default_value: "__day__"
+  }
+
+  dimension: date_granularity {
+    sql:
+      {% if date_granularity_picker._parameter_value == '__day__' %}
+        ${created_date}
+      {% elsif date_granularity_picker._parameter_value == '__week__' %}
+        ${created_week}
+      {% elsif date_granularity_picker._parameter_value == '__month__' %}
+        ${created_month}
+      {% elsif date_granularity_picker._parameter_value == '__quarter__' %}
+        ${created_quarter}
+      {% endif%} ;;
+  }
 }
