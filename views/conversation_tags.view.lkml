@@ -31,6 +31,23 @@ view: conversation_tags {
     type: string
     sql: ${TABLE}.tags ;;
   }
+
+  dimension: dap {
+    type: string
+    sql: ${TABLE}.dap ;;
+  }
+
+  dimension: wait_time {
+    type: string
+    sql: ${TABLE}.wait_time ;;
+  }
+
+  dimension: entry_missing {
+    label: "Custom Params Missing?"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:entry_missing:true%" ;;
+  }
+
   measure: count_conversation {
     label: "Conversation Count"
     type: count_distinct
