@@ -38,7 +38,7 @@ view: conversation_tags {
   }
 
   dimension: wait_time {
-    type: string
+    type: number
     sql: ${tags} LIKE "%parameter:wait_time:%";;
   }
 
