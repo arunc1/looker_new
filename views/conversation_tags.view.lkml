@@ -34,12 +34,12 @@ view: conversation_tags {
 
   dimension: dap {
     type: string
-    sql: ${TABLE}.dap ;;
+    sql: ${tags} LIKE "%parameter:dap:%" ;;
   }
 
   dimension: wait_time {
     type: string
-    sql: ${TABLE}.wait_time ;;
+    sql: ${tags} LIKE "%parameter:wait_time:%";;
   }
 
   dimension: entry_missing {
