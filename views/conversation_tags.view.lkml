@@ -42,6 +42,29 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:wait_time:%";;
   }
 
+  dimension: wait_group {
+    label: "Wait Time"
+    type: string
+    case: {
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group1%";;       label: "00-05" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group2%";;       label: "05-10" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group3%";;       label: "10-20" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group4%";;       label: "20-30" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group5%";;       label: "30+" }
+  }
+  }
+
+
+  dimension: wait_time_choice {
+    label: "Wait Msg Response"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:wait_time_choice:wait%" ;;        label: "Wait"      }
+      when: {        sql:  ${tags} LIKE "%parameter:wait_time_choice:leave%" ;;       label: "Leave"      }
+      else: "Other"
+    }
+  }
+
   dimension: entry_missing {
     label: "Custom Params Missing?"
     type: yesno
