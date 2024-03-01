@@ -43,14 +43,14 @@ view: conversation_tags {
   }
 
   dimension: wait_group {
-    label: "Wait Time"
+    label: "Wait Time Group"
     type: string
     case: {
-      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group1%";;       label: "00-05" }
-      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group2%";;       label: "05-10" }
-      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group3%";;       label: "10-20" }
-      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group4%";;       label: "20-30" }
-      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group5%";;       label: "30+" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group1%";;       label: "Group 1: 0-5 Mins" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group2%";;       label: "Group 2: 5-10 Mins" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group3%";;       label: "Group 3: 10-20 Mins" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group4%";;       label: "Group 4: 20-30 Mins" }
+      when: { sql: ${tags} LIKE "%parameter:wait_message_group:group5%";;       label: "Group 5: 30+ Mins" }
   }
   }
 
