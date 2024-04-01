@@ -42,6 +42,11 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:wait_time:%";;
   }
 
+  dimension: DNIS {
+    type: string
+    sql: ${tags} LIKE "%parameter:DNIS%";;
+  }
+
   dimension: wait_group {
     label: "Wait Time Group"
     type: string
@@ -99,8 +104,8 @@ view: conversation_tags {
     label: "Sales IVR selection"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:sales_dtmf:dtmf_digits_1%" ;;        label: "Sales"      }
-      when: {        sql:  ${tags} LIKE "%parameter:sales_dtmf:dtmf_digits_2%" ;;        label: "Support"      }
+      when: {        sql:  ${tags} LIKE "%parameter:sales_dtmf:dtmf_digits_1%" ;;        label: "Sales"     }
+      when: {        sql:  ${tags} LIKE "%parameter:sales_dtmf:dtmf_digits_2%" ;;        label: "Support"   }
       when: {        sql:  ${tags} LIKE "%parameter:sales_dtmf:dtmf_digits_3%" ;;        label: "Spam"      }
       else: "Other"
     }
