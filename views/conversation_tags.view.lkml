@@ -374,13 +374,14 @@ view: conversation_tags {
     label: "Contact Type"
     type: string
     case: {
-      when: {   sql:  ${tags} LIKE "%parameter:chattype:%chatbot%";;             label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:chattype:%agent%";;               label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:%chatbot%";;            label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:%agent%";;              label: "Direct to Agent Chat"      }
       when: {   sql:  ${tags} LIKE "%parameter:fromIVR:true%";;                 label: "Automation Eligible"       }
       when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%";;                label: "Automation Eligible"       }
       when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;             label: "Sales Call Flow"           }
       when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;        label: "Basic Call Flow"           }
       when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;        label: "Direct to Agent Call"      }
       else: "Other"
     }
   }
@@ -631,7 +632,7 @@ view: conversation_tags {
       ## IVR Voice Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;         label: "IVR Basic Call Flow"}
       when: {sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;              label: "IVR Sales Flow"}
-
+      when: {sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;         label: "IVR Direct to Agent Call" }
       else: "Unknown Entry"
     }
   }
