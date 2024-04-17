@@ -76,6 +76,7 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:entry_missing:true%" ;;
   }
 
+
   measure: count_conversation {
     label: "Conversation Count"
     type: count_distinct
@@ -140,6 +141,15 @@ view: conversation_tags {
     }
   }
 
+  dimension: auth_status {
+    label: "Auth Status"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:auth_status:success%";;     label: "Auth Successful"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
 
 
 ##dimensions - call resolution status(parameters)
