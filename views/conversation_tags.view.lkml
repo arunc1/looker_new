@@ -146,6 +146,9 @@ view: conversation_tags {
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:auth_status:success%";;     label: "Auth Successful"}
+      when: {sql:  ${tags} LIKE "%parameter:lookup_status:success%";;     label: "Lookup Successful"}
+      when: {sql:  ${tags} LIKE "%parameter:lookup_performed:true%";;     label: "Lookup Performed"}
+
       # possibly more when statements
       else: "Other"
     }
