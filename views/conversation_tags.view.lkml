@@ -880,7 +880,8 @@ dimension: routing_queue_nlok {
   set: detail {
     fields: [
       session_id,
-      chat_id
+      chat_id,
+      call_id_test
     ]
   }
   parameter: date_granularity_picker {
