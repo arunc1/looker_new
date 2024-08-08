@@ -630,6 +630,7 @@ view: conversation_tags {
       ## Other Chat Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:empower_dash_norton%";;     label: "Empower"}
       when: {sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;  label: "APP Contactus Lifelock"}
+      when: {sql:  ${tags} LIKE "%parameter:entry:app_avastipm_home%";;       label: "APP IPM Avast"}
       ## IVA Voice Origin Entry Parameters
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_priority%";; label: "IVA Norton Priority"}
       when: {sql:  ${tags} LIKE "%parameter:entry:welcome_norton_tech%";;     label: "IVA Norton Tech"}
