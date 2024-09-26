@@ -59,6 +59,33 @@ view: conversation_tags {
   }
   }
 
+  dimension: gcc_presented {
+    label: "Call companion presented"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:call_companion_presented:true%" ;;
+  }
+
+  dimension: gcc_accepted {
+    label: "Call companion accepted"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:true%" ;;        label: "Accepted"      }
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:false%" ;;       label: "Rejected"      }
+      else: "Other"
+    }
+  }
+
+  dimension: gcc_rejection_reason {
+    label: "Call companion rejection reason"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:user_choice%" ;;        label: "User choice"      }
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_match%" ;;       label: "No match"}
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_input%" ;;       label: "No input"}
+      else: "Other"
+    }
+  }
+
 
   dimension: wait_time_choice {
     label: "Wait Msg Response"
