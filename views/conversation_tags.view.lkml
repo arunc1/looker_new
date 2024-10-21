@@ -69,8 +69,8 @@ view: conversation_tags {
     label: "Call companion accepted"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:true%" ;;        label: "Accepted"      }
-      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:false%" ;;       label: "Rejected"      }
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:true%" ;;        label: "Accepted"}
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_accepted:false%" ;;       label: "Rejected"}
       else: "Other"
     }
   }
@@ -79,13 +79,32 @@ view: conversation_tags {
     label: "Call companion rejection reason"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:user_choice%" ;;        label: "User choice"      }
-      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_match%" ;;       label: "No match"}
-      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_input%" ;;       label: "No input"}
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:user_choice%" ;;    label: "User choice"}
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_match%" ;;       label: "No match"   }
+      when: {        sql:  ${tags} LIKE "%parameter:call_companion_rejection_reason:no_input%" ;;       label: "No input"   }
       else: "Other"
     }
   }
 
+  dimension: response_type{
+    label: "Response Type"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:responsetype:datastore%" ;;           label: "DataStore GenAI"  }
+      when: {        sql:  ${tags} LIKE "%parameter:responsetype:nomatch%" ;;             label: "No Match Response"}
+      else: "Other"
+    }
+  }
+
+  dimension: gen_ai_feedback{
+    label: "Customer Feedback(Gen AI)"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:feedback:positive%" ;;                label: "Positive"}
+      when: {        sql:  ${tags} LIKE "%parameter:feedback:negative%" ;;                label: "Negative"}
+      else: "Other"
+    }
+  }
 
   dimension: wait_time_choice {
     label: "Wait Msg Response"
