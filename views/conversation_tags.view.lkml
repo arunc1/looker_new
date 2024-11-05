@@ -51,26 +51,26 @@ view: conversation_tags {
     label: "DF Agent"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVAV_DIRECTAGENT}";; label:"Chat Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_CONTACTUS}";;    label:"Chat AVG Help Center Contact Us"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_GENAI_NOESC}";;  label:"Chat AVG Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_CONTACTUS}";;   label:"Chat Avast Help Center Contact Us"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_GENAI_NOESC}";; label:"Chat Avast Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_CONTACTUS}";;   label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_GENAI_NOESC}";; label:"Chat LifeLock Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_DIRECTAGENT}";; label:"Chat NLOK Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_JAPANESE}";;    label:"Chat NLOK Japanese"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_LOGINPAGE}";;   label:"Chat NLOK NSL"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_CONTACTUS}";;   label:"Chat Norton Help Center Contact Us / norton.com"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_GENAI_NOESC}";; label:"Chat Norton Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_AUTOMATION}";;  label:"Voice Avast/AVG Basic Call Flow / Automation"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_BUSINESS}";;    label:"Voice Avast/AVG Business"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_DIRECTAGENT}";; label:"Voice Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_PREMIUM}";;     label:"Voice Avast/AVG Premium"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_AUTOMATION}";;  label:"Voice NLOK Sales / Basic Call Flow / Automation"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_MLTILNG}";; label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_NONEN}";;   label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_DIRECTNDBE}";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVAV_DIRECTAGENT%";; label:"Chat Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_CONTACTUS%";;    label:"Chat AVG Help Center Contact Us"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_GENAI_NOESC%";;  label:"Chat AVG Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_CONTACTUS%";;   label:"Chat Avast Help Center Contact Us"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_GENAI_NOESC%";; label:"Chat Avast Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_CONTACTUS%";;   label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_GENAI_NOESC%";; label:"Chat LifeLock Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_DIRECTAGENT%";; label:"Chat NLOK Direct to Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_JAPANESE%";;    label:"Chat NLOK Japanese"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_LOGINPAGE%";;   label:"Chat NLOK NSL"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_CONTACTUS%";;   label:"Chat Norton Help Center Contact Us / norton.com"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_GENAI_NOESC%";; label:"Chat Norton Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_AUTOMATION%";;  label:"Voice Avast/AVG Basic Call Flow / Automation"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_BUSINESS%";;    label:"Voice Avast/AVG Business"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_DIRECTAGENT%";; label:"Voice Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_PREMIUM%";;     label:"Voice Avast/AVG Premium"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_AUTOMATION%";;  label:"Voice NLOK Sales / Basic Call Flow / Automation"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_MLTILNG%";; label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_NONEN%";;   label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_DIRECTNDBE%";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
       else: "Other"
     }
   }
@@ -666,16 +666,16 @@ view: conversation_tags {
     label: "Cancel Refund Reason"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:high_price";;               label: "Price too High"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:no_longer_needed";;         label: "No Longer needed"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:ar_questions";;             label: "AR Questions"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_product";;        label: "Product Complaint"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:switch_competitor";;        label: "Switch to Competitor"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:wrong_product";;            label: "Wrong Product"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_support";;        label: "Support Complaint"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:deceased customer";;        label: "Deceased customer"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product_errors";;           label: "Technical Issues"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:multiple_purchase";;        label: "Multiple Purchases"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:high_price%";;               label: "Price too High"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:no_longer_needed%";;         label: "No Longer needed"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:ar_questions%";;             label: "AR Questions"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_product%";;        label: "Product Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:switch_competitor%";;        label: "Switch to Competitor"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:wrong_product%";;            label: "Wrong Product"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_support%";;        label: "Support Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:deceased customer%";;        label: "Deceased customer"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product_errors%";;           label: "Technical Issues"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:multiple_purchase%";;        label: "Multiple Purchases"}
         else: "Other"
     }
   }
