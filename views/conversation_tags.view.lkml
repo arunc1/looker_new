@@ -676,7 +676,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:deceased customer%";;        label: "Deceased customer"}
       when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product_errors%";;           label: "Technical Issues"}
       when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:multiple_purchase%";;        label: "Multiple Purchases"}
-        else: "Other"
+      else: "Other"
     }
   }
 
