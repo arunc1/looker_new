@@ -21,9 +21,9 @@ view: conversation_tags {
   }
 
   dimension: chat_id {
-    label: "Chat ID"
-    type: string
-    sql: ${TABLE}.chat_id ;;
+   label: "Chat ID"
+   type: string
+  sql: ${TABLE}.session_id ;;
   }
 
 
