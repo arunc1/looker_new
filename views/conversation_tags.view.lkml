@@ -114,6 +114,77 @@ view: conversation_tags {
     }
   }
 
+  dimension: vra_partial_refund {
+    label: "Retention: Partial Refund"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:can_partial_refund:true%" ;;            label: "Eligible"}
+      when: {        sql:  ${tags} LIKE "%parameter:can_partial_refund:false%" ;;           label: "Ineligible"}
+      else: "Other"
+    }
+  }
+
+
+  dimension: vra_full_refund {
+    label: "Retention: Full Refund"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:can_full_refund:true%" ;;               label: "Eligible"}
+      when: {        sql:  ${tags} LIKE "%parameter:can_full_refund:false%" ;;              label: "Ineligible"}
+      else: "Other"
+    }
+  }
+
+  dimension: vra_discount {
+    label: "Retention: Discount"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:can_discount:true%" ;;                  label: "Eligible"}
+      when: {        sql:  ${tags} LIKE "%parameter:can_discount:false%" ;;                 label: "Ineligible"}
+      else: "Other"
+    }
+  }
+
+  dimension: vra_change_cycle {
+    label: "Retention: Change Cycle"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:can_change_cycle:true%" ;;              label: "Eligible"}
+      when: {        sql:  ${tags} LIKE "%parameter:can_change_cycle:false%" ;;             label: "Ineligible"}
+      else: "Other"
+    }
+  }
+
+  dimension: vra_ar_off {
+    label: "Retention: Turn off AR"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:can_ar_off:true%" ;;                    label: "Eligible"}
+      when: {        sql:  ${tags} LIKE "%parameter:can_ar_off:false%" ;;                   label: "Ineligible"}
+      else: "Other"
+    }
+  }
+
+  dimension: vra_retained {
+    label: "Retention: Retained"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:vra_retained:true%" ;;                  label: "Retained"}
+      when: {        sql:  ${tags} LIKE "%parameter:vra_retained:false%" ;;                 label: "Not Retained"}
+      else: "Other"
+    }
+  }
+
+  dimension: vra_order_confirmed {
+    label: "Retention: Order Confirmation"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:true%" ;;                  label: "Order confirmed"}
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:false%" ;;                 label: "Order not confirmed"}
+      else: "Other"
+    }
+  }
+
   dimension: response_type{
     label: "Response Type"
     type: string
