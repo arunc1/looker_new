@@ -639,10 +639,10 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:account_duplicate%";;                                    label: "Account Duplicate"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:account_info%";;                                         label: "Account Information"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:account_setup%";;                                        label: "Account Setup"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:activation%";;                                           label: "Activation"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:activation_issue%";;                                     label: "Activation Issue"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts%";;                                               label: "Alerts"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:activation%";;                                           label: "Activation"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:alerts_l2%";;                                            label: "Alerts L2"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts%";;                                               label: "Alerts"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_issue%";;                                        label: "Billing Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_question%";;                                     label: "Billing Question"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:billing_charge%";;                                       label: "Billing Question - Charge"}
@@ -652,10 +652,10 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:license_buy%";;                                          label: "Buy"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:callback%";;                                             label: "Call Return"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:case_number%";;                                          label: "Case"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup%";;                                          label: "Cloud Backup"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_issue%";;                                    label: "Cloud Backup Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_restore%";;                                  label: "Cloud Backup Restore"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_setup%";;                                    label: "Cloud Backup Setup"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup%";;                                          label: "Cloud Backup"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:norton_security%";;                                      label: "Device Protection"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:nortonsecurity_issue%";;                                 label: "Device Protection Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:download_issue%";;                                       label: "Download Issue"}
@@ -674,14 +674,14 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:public_record%";;                                        label: "ITPS - Public Record"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:sex_offender%";;                                         label: "ITPS - Sex Offender"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:utility_account%";;                                      label: "ITPS - Utility Account"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:License_issue%";;                                        label: "License issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:license_issue%";;                                        label: "License issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:live_agent%";;                                           label: "Live Agent"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:tech_agent%";;                                           label: "Live Agent - Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate_issue%";;                                     label: "Live Update Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate%";;                                           label: "Live Update"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate_issues%";;                                    label: "Live Update Issue"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw%";;                                                  label: "Login Issue - Online Account"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_2FA%";;                                              label: "Login Issue - 2FA"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_pwm%";;                                              label: "Login Issue - PWM"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw%";;                                                  label: "Login Issue - Online Account"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_find%";;                                      label: "Product Key - Find"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_issue%";;                                     label: "Product Key - Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey%";;                                           label: "Product Key"}
@@ -698,7 +698,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_email%";;                                         label: "Update email"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:update_phone%";;                                         label: "Update phone"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:upgrade%";;                                              label: "Upgrade"}
-      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn_issues%";;                                           label: "VPN Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn_issue%";;                                            label: "VPN Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:vpn%";;                                                  label: "VPN"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:lostwallet%";;                                           label: "Lost Wallet"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:virus removal%";;                                        label: "Virus"}
@@ -723,6 +723,9 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:install_status%";;                                       label: "Install Status"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:something_else%";;                                       label: "Something Else"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:dl_install_help%";;                                      label: "Download - Install Help"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:transfer_license%";;                                     label: "Transfer License"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:full_disk%";;                                            label: "Disk Space Full"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:credit_limit%";;                                         label: "Credit Limit"}
       else: "Other"
     }
   }
