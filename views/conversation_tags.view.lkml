@@ -658,6 +658,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup%";;                                          label: "Cloud Backup"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:norton_security%";;                                      label: "Device Protection"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:nortonsecurity_issue%";;                                 label: "Device Protection Issue"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_invoice%";;                                 label: "Invoice Download"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:download_issue%";;                                       label: "Download Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:download%";;                                             label: "Download"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:identity_protection%";;                                  label: "Identity Protection"}
@@ -685,6 +686,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_find%";;                                      label: "Product Key - Find"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_issue%";;                                     label: "Product Key - Issue"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:productkey%";;                                           label: "Product Key"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:refund_status%";;                                        label: "Refund Status"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:refund%";;                                               label: "Refund"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:reinstall%";;                                            label: "Reinstall"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:renewal%";;                                              label: "Renewal"}
@@ -726,6 +728,14 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:use_case:transfer_license%";;                                     label: "Transfer License"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:full_disk%";;                                            label: "Disk Space Full"}
       when: {sql:  ${tags} LIKE "%parameter:use_case:credit_limit%";;                                         label: "Credit Limit"}
+
+      when: {sql:  ${tags} LIKE "%parameter:use_case:acct_locked%";;                                          label: "Login Issue - Account Locked"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_downgrade%";;                               label: "Subscription Downgrade"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_expired%";;                                 label: "Subscription Expired"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:wrongful_cancelation%";;                                 label: "Wrongful Cancelation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:false_detection%";;                                      label: "False Detection"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:malware_sample%";;                                       label: "Malware Sample"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:device_threat%";;                                        label: "Device Threat"}
       else: "Other"
     }
   }
