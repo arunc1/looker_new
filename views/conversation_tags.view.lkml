@@ -185,6 +185,18 @@ view: conversation_tags {
     }
   }
 
+  dimension: vra_tphase {
+    label: "Retention: T Phase"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T+120%" ;;                   label: "Post Renewal T+120"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T+60%" ;;                    label: "Post Renewal T+60"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T-185%" ;;                   label: "Pre Renewal T-185"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T-65%" ;;                    label: "Pre Renewal T-35"}
+      else: "Other"
+    }
+  }
+
   dimension: response_type{
     label: "Response Type"
     type: string
