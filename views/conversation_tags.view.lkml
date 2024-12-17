@@ -752,6 +752,113 @@ view: conversation_tags {
     }
   }
 
+  dimension: intent_category{
+    label: "Intent Category"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_duplicate%";;                                    label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_info%";;                                         label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:account_setup%";;                                        label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_2FA%";;                                              label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw_pwm%";;                                              label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:rpw%";;                                                  label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_info%";;                                    label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:manage_subscription%";;                                  label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_account%";;                                       label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_address%";;                                       label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_billing%";;                                       label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_email%";;                                         label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:update_phone%";;                                         label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:add_member%";;                                           label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_validate%";;                                label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:acct_info%";;                                            label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:acct_locked%";;                                          label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_downgrade%";;                               label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_expired%";;                                 label:  "Account"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_issue%";;                                        label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_question%";;                                     label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_charge%";;                                       label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_date%";;                                         label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_fop%";;                                          label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:billing_confirmpayment%";;                               label:  "Billing"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:activation_issue%";;                                     label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:activation%";;                                           label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_invoice%";;                                 label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:download_issue%";;                                       label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:download%";;                                             label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:install_setup%";;                                        label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:license_issue%";;                                        label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_find%";;                                      label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey_issue%";;                                     label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:productkey%";;                                           label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:reinstall%";;                                            label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:installation_issue%";;                                   label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_find_installer%";;                                    label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_not_started%";;                                       label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_stuck%";;                                             label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:install_status%";;                                       label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dl_install_help%";;                                      label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:transfer_license%";;                                     label:  "DL, Install & Activation"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts_l2%";;                                            label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:alerts%";;                                               label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:identity_protection%";;                                  label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:identity_theft%";;                                       label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:collections%";;                                          label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:court_records%";;                                        label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:credit_score%";;                                         label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:dark_web%";;                                             label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:data_breach%";;                                          label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:financialmonitoring_error%";;                            label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:home_title%";;                                           label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:payday_loan%";;                                          label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:public_record%";;                                        label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:sex_offender%";;                                         label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:utility_account%";;                                      label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:lostwallet%";;                                           label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:credit_limit%";;                                         label:  "ITPS"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:live_agent%";;                                           label:  "Live Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:tech_agent%";;                                           label:  "Live Agent"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:license_buy%";;                                          label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:callback%";;                                             label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:case_number%";;                                          label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:spam%";;                                                 label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:upgrade%";;                                              label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:genie%";;                                                label:  "Misc"}
+    # when: {sql:  ${tags} LIKE "%parameter:use_case:tbd%";;                                                  label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:something_else%";;                                       label:  "Misc"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_uhd%";;                                           label:  "Premium Services"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:redeem_tuneup%";;                                        label:  "Premium Services"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:refund%";;                                               label:  "Renewal, Cancel & Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:refund_status%";;                                        label:  "Renewal, Cancel & Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:renewal%";;                                              label:  "Renewal, Cancel & Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:subscription_cancel%";;                                  label:  "Renewal, Cancel & Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:wrongful_cancelation%";;                                 label:  "Renewal, Cancel & Refund"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_issue%";;                                    label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_restore%";;                                  label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup_setup%";;                                    label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:cloudbackup%";;                                          label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:norton_security%";;                                      label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:nortonsecurity_issue%";;                                 label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate_issue%";;                                     label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:liveupdate%";;                                           label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn_issue%";;                                            label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:vpn%";;                                                  label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:virus removal%";;                                        label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:virus_removal%";;                                        label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:slow_computer%";;                                        label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:browser_errors%";;                                       label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:full_disk%";;                                            label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:software_updater%";;                                     label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:language_display%";;                                     label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:threat%";;                                               label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:full_disk%";;                                            label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:false_detection%";;                                      label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:malware_sample%";;                                       label:  "Technical"}
+      when: {sql:  ${tags} LIKE "%parameter:use_case:device_threat%";;                                        label:  "Technical"}
+      else: "Other"
+    }
+  }
+
   dimension: cxl_rfd_reason_collected {
     label: "Cancel Refund reason collected?"
     type: yesno
