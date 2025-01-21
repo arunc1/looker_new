@@ -37,6 +37,12 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:dap:%" ;;
   }
 
+  dimension: ingress {
+    label: "Ingress"
+    type: string
+    sql: ${tags} LIKE "%parameter:Ingress:%" ;;
+  }
+
   dimension: wait_time {
     type: number
     sql: ${tags} LIKE "%parameter:wait_time:%";;
