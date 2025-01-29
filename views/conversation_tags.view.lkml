@@ -239,6 +239,12 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:entry_missing:true%" ;;
   }
 
+  dimension: india_case {
+    label: "india case"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:india_case:true%" ;;
+  }
+
 
   measure: count_conversation {
     label: "Conversation Count"
