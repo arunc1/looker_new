@@ -1189,7 +1189,7 @@ dimension: routing_queue_nlok {
   dimension: Purchase_Price {
     label: "Order Price"
     type: number
-    sql: cast(REGEXP_EXTRACT(${tags}, 'purchase_price([^|]+)') as INTEGER) ;;
+    sql: safe_cast(REGEXP_EXTRACT(${tags}, 'purchase_price([^|]+)') as INT64) ;;
     value_format: "$#.00"
   }
 
