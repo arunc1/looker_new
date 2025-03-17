@@ -1177,6 +1177,15 @@ dimension: routing_queue_nlok {
   }
 }
 
+# Retention Dimensions
+
+  dimension: order_id {
+    label: "Order ID"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'order_id:([^ ]+)') ;;
+  }
+
+
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
     type: string
