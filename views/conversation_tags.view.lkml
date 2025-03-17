@@ -1186,6 +1186,14 @@ dimension: routing_queue_nlok {
   }
 
 
+  dimension: Purchase_Price {
+    label: "Order Price"
+    type: number
+    sql: cast(REGEXP_EXTRACT(${tags}, 'purchase_price([^|]+)') as INTEGER) ;;
+    value_format: "$#.00"
+  }
+
+
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
     type: string
