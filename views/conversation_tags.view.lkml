@@ -1182,7 +1182,7 @@ dimension: routing_queue_nlok {
   dimension: order_id {
     label: "Order ID"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'order_id:([^ ]+)') ;;
+    sql: REGEXP_EXTRACT(${tags}, 'order_id:([^\|]+)') ;;
   }
 
 
