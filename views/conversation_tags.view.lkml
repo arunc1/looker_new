@@ -1194,6 +1194,18 @@ dimension: routing_queue_nlok {
   }
 
 
+  dimension: Retention_Status {
+    label: "Retention status"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:ret_status:cancel%";;                  label: "Cancelled"}
+      when: {sql:  ${tags} LIKE "%parameter:ret_status:retained%";;                  label: "Retained"}
+      else: "Other"
+    }
+  }
+
+
+
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
     type: string
