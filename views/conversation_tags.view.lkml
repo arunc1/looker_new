@@ -1179,6 +1179,13 @@ dimension: routing_queue_nlok {
 
 # Retention Dimensions
 
+  dimension: customer_retention_flow {
+    label: "Retention Flow"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:customer_retention_flow:true%";;
+  }
+
+
   dimension: order_id {
     label: "Order ID"
     type: string
