@@ -1211,7 +1211,11 @@ dimension: routing_queue_nlok {
     sql: ${tags} LIKE "%parameter:sub_info-is_itps:true%";;
   }
 
-
+  dimension: Product_Name {
+    label: "Product Name"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'sub_info-product_name:([^|]+)') ;;
+  }
 
 
   dimension: routing_queue_avast_avg {
