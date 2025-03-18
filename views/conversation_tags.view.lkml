@@ -1331,6 +1331,20 @@ dimension: routing_queue_nlok {
 
 
 
+  dimension: Refund_Amount {
+    label: "Refunded Amount:"
+    type: number
+    case: {
+      when: {sql:  ${offer_accepted1} ='Yes' then safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total1:([0-9.]+)') as FLOAT64);;}
+      when: {sql:  ${offer_accepted2} ='Yes' then safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total2:([0-9.]+)') as FLOAT64);;}
+      when: {sql:  ${offer_accepted3} ='Yes' then safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total3:([0-9.]+)') as FLOAT64);;}
+      when: {sql:  ${offer_accepted4} ='Yes' then safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total4:([0-9.]+)') as FLOAT64);;}
+      else:"0"
+      }
+    value_format: "$#.00"
+    }
+
+
 
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
