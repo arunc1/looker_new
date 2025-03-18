@@ -1274,6 +1274,32 @@ dimension: routing_queue_nlok {
     sql: REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)') ;;
   }
 
+########## Offer Presented ###############
+
+  dimension: offer_presented1 {
+    label: "Offer Presented 1"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-presented1:true%";;
+  }
+
+  dimension: offer_presented2 {
+    label: "Offer-Presented 2"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-presented2:true%";;
+  }
+
+  dimension: offer_presented3 {
+    label: "Offer-Presented 3"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-presented3:true%";;
+  }
+
+  dimension: offer_presented4 {
+    label: "Offer-Presented 4"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-presented4:true%";;
+  }
+
 
 
 
