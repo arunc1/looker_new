@@ -1244,6 +1244,36 @@ dimension: routing_queue_nlok {
   }
 
 
+########### Retention Offers ###########
+
+  dimension: offer1 {
+    label: "Offer - 1"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)') ;;
+  }
+
+
+  dimension: offer2 {
+    label: "Offer - 2"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)') ;;
+  }
+
+
+
+  dimension: offer3 {
+    label: "Offer - 3"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)') ;;
+  }
+
+
+  dimension: offer4 {
+    label: "Offer - 4"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)') ;;
+  }
+
 
 
 
