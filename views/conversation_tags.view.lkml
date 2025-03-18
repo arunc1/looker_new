@@ -1335,16 +1335,16 @@ dimension: routing_queue_nlok {
     label: "Refunded Amount:"
     type: number
     sql: CASE
-          WHEN ${offer_accepted1} = 'True'
+          WHEN ${offer_accepted1} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total1:([0-9.]+)') as FLOAT64)
 
-      WHEN ${offer_accepted2} = 'True'
+      WHEN ${offer_accepted2} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total2:([0-9.]+)') as FLOAT64)
 
-      WHEN ${offer_accepted3} = 'True'
+      WHEN ${offer_accepted3} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total3:([0-9.]+)') as FLOAT64)
 
-      WHEN ${offer_accepted4} = 'True'
+      WHEN ${offer_accepted4} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total4:([0-9.]+)') as FLOAT64)
 
       ELSE NULL
