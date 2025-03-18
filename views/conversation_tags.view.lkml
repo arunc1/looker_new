@@ -1205,6 +1205,14 @@ dimension: routing_queue_nlok {
   }
 
 
+  dimension: Is_Itps {
+    label: "Is Itps"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:sub_info-is_itps:true%";;
+  }
+
+
+
 
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
