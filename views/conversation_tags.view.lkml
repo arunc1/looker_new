@@ -205,10 +205,10 @@ view: conversation_tags {
     label: "Retention: T Phase"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t+120%" ;;                   label: "Post Renewal T+120"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t+60%" ;;                    label: "Post Renewal T+60"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t-185%" ;;                   label: "Pre Renewal T-185"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t-65%" ;;                    label: "Pre Renewal T-35"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t+120%" ;;                   label: "Post Renewal T+120"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t+60%" ;;                    label: "Post Renewal T+60"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-185%" ;;                   label: "Pre Renewal T-185"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-65%" ;;                    label: "Pre Renewal T-35"}
       else: "Other"
     }
   }
