@@ -1218,6 +1218,26 @@ dimension: routing_queue_nlok {
   }
 
 
+
+  dimension: Billing_Cycle {
+    label: "Billing Cycle"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:annual%";;                  label: "Annual"}
+      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:monthly%";;                  label: "Monthly"}
+      else: "Other"
+    }
+  }
+
+
+  dimension: matched_rule_code {
+    label: "Matched Rule Code"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'matched_rule_code:([^|]+)') ;;
+  }
+
+
+
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
     type: string
