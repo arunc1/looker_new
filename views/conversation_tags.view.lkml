@@ -1312,7 +1312,7 @@ dimension: routing_queue_nlok {
   dimension: offer_accepted2 {
     label: "Offer Accepted 2"
     type: yesno
-    sql: ${tags} LIKE "%parameter:offer-accepted3:true%";;
+    sql: ${tags} LIKE "%parameter:offer-accepted2:true%";;
   }
 
 
