@@ -1237,6 +1237,15 @@ dimension: routing_queue_nlok {
   }
 
 
+  dimension: renewal_count {
+    label: "Renewal Count"
+    type: number
+    sql: safe_cast(REGEXP_EXTRACT(${tags}, 'sub_info-renewal_count:(\d+)') as INTEGER) ;;
+  }
+
+
+
+
 
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
