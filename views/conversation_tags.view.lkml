@@ -1300,6 +1300,35 @@ dimension: routing_queue_nlok {
     sql: ${tags} LIKE "%parameter:offer-presented4:true%";;
   }
 
+########## Offer Accepted ###############
+
+  dimension: offer_accepted1 {
+    label: "Offer Accepted 1"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-accepted1:true%";;
+  }
+
+
+  dimension: offer_accepted2 {
+    label: "Offer Accepted 2"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-accepted3:true%";;
+  }
+
+
+  dimension: offer_accepted3 {
+    label: "Offer Accepted 3"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-accepted3:true%";;
+  }
+
+
+  dimension: offer_accepted4 {
+    label: "Offer Accepted 4"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:offer-accepted4:true%";;
+  }
+
 
 
 
