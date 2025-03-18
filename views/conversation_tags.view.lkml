@@ -27,6 +27,14 @@ view: conversation_tags {
   }
 
 
+  dimension: ChatID {
+    label: "ChatID"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'parameter:chat_id:([^|]+)') ;;
+  }
+
+
+
   dimension: tags {
     type: string
     sql: ${TABLE}.tags ;;
@@ -53,33 +61,35 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:DNIS%";;
   }
 
+
   dimension: df_agent{
     label: "DF Agent"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVAV_DIRECTAGENT%";; label:"Chat Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_CONTACTUS%";;    label:"Chat AVG Help Center Contact Us"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVG_GENAI_NOESC%";;  label:"Chat AVG Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_CONTACTUS%";;   label:"Chat Avast Help Center Contact Us"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_AVST_GENAI_NOESC%";; label:"Chat Avast Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_CONTACTUS%";;   label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_LFLK_GENAI_NOESC%";; label:"Chat LifeLock Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_DIRECTAGENT%";; label:"Chat NLOK Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_JAPANESE%";;    label:"Chat NLOK Japanese"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NLOK_LOGINPAGE%";;   label:"Chat NLOK NSL"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_CONTACTUS%";;   label:"Chat Norton Help Center Contact Us / norton.com"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:CHT_NRTN_GENAI_NOESC%";; label:"Chat Norton Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_AUTOMATION%";;  label:"Voice Avast/AVG Basic Call Flow / Automation"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_BUSINESS%";;    label:"Voice Avast/AVG Business"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_DIRECTAGENT%";; label:"Voice Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_AVAV_PREMIUM%";;     label:"Voice Avast/AVG Premium"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_AUTOMATION%";;  label:"Voice NLOK Sales / Basic Call Flow / Automation"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_MLTILNG%";; label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_BCF_NONEN%";;   label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} LIKE "%parameter:df_agent:VCE_NLOK_DIRECTNDBE%";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avav_directagent%";; label:"Chat Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_contactus%";;    label:"Chat AVG Help Center Contact Us"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_genai_noesc%";;  label:"Chat AVG Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_contactus%";;   label:"Chat Avast Help Center Contact Us"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_genai_noesc%";; label:"Chat Avast Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_contactus%";;   label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_genai_noesc%";; label:"Chat LifeLock Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_directagent%";; label:"Chat NLOK Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_japanese%";;    label:"Chat NLOK Japanese"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_loginpage%";;   label:"Chat NLOK NSL"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_contactus%";;   label:"Chat Norton Help Center Contact Us / norton.com"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_genai_noesc%";; label:"Chat Norton Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_automation%";;  label:"Voice Avast/AVG Basic Call Flow / Automation"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_business%";;    label:"Voice Avast/AVG Business"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_directagent%";; label:"Voice Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_premium%";;     label:"Voice Avast/AVG Premium"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_automation%";;  label:"Voice NLOK Sales / Basic Call Flow / Automation"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_mltilng%";; label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_nonen%";;   label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_directndbe%";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
       else: "Other"
     }
   }
+
 
   dimension: wait_group {
     label: "Wait Time Group"
@@ -195,10 +205,10 @@ view: conversation_tags {
     label: "Retention: T Phase"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T+120%" ;;                   label: "Post Renewal T+120"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T+60%" ;;                    label: "Post Renewal T+60"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T-185%" ;;                   label: "Pre Renewal T-185"}
-      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:T-65%" ;;                    label: "Pre Renewal T-35"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t+120%" ;;                   label: "Post Renewal T+120"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t+60%" ;;                    label: "Post Renewal T+60"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t-185%" ;;                   label: "Pre Renewal T-185"}
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info.t_phase:t-65%" ;;                    label: "Pre Renewal T-35"}
       else: "Other"
     }
   }
@@ -1342,7 +1352,7 @@ dimension: routing_queue_nlok {
     label: "Refunded Amount:"
     type: number
     sql: CASE
-          WHEN ${offer_accepted1} = TRUE
+      WHEN ${offer_accepted1} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total1:([0-9.]+)') as FLOAT64)
 
       WHEN ${offer_accepted2} = TRUE
