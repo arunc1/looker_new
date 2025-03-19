@@ -1386,6 +1386,52 @@ dimension: routing_queue_nlok {
     filters: [Retention_Status: "Retained"]
   }
 
+
+
+  measure: Offer_Presented_C {
+    label: "No.Offers Presented"
+    type: sum
+    sql: CASE
+     WHEN ${offer_presented1} = TRUE
+         THEN 1
+     WHEN ${offer_presented2} = TRUE
+         THEN 1
+     WHEN ${offer_presented3} = TRUE
+         THEN 1
+     WHEN ${offer_presented4} = TRUE
+         THEN 1
+    ELSE 0
+       END ;;
+  }
+
+  measure: Offer_Accepted_C {
+    label: "No.Offers Accepted"
+    type: sum
+    sql: CASE
+     WHEN ${offer_accepted1} = TRUE
+         THEN 1
+     WHEN ${offer_accepted2} = TRUE
+         THEN 1
+     WHEN ${offer_accepted3} = TRUE
+         THEN 1
+     WHEN ${offer_accepted4} = TRUE
+         THEN 1
+    ELSE 0
+       END ;;
+  }
+
+
+  measure: Amount_Refunded {
+    label: "Refund Amount"
+    type: sum
+    sql: ${Refund_Amount} ;;
+    value_format: "$#.00"
+  }
+
+  ##############################################################################################
+
+
+
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
     type: string
