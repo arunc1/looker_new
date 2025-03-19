@@ -1379,7 +1379,12 @@ dimension: routing_queue_nlok {
     value_format: "$#.00"
   }
 
-
+  measure: Count_Retained {
+    label: "Retained_Cnt"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [Retention_Status: "Retained"]
+  }
 
   dimension: routing_queue_avast_avg {
     label: "Routing Queue Avast AVG"
