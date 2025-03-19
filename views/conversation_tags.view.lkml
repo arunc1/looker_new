@@ -1374,7 +1374,7 @@ dimension: routing_queue_nlok {
 
   measure: Saved_Amount {
     label: "Saved Amount"
-    type: number
+    type: sum
     sql: ${Purchase_Price}-${Refund_Amount} ;;
     value_format: "$#.00"
   }
