@@ -1367,6 +1367,16 @@ dimension: routing_queue_nlok {
       ELSE NULL
 
       END ;;
+    value_format: "$#.00"
+  }
+
+############## Retention Measures #############
+
+  measure: Saved_Amount {
+    label: "Saved Amount"
+    type: number
+    sql: ${Purchase_Price}-${Refund_Amount} ;;
+    value_format: "$#.00"
   }
 
 
