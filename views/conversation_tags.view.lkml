@@ -1392,13 +1392,13 @@ dimension: routing_queue_nlok {
     label: "No.Offers Presented"
     type: sum
     sql: CASE
-     WHEN ${offer_presented1} = TRUE
-         THEN 1
-     WHEN ${offer_presented2} = TRUE
-         THEN 1
-     WHEN ${offer_presented3} = TRUE
-         THEN 1
      WHEN ${offer_presented4} = TRUE
+         THEN 4
+     WHEN ${offer_presented3} = TRUE
+         THEN 3
+     WHEN ${offer_presented2} = TRUE
+         THEN 2
+     WHEN ${offer_presented1} = TRUE
          THEN 1
     ELSE 0
        END ;;
