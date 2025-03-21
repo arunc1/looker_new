@@ -1196,6 +1196,13 @@ dimension: routing_queue_nlok {
   }
 
 
+  dimension: retention_info_collected {
+    label: "Ret_Info Collected"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:retention_info_collected:true%";;
+  }
+
+
   dimension: order_id {
     label: "Order ID"
     type: string
