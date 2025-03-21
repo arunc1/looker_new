@@ -1263,33 +1263,52 @@ dimension: routing_queue_nlok {
 
 ########### Retention Offers ###########
 
+
   dimension: offer1 {
     label: "Offer - 1"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)') ;;
+    sql: CONCAT(
+          REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)'),
+          '_',
+          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)')
+        ) ;;
   }
 
 
   dimension: offer2 {
     label: "Offer - 2"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)') ;;
+    sql: CONCAT(
+          REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)'),
+          '_',
+          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage2:([0-9.]+)')
+        ) ;;
   }
-
 
 
   dimension: offer3 {
     label: "Offer - 3"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)') ;;
+    sql: CONCAT(
+          REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)'),
+          '_',
+          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage3:([0-9.]+)')
+        ) ;;
   }
 
 
   dimension: offer4 {
     label: "Offer - 4"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)') ;;
+    sql: CONCAT(
+          REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)'),
+          '_',
+          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage4:([0-9.]+)')
+        ) ;;
   }
+
+
+
 
 ########## Offer Presented ###############
 
@@ -1364,7 +1383,7 @@ dimension: routing_queue_nlok {
       WHEN ${offer_accepted4} = TRUE
           THEN safe_cast(REGEXP_EXTRACT(${tags}, 'parameter:refund-total4:([0-9.]+)') as FLOAT64)
 
-      ELSE NULL
+      ELSE 0
 
       END ;;
     value_format: "$#.00"
