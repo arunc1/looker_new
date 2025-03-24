@@ -1454,6 +1454,23 @@ dimension: routing_queue_nlok {
     value_format: "$#.00"
   }
 
+
+  measure: Count_Ret_Eligible {
+    label: "Ret_Eligible"
+    type: count_distinct
+    sql: ${session_id} ;;
+    filters: [retention_info_collected: "Yes"]
+  }
+
+
+  measure: Retention_Percentage {
+    label: "Retention %"
+    type: number
+    sql:  ${Count_Retained} / ${Count_Ret_Eligible};;
+    value_format_name: percent_2
+  }
+
+
   ##############################################################################################
 
 
