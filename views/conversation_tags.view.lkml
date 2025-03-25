@@ -567,6 +567,7 @@ view: conversation_tags {
     label: "Contact Type"
     type: string
     case: {
+      when: {   sql:  ${tags} LIKE "%parameter:automation_eligible:true%";;     label: "Automation Eligible"       }
       when: {   sql:  ${tags} LIKE "%parameter:chattype:%chatbot%";;            label: "Automation Eligible"       }
       when: {   sql:  ${tags} LIKE "%parameter:chattype:%agent%";;              label: "Direct to Agent Chat"      }
       when: {   sql:  ${tags} LIKE "%parameter:fromIVR:true%";;                 label: "Automation Eligible"       }
@@ -578,6 +579,7 @@ view: conversation_tags {
       else: "Other"
     }
   }
+
 
   measure: calls_sent_to_automation {
     label: "Calls Sent to Automation"
