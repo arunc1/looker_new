@@ -1276,12 +1276,17 @@ dimension: routing_queue_nlok {
   dimension: offer1 {
     label: "Offer - 1"
     type: string
-    sql: CONCAT(
-          REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)'),
-          '_',
-          COALESCE (REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)')," ")
-        ) ;;
+    sql: CASE
+         WHEN REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)') IS NOT NULL
+         THEN CONCAT(
+           REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)'),
+           '_',
+           REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)')
+         )
+         ELSE REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)')
+       END ;;
   }
+
 
 
   dimension: offer2 {
