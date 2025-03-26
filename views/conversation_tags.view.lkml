@@ -1279,7 +1279,7 @@ dimension: routing_queue_nlok {
     sql: CONCAT(
           REGEXP_EXTRACT(${tags}, 'offer1:([^|]+)'),
           '_',
-          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)')
+          COALESCE (REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage1:([0-9.]+)')," ")
         ) ;;
   }
 
