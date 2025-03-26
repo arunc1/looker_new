@@ -1288,40 +1288,50 @@ dimension: routing_queue_nlok {
   }
 
 
-
   dimension: offer2 {
     label: "Offer - 2"
     type: string
-    sql: CONCAT(
-          REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)'),
-          '_',
-          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage2:([0-9.]+)')
-        ) ;;
+    sql: CASE
+         WHEN REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage2:([0-9.]+)') IS NOT NULL
+         THEN CONCAT(
+           REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)'),
+           '_',
+           REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage2:([0-9.]+)')
+         )
+         ELSE REGEXP_EXTRACT(${tags}, 'offer2:([^|]+)')
+       END ;;
   }
+
 
 
   dimension: offer3 {
     label: "Offer - 3"
     type: string
-    sql: CONCAT(
-          REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)'),
-          '_',
-          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage3:([0-9.]+)')
-        ) ;;
+    sql: CASE
+         WHEN REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage3:([0-9.]+)') IS NOT NULL
+         THEN CONCAT(
+           REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)'),
+           '_',
+           REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage3:([0-9.]+)')
+         )
+         ELSE REGEXP_EXTRACT(${tags}, 'offer3:([^|]+)')
+       END ;;
   }
 
 
   dimension: offer4 {
     label: "Offer - 4"
     type: string
-    sql: CONCAT(
-          REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)'),
-          '_',
-          REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage4:([0-9.]+)')
-        ) ;;
+    sql: CASE
+         WHEN REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage4:([0-9.]+)') IS NOT NULL
+         THEN CONCAT(
+           REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)'),
+           '_',
+           REGEXP_EXTRACT(${tags}, 'parameter:refund-percentage4:([0-9.]+)')
+         )
+         ELSE REGEXP_EXTRACT(${tags}, 'offer4:([^|]+)')
+       END ;;
   }
-
-
 
 
 ########## Offer Presented ###############
