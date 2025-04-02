@@ -1216,7 +1216,7 @@ dimension: routing_queue_nlok {
     label: "Order Price"
     type: number
     sql: safe_cast(REGEXP_EXTRACT(${tags}, 'purchase_price:([0-9.]+)') as FLOAT64) ;;
-    value_format: "$#.00"
+    value_format: "#.00"
   }
 
 
@@ -1448,7 +1448,7 @@ dimension: routing_queue_nlok {
       ELSE 0
 
       END ;;
-    value_format: "$#.00"
+    value_format: "#.00"
   }
 
 ############## Retention Measures #############
@@ -1457,7 +1457,7 @@ dimension: routing_queue_nlok {
     label: "Saved Amount"
     type: sum
     sql: ${Purchase_Price}-${Refund_Amount} ;;
-    value_format: "$#.00"
+    value_format: "#.00"
   }
 
   measure: Count_Retained {
@@ -1506,7 +1506,7 @@ dimension: routing_queue_nlok {
     label: "Refund Amount"
     type: sum
     sql: ${Refund_Amount} ;;
-    value_format: "$#.00"
+    value_format: "#.00"
   }
 
 
