@@ -1269,6 +1269,44 @@ dimension: routing_queue_nlok {
     sql: safe_cast(REGEXP_EXTRACT(${tags}, 'sub_info-renewal_count:([0-9]+)') as INTEGER) ;;
   }
 
+  dimension: Currency_Code {
+    label: "Currency Code"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'sub_info-purchase_currency:([^|]+)') ;;
+  }
+
+
+  ########### Ineligible Reasons ###########
+
+  dimension: Ineligible_Reason1 {
+    label: "Ineligible Reason 1"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons1:([^|]+)') ;;
+  }
+
+
+
+  dimension: Ineligible_Reason2 {
+    label: "Ineligible Reason 2"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons2:([^|]+)') ;;
+  }
+
+
+
+  dimension: Ineligible_Reason3 {
+    label: "Ineligible Reason 3"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons3:([^|]+)') ;;
+  }
+
+
+  dimension: Ineligible_Reason4 {
+    label: "Ineligible Reason 4"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons4:([^|]+)') ;;
+  }
+
 
 ########### Retention Offers ###########
 
