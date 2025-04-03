@@ -195,9 +195,9 @@ view: conversation_tags {
     label: "Retention: Order Confirmation"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:true%" ;;                  label: "Order confirmed"}
-      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:false%" ;;                 label: "Order not confirmed"}
-      else: "Other"
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:true%" ;;                  label: "Yes"}
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:false%" ;;                 label: "No"}
+      else: "NA"
     }
   }
 
@@ -209,7 +209,8 @@ view: conversation_tags {
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t+60%" ;;                    label: "Post Renewal T+60"}
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-185%" ;;                   label: "Pre Renewal T-185"}
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-65%" ;;                    label: "Pre Renewal T-35"}
-      else: "Other"
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:other%" ;;                   label: "Other"}
+      else: "NA"
     }
   }
 
