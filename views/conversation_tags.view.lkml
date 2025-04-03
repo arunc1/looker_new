@@ -195,9 +195,9 @@ view: conversation_tags {
     label: "Retention: Order Confirmation"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:true%" ;;                  label: "Order confirmed"}
-      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:false%" ;;                 label: "Order not confirmed"}
-      else: "Other"
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:true%" ;;                  label: "Yes"}
+      when: {        sql:  ${tags} LIKE "%parameter:order_preselection_confirmed:false%" ;;                 label: "No"}
+      else: "NA"
     }
   }
 
@@ -209,7 +209,8 @@ view: conversation_tags {
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t+60%" ;;                    label: "Post Renewal T+60"}
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-185%" ;;                   label: "Pre Renewal T-185"}
       when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:t-65%" ;;                    label: "Pre Renewal T-35"}
-      else: "Other"
+      when: {        sql:  ${tags} LIKE "%parameter:sub_info-t_phase:other%" ;;                   label: "Other"}
+      else: "NA"
     }
   }
 
@@ -1286,7 +1287,7 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason1 {
     label: "Ineligible Reason 1"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons1:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons1:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
@@ -1294,7 +1295,7 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason2 {
     label: "Ineligible Reason 2"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons2:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons2:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
@@ -1302,16 +1303,15 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason3 {
     label: "Ineligible Reason 3"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons3:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons3:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
   dimension: Ineligible_Reason4 {
     label: "Ineligible Reason 4"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons4:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons4:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
-
 
 ########### Retention Offers ###########
 
