@@ -1282,7 +1282,7 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason1 {
     label: "Ineligible Reason 1"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons1:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons1:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
@@ -1290,7 +1290,7 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason2 {
     label: "Ineligible Reason 2"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons2:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons2:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
@@ -1298,16 +1298,15 @@ dimension: routing_queue_nlok {
   dimension: Ineligible_Reason3 {
     label: "Ineligible Reason 3"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons3:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons3:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
 
 
   dimension: Ineligible_Reason4 {
     label: "Ineligible Reason 4"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'ineligible_reasons4:([^|]+)') ;;
+    sql: NULLIF(REGEXP_REPLACE(REGEXP_EXTRACT(${tags}, 'ineligible_reasons4:([^|]+)'), '\\[|\\]', ''), '') ;;
   }
-
 
 ########### Retention Offers ###########
 
