@@ -1456,6 +1456,24 @@ dimension: routing_queue_nlok {
     value_format: "#.00"
   }
 
+############## Retention Eligibility ##########
+
+dimension: retention_offer_eligible {
+  label: "VRA Offer Eligbility"
+  type: string
+  sql:if(${conversation_tags.vra_order_confirmed} = "No" OR ${conversation_tags.vra_order_confirmed} = "NA","Ineligible - Order Confirmation",
+      if(${conversation_tags.offer1}="no-rule-matched","Ineligible - Matrix Exception",
+      if(${conversation_tags.offer1}="failed","Ineligible - Failure",
+      if(${conversation_tags.offer1}="escalate","Ineligible - Matrix Escalation",
+      if((${conversation_tags.offer_presented1} = yes) OR (${conversation_tags.offer_presented2} = yes) OR (${conversation_tags.offer_presented3} = yes) OR (${conversation_tags.offer_presented4} = yes),"Eligible",
+      if(contains (${conversation_tags.Ineligible_Reason1},"country"),"Ineligible - Country",
+      if(contains (${conversation_tags.Ineligible_Reason1},"multiple"),"Ineligible - Multiple Product",
+      if(contains (${conversation_tags.Ineligible_Reason1},"ar_already_off"),"Ineligible - AR Off",
+      if(contains (${conversation_tags.Ineligible_Reason1},"outside_money"),"Ineligible - Outside MBG",
+      if(contains (${conversation_tags.Ineligible_Reason1},"already_refunded"),"Ineligible - Refunded",
+          "Ineligible - Other"))))))))))
+          END;;
+}
 ############## Retention Measures #############
 
   measure: Saved_Amount {
