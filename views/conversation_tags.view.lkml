@@ -1482,24 +1482,23 @@ dimension: retention_offer_eligible {
     OR ${conversation_tags.offer_presented4} = "yes"
     THEN "Eligible"
 
-  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "country")
+  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "country"), 0) > 0
     THEN "Ineligible - Country"
 
-  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "multiple")
+  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "multiple"), 0) > 0
     THEN "Ineligible - Multiple Product"
 
-  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "ar_already_off")
+  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "ar_already_off"), 0) > 0
     THEN "Ineligible - AR Off"
 
-  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "outside_money")
+  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "outside_money"), 0) > 0
     THEN "Ineligible - Outside MBG"
 
-  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "already_refunded")
+  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "already_refunded"), 0) > 0
     THEN "Ineligible - Refunded"
 
   ELSE "Ineligible - Other"
-
-          END;;
+END;;
 }
 ############## Retention Measures #############
 
