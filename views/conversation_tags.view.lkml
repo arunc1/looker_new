@@ -1461,17 +1461,44 @@ dimension: routing_queue_nlok {
 dimension: retention_offer_eligible {
   label: "VRA Offer Eligbility"
   type: string
-  sql:if(${conversation_tags.vra_order_confirmed} = "No" OR ${conversation_tags.vra_order_confirmed} = "NA","Ineligible - Order Confirmation",
-      if(${conversation_tags.offer1}="no-rule-matched","Ineligible - Matrix Exception",
-      if(${conversation_tags.offer1}="failed","Ineligible - Failure",
-      if(${conversation_tags.offer1}="escalate","Ineligible - Matrix Escalation",
-      if((${conversation_tags.offer_presented1} = yes) OR (${conversation_tags.offer_presented2} = yes) OR (${conversation_tags.offer_presented3} = yes) OR (${conversation_tags.offer_presented4} = yes),"Eligible",
-      if(contains (${conversation_tags.Ineligible_Reason1},"country"),"Ineligible - Country",
-      if(contains (${conversation_tags.Ineligible_Reason1},"multiple"),"Ineligible - Multiple Product",
-      if(contains (${conversation_tags.Ineligible_Reason1},"ar_already_off"),"Ineligible - AR Off",
-      if(contains (${conversation_tags.Ineligible_Reason1},"outside_money"),"Ineligible - Outside MBG",
-      if(contains (${conversation_tags.Ineligible_Reason1},"already_refunded"),"Ineligible - Refunded",
-          "Ineligible - Other"))))))))))
+  sql:
+  CASE
+  WHEN ${conversation_tags.vra_order_confirmed} = "No"
+    OR ${conversation_tags.vra_order_confirmed} = "NA"
+    THEN "Ineligible - Order Confirmation"
+
+  WHEN ${conversation_tags.offer1} = "no-rule-matched"
+    THEN "Ineligible - Matrix Exception"
+
+  WHEN ${conversation_tags.offer1} = "failed"
+    THEN "Ineligible - Failure"
+
+  WHEN ${conversation_tags.offer1} = "escalate"
+    THEN "Ineligible - Matrix Escalation"
+
+  WHEN ${conversation_tags.offer_presented1} = "yes"
+    OR ${conversation_tags.offer_presented2} = "yes"
+    OR ${conversation_tags.offer_presented3} = "yes"
+    OR ${conversation_tags.offer_presented4} = "yes"
+    THEN "Eligible"
+
+  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "country")
+    THEN "Ineligible - Country"
+
+  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "multiple")
+    THEN "Ineligible - Multiple Product"
+
+  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "ar_already_off")
+    THEN "Ineligible - AR Off"
+
+  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "outside_money")
+    THEN "Ineligible - Outside MBG"
+
+  WHEN CONTAINS(${conversation_tags.Ineligible_Reason1}, "already_refunded")
+    THEN "Ineligible - Refunded"
+
+  ELSE "Ineligible - Other"
+
           END;;
 }
 ############## Retention Measures #############
