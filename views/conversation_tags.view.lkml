@@ -1476,10 +1476,10 @@ dimension: retention_offer_eligible {
   WHEN ${conversation_tags.offer1} = "escalate"
     THEN "Ineligible - Matrix Escalation"
 
-  WHEN ${conversation_tags.offer_presented1} = "yes"
-    OR ${conversation_tags.offer_presented2} = "yes"
-    OR ${conversation_tags.offer_presented3} = "yes"
-    OR ${conversation_tags.offer_presented4} = "yes"
+  WHEN ${conversation_tags.offer_presented1} = TRUE
+    OR ${conversation_tags.offer_presented2} = TRUE
+    OR ${conversation_tags.offer_presented3} = TRUE
+    OR ${conversation_tags.offer_presented4} = TRUE
     THEN "Eligible"
 
   WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "country"), 0) > 0
