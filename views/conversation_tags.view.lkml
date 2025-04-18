@@ -1462,43 +1462,60 @@ dimension: retention_offer_eligible {
   label: "VRA Offer Eligbility"
   type: string
   sql:
-  CASE
-  WHEN ${conversation_tags.vra_order_confirmed} = "No"
-    OR ${conversation_tags.vra_order_confirmed} = "NA"
-    THEN "Ineligible - Order Confirmation"
+    CASE
+    WHEN ${conversation_tags.vra_order_confirmed} = "No"
+      OR ${conversation_tags.vra_order_confirmed} = "NA"
+      THEN "Ineligible - Order Confirmation"
 
-  WHEN ${conversation_tags.offer1} = "no-rule-matched"
-    THEN "Ineligible - Matrix Exception"
+    WHEN ${conversation_tags.offer1} = "no-rule-matched"
+      THEN "Ineligible - Matrix Exception"
 
-  WHEN ${conversation_tags.offer1} = "failed"
-    THEN "Ineligible - Failure"
+    WHEN ${conversation_tags.offer1} = "failed"
+      THEN "Ineligible - Failure"
 
-  WHEN ${conversation_tags.offer1} = "escalate"
-    THEN "Ineligible - Matrix Escalation"
+    WHEN ${conversation_tags.offer1} = "escalate"
+      THEN "Ineligible - Matrix Escalation"
 
-  WHEN ${conversation_tags.offer_presented1} = TRUE
-    OR ${conversation_tags.offer_presented2} = TRUE
-    OR ${conversation_tags.offer_presented3} = TRUE
-    OR ${conversation_tags.offer_presented4} = TRUE
-    THEN "Eligible"
+    WHEN ${conversation_tags.offer_presented1} = TRUE
+      OR ${conversation_tags.offer_presented2} = TRUE
+      OR ${conversation_tags.offer_presented3} = TRUE
+      OR ${conversation_tags.offer_presented4} = TRUE
+      THEN "Eligible"
 
-  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "country"), 0) > 0
-    THEN "Ineligible - Country"
+    WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "country"), 0) > 0
+      THEN "Ineligible - Country"
 
-  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "multiple"), 0) > 0
-    THEN "Ineligible - Multiple Product"
+    WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "multiple"), 0) > 0
+      THEN "Ineligible - Multiple Product"
 
-  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "ar_already_off"), 0) > 0
-    THEN "Ineligible - AR Off"
+    WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "ar_already_off"), 0) > 0
+      THEN "Ineligible - AR Off"
 
-  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "outside_money"), 0) > 0
-    THEN "Ineligible - Outside MBG"
+    WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "outside_money"), 0) > 0
+      THEN "Ineligible - Outside MBG"
 
-  WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "already_refunded"), 0) > 0
-    THEN "Ineligible - Refunded"
+    WHEN IFNULL(STRPOS(${conversation_tags.Ineligible_Reason1}, "already_refunded"), 0) > 0
+      THEN "Ineligible - Refunded"
 
-  ELSE "Ineligible - Other"
-END;;
+    ELSE "Ineligible - Other"
+  END;;
+}
+
+dimension: retention_offer_accepted {
+  label: "VRA Offer Accepted"
+  type: string
+  sql:
+    CASE
+      WHEN ${retention_offer_eligible} = "Eligible" THEN
+        CASE
+          WHEN ${conversation_tags.offer_accepted1} = TRUE THEN ${conversation_tags.offer1}
+          WHEN ${conversation_tags.offer_accepted2} = TRUE THEN ${conversation_tags.offer2}
+          WHEN ${conversation_tags.offer_accepted3} = TRUE THEN ${conversation_tags.offer3}
+          WHEN ${conversation_tags.offer_accepted4} = TRUE THEN ${conversation_tags.offer4}
+          ELSE "All Offers Rejected"
+        END
+      ELSE "NA"
+    END;;
 }
 ############## Retention Measures #############
 
