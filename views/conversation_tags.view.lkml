@@ -1519,6 +1519,31 @@ dimension: retention_offer_accepted {
 }
 ############## Retention Measures #############
 
+# 1. Retained count
+  measure: retained {
+    type: count
+    filters: [conversation_tags.Retention_Status: "Retained"]
+    description: "Count of retained customers"
+  }
+
+# 2. Eligible for offer count
+  measure: eligible_for_offer {
+    type: count
+    filters: [conversation_tags.retention_offer_eligible: "Eligible"]
+    description: "Count of customers eligible for offer"
+  }
+
+# 3. Retention Rate
+  measure: retention_rate {
+    type: number
+    sql: CASE
+         WHEN ${eligible_for_offer} != 0 THEN ${retained} / ${eligible_for_offer}
+         ELSE NULL
+       END ;;
+    value_format_name: percent_2
+    description: "Retention rate among eligible customers"
+  }
+
   measure: Saved_Amount {
     label: "Saved Amount"
     type: sum
