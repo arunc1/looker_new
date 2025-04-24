@@ -1544,12 +1544,19 @@ dimension: retention_offer_accepted {
     description: "Retention rate among eligible customers"
   }
 
+
   measure: Saved_Amount {
     label: "Saved Amount"
     type: sum
-    sql: ${Purchase_Price}-${Refund_Amount} ;;
+    sql:
+    CASE
+      WHEN ${tags} LIKE '%parameter:vra_retained:true%' THEN ${Purchase_Price} - ${Refund_Amount}
+      ELSE 0
+    END
+  ;;
     value_format: "#.00"
   }
+
 
   measure: Count_Retained {
     label: "Retained_Cnt"
