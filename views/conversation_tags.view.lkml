@@ -263,6 +263,16 @@ view: conversation_tags {
     sql: ${session_id} ;;
     drill_fields: [created_date,session_id]
   }
+
+  measure: count_conversation_last_year {
+    type: period_over_period
+    description: "Conversation Count previous year"
+    based_on: count_conversation
+    based_on_time: created_year
+    period: year
+    kind: previous
+  }
+
   #channel type
   dimension: channel {
     label: "Channel"
