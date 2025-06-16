@@ -86,6 +86,7 @@ view: conversation_tags {
       when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_mltilng%";; label:"Voice NLOK Basic Call Flow"}
       when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_nonen%";;   label:"Voice NLOK Basic Call Flow"}
       when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_directndbe%";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
+      when: {sql:  ${tags} like "%parameter:df_agent:ccai_chat_norton_japan%";;  label:"Chat Norton CCAI_Japan"}
       else: "Other"
     }
   }
