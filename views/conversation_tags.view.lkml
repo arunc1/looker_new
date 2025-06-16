@@ -592,6 +592,17 @@ view: conversation_tags {
     }
   }
 
+#temp dimension for upgrade offer acceptance ( currently looking only for accepted value)
+
+  dimension: upgrade_Offer{
+    label: "Upgrade offer"
+    type: string
+    case: {
+      when: {   sql:  ${tags} LIKE "%parameter:upgradeofferaccept:voiceagent%";;     label: "Offer Accepted"       }
+      else: "Other"
+    }
+  }
+
 
   measure: calls_sent_to_automation {
     label: "Calls Sent to Automation"
