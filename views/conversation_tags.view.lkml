@@ -38,8 +38,8 @@ view: conversation_tags {
     label: "ID_voice/chat"
     type: string
     sql: case
-          when ${channel} = "chat" THEN REGEXP_EXTRACT(${tags}, 'parameter:chat_id:([^|]+)')
-          when ${channel} = "voice" THEN REGEXP_EXTRACT(${tags}, 'parameter:call_id:([^|]+)')
+          when ${channel} = "Chat" THEN REGEXP_EXTRACT(${tags}, 'parameter:chat_id:([^|]+)')
+          when ${channel} = "Voice" THEN REGEXP_EXTRACT(${tags}, 'parameter:call_id:([^|]+)')
           ElSE NULL
           END ;;
   }
