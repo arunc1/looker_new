@@ -273,7 +273,7 @@ view: conversation_tags {
     label: "Conversation Count"
     type: count_distinct
     sql: ${session_id} ;;
-    drill_fields: [created_date,session_id]
+    drill_fields: [created_date,session_id,ID_VC]
   }
 
   measure: count_conversation_last_year {
@@ -1679,7 +1679,8 @@ dimension: retention_offer_accepted {
     fields: [
       session_id,
       chat_id,
-      call_id_test
+      call_id_test,
+      ID_VC
     ]
   }
   parameter: date_granularity_picker {
