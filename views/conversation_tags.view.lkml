@@ -33,6 +33,17 @@ view: conversation_tags {
     sql: REGEXP_EXTRACT(${tags}, 'parameter:chat_id:([^|]+)') ;;
   }
 
+# Dimension combining chat and call Ids added on 17062025
+  dimension: ID_VC {
+    label: "ID_voice/chat"
+    type: string
+    sql: case
+          when ${channel} = "chat" THEN REGEXP_EXTRACT(${tags}, 'parameter:chat_id:([^|]+)')
+          when ${channel} = "voice" THEN REGEXP_EXTRACT(${tags}, 'parameter:call_id:([^|]+)')
+          ElSE NULL
+          END ;;
+  }
+
 
 
   dimension: tags {
