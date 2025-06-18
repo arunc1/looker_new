@@ -599,6 +599,7 @@ view: conversation_tags {
       when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;        label: "Basic Call Flow"           }
       when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Direct to Agent Chat"      }
       when: {   sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;        label: "Direct to Agent Call"      }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:dial_by_ext%";;            label: "Direct to Agent Call"      }
       else: "Other"
     }
   }
