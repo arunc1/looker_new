@@ -59,7 +59,7 @@ view: conversation_tags {
   dimension: ingress {
     label: "Ingress"
     type: string
-    sql: ${tags} LIKE "%parameter:Ingress:%" ;;
+    sql: ${tags} LIKE "%parameter:ingress:%" ;;
   }
 
   dimension: wait_time {
@@ -69,7 +69,7 @@ view: conversation_tags {
 
   dimension: DNIS {
     type: string
-    sql: ${tags} LIKE "%parameter:DNIS%";;
+    sql: ${tags} LIKE "%parameter:dnis%";;
   }
 
 
