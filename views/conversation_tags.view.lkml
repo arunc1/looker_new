@@ -343,8 +343,41 @@ view: conversation_tags {
     }
   }
 
+  dimension: lookup_confirmed{
+    label: "Lookup - Email Confirmation"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:lookup_confirmed:true%";;     label: "Lookup Confirmed"}
+      when: {sql:  ${tags} LIKE "%parameter:lookup_confirmed:false%";;    label: "Lookup Confirmation Failed"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: us_ani{
+    label: "Lookup - US ANI"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:us_ani:true%";;     label: "US ANI"}
+      when: {sql:  ${tags} LIKE "%parameter:us_ani:false%";;    label: "Non US ANI"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: allow_sms{
+    label: "Lookup - Allow SMS"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:allow_sms:true%";;     label: "Can Send SMS"}
+      when: {sql:  ${tags} LIKE "%parameter:allow_sms:false%";;    label: "Cannot Send SMS"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
   dimension: auth_status {
-    label: "Auth Status"
+    label: "Lookup - Auth Status"
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:auth_status:success%";;     label: "Auth Successful"}
@@ -355,6 +388,31 @@ view: conversation_tags {
       else: "Other"
     }
   }
+
+  dimension: lookup_by_ssn_yob_ani {
+    label: "Lookup - By SSN+YOB+ANI"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_ani\.failed%";;     label: "Lookup Failed"}
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_ani\.success%";;    label: "Lookup Successful"}
+
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: lookup_by_ssn_yob_zip {
+    label: "Lookup - By SSN+YOB+ZIP"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_zip\.failed%";;     label: "Lookup Failed"}
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_zip\.success%";;    label: "Lookup Successful"}
+
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
 
 
 ##dimensions - call resolution status(parameters)
