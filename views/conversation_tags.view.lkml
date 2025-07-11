@@ -77,27 +77,29 @@ view: conversation_tags {
     label: "DF Agent"
     type: string
     case: {
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_avav_directagent%";; label:"Chat Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_contactus%";;    label:"Chat AVG Help Center Contact Us"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_genai_noesc%";;  label:"Chat AVG Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_contactus%";;   label:"Chat Avast Help Center Contact Us"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_genai_noesc%";; label:"Chat Avast Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_contactus%";;   label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_genai_noesc%";; label:"Chat LifeLock Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_directagent%";; label:"Chat NLOK Direct to Agent"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_japanese%";;    label:"Chat NLOK Japanese"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_loginpage%";;   label:"Chat NLOK NSL"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_contactus%";;   label:"Chat Norton Help Center Contact Us / norton.com"}
-      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_genai_noesc%";; label:"Chat Norton Gen AI (Non Escalating)"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_automation%";;  label:"Voice Avast/AVG Basic Call Flow / Automation"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_business%";;    label:"Voice Avast/AVG Business"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_directagent%";; label:"Voice Avast/AVG Direct to Agent"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_premium%";;     label:"Voice Avast/AVG Premium"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_automation%";;  label:"Voice NLOK Sales / Basic Call Flow / Automation"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_mltilng%";; label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_nonen%";;   label:"Voice NLOK Basic Call Flow"}
-      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_directndbe%";;  label:"Voice NLOK Direct to Agent / Dial by Extension"}
-      when: {sql:  ${tags} like "%parameter:df_agent:ccai_chat_norton_japan%";;  label:"Chat Norton CCAI_Japan"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avav_directagent%";;   label:"Chat Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_contactus%";;      label:"Chat AVG Help Center Contact Us"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avg_genai_noesc%";;    label:"Chat AVG Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_contactus%";;     label:"Chat Avast Help Center Contact Us"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_avst_genai_noesc%";;   label:"Chat Avast Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_contactus%";;     label:"Chat LifeLock Help Center Contact Us / lifelock.com"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_lflk_genai_noesc%";;   label:"Chat LifeLock Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_directagent%";;   label:"Chat NLOK Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_japanese%";;      label:"Chat NLOK Japanese"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nlok_loginpage%";;     label:"Chat NLOK NSL"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_contactus%";;     label:"Chat Norton Help Center Contact Us / norton.com"}
+      when: {sql:  ${tags} like "%parameter:df_agent:cht_nrtn_genai_noesc%";;   label:"Chat Norton Gen AI (Non Escalating)"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_automation%";;    label:"Voice Avast/AVG Basic Call Flow / Automation"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_business%";;      label:"Voice Avast/AVG Business"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_directagent%";;   label:"Voice Avast/AVG Direct to Agent"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_avav_premium%";;       label:"Voice Avast/AVG Premium"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_automation%";;    label:"Voice NLOK Sales / Basic Call Flow / Automation"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_mltilng%";;   label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_bcf_nonen%";;     label:"Voice NLOK Basic Call Flow"}
+      when: {sql:  ${tags} like "%parameter:df_agent:vce_nlok_directndbe%";;    label:"Voice NLOK Direct to Agent / Dial by Extension"}
+      when: {sql:  ${tags} like "%parameter:df_agent:ccai_chat_norton_japan%";; label:"Chat Norton CCAI_Japan"}
+      when: {sql:  ${tags} like "%parameter:df_agent:ccai_voice_norton_japan%";;label:"Voice Norton CCAI_Japan"}
+
       else: "Other"
     }
   }
