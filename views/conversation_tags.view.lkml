@@ -1036,7 +1036,7 @@ view: conversation_tags {
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
       ) BETWEEN 8 AND 14 THEN '8-14 days'
-            WHEN DATE_DIFF(
+      WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
@@ -1045,7 +1045,12 @@ view: conversation_tags {
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) > 30 THEN 'Beyond 30 days'
+      ) BETWEEN 31 AND 60 THEN '31-60 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) > 60 THEN 'Beyond 60 days'
       ELSE 'Unknown'
     END ;;
   }
