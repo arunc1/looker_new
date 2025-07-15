@@ -982,17 +982,17 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:cancel_refund_reason_collected:true%";;
   }
 
-
   dimension: last_renewed_date {
     type: string
-    sql: DATE_FORMAT(
-          STR_TO_DATE(
-            SUBSTRING_INDEX(SUBSTRING_INDEX(${tags}, 'parameter:sub_info-last_renewed_date:', -1), ' ', 1),
-            '%Y-%m-%d'
-          ),
-          '%b-%d'
+    sql: FORMAT_DATE(
+          '%b-%d',
+          PARSE_DATE(
+            '%Y-%m-%d',
+            REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')
+          )
         ) ;;
   }
+
 
 
   dimension: cxl_rfd_reason{
