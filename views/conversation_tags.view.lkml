@@ -982,6 +982,12 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:cancel_refund_reason_collected:true%";;
   }
 
+  dimension: last_renewed_date{
+    type: string  # Resulting format will be a string
+    sql: DATE_FORMAT(${tags} LIKE "%parameter:sub_info-last_renewed_date:%", '%b-%d') ;; # Assuming 'my_original_date' is your YYYY-MM-DD date field
+  }
+
+
   dimension: cxl_rfd_reason{
     label: "Cancel Refund Reason"
     type: string
