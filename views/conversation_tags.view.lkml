@@ -982,9 +982,16 @@ view: conversation_tags {
     sql: ${tags} LIKE "%parameter:cancel_refund_reason_collected:true%";;
   }
 
-  dimension: last_renewed_date{
-    type: string  # Resulting format will be a string
-    sql: DATE_FORMAT(${tags} LIKE "%parameter:sub_info-last_renewed_date:%", '%b-%d') ;; # Assuming 'my_original_date' is your YYYY-MM-DD date field
+
+  dimension: last_renewed_date {
+    type: string
+    sql: DATE_FORMAT(
+          STR_TO_DATE(
+            SUBSTRING_INDEX(SUBSTRING_INDEX(${tags}, 'parameter:sub_info-last_renewed_date:', -1), ' ', 1),
+            '%Y-%m-%d'
+          ),
+          '%b-%d'
+        ) ;;
   }
 
 
