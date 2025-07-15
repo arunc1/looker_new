@@ -994,6 +994,57 @@ view: conversation_tags {
   }
 
 
+  dimension: days_since_last_renewed {
+    type: number
+    sql: DATE_DIFF(
+          CURRENT_DATE(),
+          PARSE_DATE(
+            '%Y-%m-%d',
+            REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')
+          ),
+          DAY
+        ) ;;
+  }
+
+
+  dimension: days_since_last_renewed_grouped {
+    type: string
+    sql:
+    CASE
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 1 THEN '1 day'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 2 THEN '2 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 3 THEN '3 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 4 AND 7 THEN '4-7 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 8 AND 30 THEN '8-30 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) > 30 THEN 'Beyond 30 days'
+      ELSE 'Unknown'
+    END ;;
+  }
+
 
   dimension: cxl_rfd_reason{
     label: "Cancel Refund Reason"
