@@ -1056,6 +1056,66 @@ view: conversation_tags {
   }
 
 
+  dimension: estimated_renewal_price {
+    type: number
+    sql: CAST(
+          REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64
+        ) ;;
+  }
+
+  dimension: estimated_renewal_price_bucket {
+    type: string
+    sql:
+    CASE
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) = 0 THEN '$0'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 20 THEN '$1-$20'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 50 THEN '$20-$50'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 100 THEN '$50-$100'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 150 THEN '$100-$150'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 200 THEN '$150-$200'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 300 THEN '$200-$300'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 400 THEN '$300-$400'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 500 THEN '$400-$500'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 600 THEN '$500-$600'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 700 THEN '$600-$700'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 800 THEN '$700-$800'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 900 THEN '$800-$900'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-estimated_renewal_price:(\d+(\.\d+)?)') AS FLOAT64) <= 1000 THEN '$900-$1000'
+      ELSE 'Over $1000'
+    END ;;
+  }
+
+
+  dimension: purchase_price {
+    type: number
+    sql: CAST(
+          REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64
+        ) ;;
+  }
+
+  dimension: purchase_price_bucket {
+    type: string
+    sql:
+    CASE
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) = 0 THEN '$0'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 20 THEN '$1-$20'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 50 THEN '$20-$50'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 100 THEN '$50-$100'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 150 THEN '$100-$150'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 200 THEN '$150-$200'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 300 THEN '$200-$300'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 400 THEN '$300-$400'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 500 THEN '$400-$500'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 600 THEN '$500-$600'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 700 THEN '$600-$700'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 800 THEN '$700-$800'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 900 THEN '$800-$900'
+      WHEN CAST(REGEXP_EXTRACT(${tags}, r'parameter:sub_info-purchase_price:(\d+(\.\d+)?)') AS FLOAT64) <= 1000 THEN '$900-$1000'
+      ELSE 'Over $1000'
+    END ;;
+  }
+
+
   dimension: cxl_rfd_reason{
     label: "Cancel Refund Reason"
     type: string
