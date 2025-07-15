@@ -1040,7 +1040,7 @@ view: conversation_tags {
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) BETWEEN 15 AND 30 THEN '8-14 days'
+      ) BETWEEN 15 AND 30 THEN '15-30 days'
       WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
