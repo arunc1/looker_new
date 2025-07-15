@@ -1015,17 +1015,17 @@ view: conversation_tags {
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) = 1 THEN '1 day'
+      ) = 1 THEN '0-1 day'
       WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) = 2 THEN '2 days'
+      ) = 2 THEN '1-2 days'
       WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) = 3 THEN '3 days'
+      ) = 3 THEN '2-3 days'
       WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
@@ -1035,7 +1035,12 @@ view: conversation_tags {
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
         DAY
-      ) BETWEEN 8 AND 30 THEN '8-30 days'
+      ) BETWEEN 8 AND 14 THEN '8-14 days'
+            WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 15 AND 30 THEN '8-14 days'
       WHEN DATE_DIFF(
         CURRENT_DATE(),
         PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
