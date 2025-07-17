@@ -59,7 +59,7 @@ view: conversation_tags {
   dimension: ingress {
     label: "Ingress"
     type: string
-    sql: ${tags} LIKE "%parameter:Ingress:%" ;;
+    sql: ${tags} LIKE "%parameter:ingress:%" ;;
   }
 
   dimension: wait_time {
@@ -69,7 +69,7 @@ view: conversation_tags {
 
   dimension: DNIS {
     type: string
-    sql: ${tags} LIKE "%parameter:DNIS%";;
+    sql: ${tags} LIKE "%parameter:dnis%";;
   }
 
 
@@ -345,8 +345,41 @@ view: conversation_tags {
     }
   }
 
+  dimension: lookup_confirmed{
+    label: "Lookup - Email Confirmation"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:lookup_confirmed:true%";;     label: "Lookup Confirmed"}
+      when: {sql:  ${tags} LIKE "%parameter:lookup_confirmed:false%";;    label: "Lookup Confirmation Failed"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: us_ani{
+    label: "Lookup - US ANI"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:us_ani:true%";;     label: "US ANI"}
+      when: {sql:  ${tags} LIKE "%parameter:us_ani:false%";;    label: "Non US ANI"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: allow_sms{
+    label: "Lookup - Allow SMS"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:allow_sms:true%";;     label: "Can Send SMS"}
+      when: {sql:  ${tags} LIKE "%parameter:allow_sms:false%";;    label: "Cannot Send SMS"}
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
   dimension: auth_status {
-    label: "Auth Status"
+    label: "Lookup - Auth Status"
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:auth_status:success%";;     label: "Auth Successful"}
@@ -357,6 +390,31 @@ view: conversation_tags {
       else: "Other"
     }
   }
+
+  dimension: lookup_by_ssn_yob_ani {
+    label: "Lookup - By SSN+YOB+ANI"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_ani\.failed%";;     label: "Lookup Failed"}
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_ani\.success%";;    label: "Lookup Successful"}
+
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
+  dimension: lookup_by_ssn_yob_zip {
+    label: "Lookup - By SSN+YOB+ZIP"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_zip\.failed%";;     label: "Lookup Failed"}
+      when: {sql:  ${tags} LIKE "%parameter:event:account\.lookup_by_ssn4_yob_zip\.success%";;    label: "Lookup Successful"}
+
+      # possibly more when statements
+      else: "Other"
+    }
+  }
+
 
 
 ##dimensions - call resolution status(parameters)
@@ -925,6 +983,80 @@ view: conversation_tags {
     type: yesno
     sql: ${tags} LIKE "%parameter:cancel_refund_reason_collected:true%";;
   }
+
+  dimension: last_renewed_date {
+    type: string
+    sql: FORMAT_DATE(
+          '%b-%d',
+          PARSE_DATE(
+            '%Y-%m-%d',
+            REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')
+          )
+        ) ;;
+  }
+
+
+  dimension: days_since_last_renewed {
+    type: number
+    sql: DATE_DIFF(
+          CURRENT_DATE(),
+          PARSE_DATE(
+            '%Y-%m-%d',
+            REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')
+          ),
+          DAY
+        ) ;;
+  }
+
+
+  dimension: days_since_last_renewed_grouped {
+    type: string
+    sql:
+    CASE
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 1 THEN '0-1 day'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 2 THEN '1-2 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) = 3 THEN '2-3 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 4 AND 7 THEN '4-7 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 8 AND 14 THEN '8-14 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 15 AND 30 THEN '15-30 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) BETWEEN 31 AND 60 THEN '31-60 days'
+      WHEN DATE_DIFF(
+        CURRENT_DATE(),
+        PARSE_DATE('%Y-%m-%d', REGEXP_EXTRACT(${tags}, r'parameter:sub_info-last_renewed_date:(\d{4}-\d{2}-\d{2})')),
+        DAY
+      ) > 60 THEN 'Beyond 60 days'
+      ELSE 'Unknown'
+    END ;;
+  }
+
 
   dimension: cxl_rfd_reason{
     label: "Cancel Refund Reason"
