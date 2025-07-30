@@ -345,6 +345,58 @@ view: conversation_tags {
     }
   }
 
+#### Auth Dimensions added on 30july25##
+
+  dimension: auth_by_otp{
+    label: "OTP_Auth"
+    type: string
+    case: {
+      when: {sql:  ${tags} LIKE "%parameter:auth_by_otp:success%";;     label: "Success"}
+      when: {sql:  ${tags} LIKE "%parameter:auth_by_otp:retry%";;    label: "Retry"}
+      when: {sql:  ${tags} LIKE "%parameter:auth_by_otp:failed%";;    label: "Failed"}
+      else: "Other"
+    }
+  }
+
+  dimension: otp_email_available {
+    label: "Otp_Email_Available"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:otp_email_available:true%";;
+  }
+
+  dimension: otp_sms_available {
+    label: "Otp_SMS_Available"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:otp_sms_available:true%";;
+  }
+
+  dimension: otp_url_available {
+    label: "Otp_URL_Available"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:otp_url_available:true%";;
+  }
+
+  dimension: otp_method {
+    label: "OTP_method_selected"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'otp_method:([^|]+)') ;;
+  }
+
+
+  dimension: ani_match {
+    label: "ANI_Match"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:ani_match:true%";;
+  }
+
+
+  dimension: lookup_refused {
+    label: "Lookup_Refused"
+    type: yesno
+    sql: ${tags} LIKE "%parameter:lookup_refused:true%";;
+  }
+
+
   dimension: lookup_confirmed{
     label: "Lookup - Email Confirmation"
     type: string
