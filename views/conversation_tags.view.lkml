@@ -328,6 +328,16 @@ view: conversation_tags {
     }
   }
 
+  #playbook
+  dimension: playbook {
+    label: "Playbook"
+    type: string
+    case: {
+      when: {        sql:  ${tags} LIKE "%parameter:playbook:true%" ;;     label: "Playbook"      }
+      else: "Other"
+    }
+  }
+
   #brand
   dimension: brand {
     label: "Brand"
