@@ -344,7 +344,14 @@ view: conversation_tags {
   dimension: playbook_name {
     label: "Playbook name"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:([^,;| ]+)') ;;
+    sql:
+    TRIM(
+      REGEXP_REPLACE(
+        REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:(.*)'),
+        r'\s+parameter:.*$',
+        ''
+      )
+    ) ;;
   }
 
   #brand
