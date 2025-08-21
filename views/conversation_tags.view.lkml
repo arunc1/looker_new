@@ -822,6 +822,7 @@ view: conversation_tags {
       when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:full%";;        label: "Full Solution"}
       when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:partial%";;     label: "Partial Solution"}
       when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:escalate%";;    label: "Escalate"}
+      when: {sql:  ${tags} LIKE "%parameter:solution_type_chat:guided%";;       label: "Guided"}
       else: "Other"
     }
   }
