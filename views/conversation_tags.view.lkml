@@ -345,12 +345,9 @@ view: conversation_tags {
     label: "Playbook name"
     type: string
     sql:
-    TRIM(
-      REGEXP_REPLACE(
-        REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:(.*)'),
-        r'\s+parameter:.*$',
-        ''
-      )
+    COALESCE(
+      REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:"([^"]+)"'),
+      REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:([^|]+)')
     ) ;;
   }
 
