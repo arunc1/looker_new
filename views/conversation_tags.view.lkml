@@ -344,7 +344,7 @@ view: conversation_tags {
   dimension: playbook_name {
     label: "Playbook name"
     type: string
-    sql: ${tags} LIKE "%parameter:playbook_name:%" ;;
+    sql: REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:([^,;| ]+)') ;;
   }
 
   #brand
