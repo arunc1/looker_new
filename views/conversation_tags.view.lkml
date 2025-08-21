@@ -104,6 +104,10 @@ view: conversation_tags {
     }
   }
 
+  dimension: playbook_name {
+    type: string
+    sql: ${tags} LIKE "%parameter:playbook_name:%" ;;
+  }
 
   dimension: wait_group {
     label: "Wait Time Group"
@@ -333,8 +337,10 @@ view: conversation_tags {
     label: "Playbook"
     type: string
     case: {
-      when: {        sql:  ${tags} LIKE "%parameter:playbook:true%" ;;     label: "Playbook"      }
-      else: "Other"
+      when: {        sql:  ${tags} LIKE "%parameter:playbook:true%" AND ${tags} LIKE "%parameter:playbook_name:Customer Support and Issue Resolution V2%";;   label: "Playbook V2"      }
+      when: {        sql:  ${tags} LIKE "%parameter:playbook:true%" AND ${tags} LIKE "%parameter:playbook_name:Customer Support and Issue Resolution%";;      label: "Playbook V1"      }
+      when: {        sql:  ${tags} LIKE "%parameter:playbook:true%" ;;                                                                                        label: "Playbook"      }
+      else: "Non-Playbook"
     }
   }
 
