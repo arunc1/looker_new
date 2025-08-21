@@ -648,7 +648,7 @@ view: conversation_tags {
 
 #measures and dimensions for escalation and containment using tags
   measure: contained {
-    label: "Contained Conversations"
+    label: "Contained"
     type: number
     sql: ${count_conversation}-${total_escalated_calls};;
     drill_fields: [created_date,session_id]
@@ -676,7 +676,7 @@ view: conversation_tags {
   }
 
   measure: total_escalated_calls {
-    label: "Total Escalated Calls"
+    label: "Escalated"
     type: number
     sql: ${escalated_call_resolution} ;;
   }
