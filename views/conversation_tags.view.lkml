@@ -345,9 +345,17 @@ view: conversation_tags {
     label: "Playbook name"
     type: string
     sql:
-    COALESCE(
-      REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:"([^"]+)"'),
-      REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:([^|]+)')
+    IFNULL(
+      NULLIF(
+        TRIM(           -- treat blanks as NULL too
+          COALESCE(
+            REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:"([^"]+)"'),
+            REGEXP_EXTRACT(${tags}, r'parameter:playbook_name:([^|]+)')
+          )
+        ),
+        ''
+      ),
+      'Non-Playbook'
     ) ;;
   }
 
