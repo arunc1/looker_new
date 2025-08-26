@@ -659,7 +659,7 @@ view: conversation_tags {
     label: "Contained"
     type: number
     sql: ${count_conversation}-${total_escalated_calls};;
-    drill_fields: [created_date,session_id]
+    drill_fields: [created_date,session_id,ID_VC]
 
   }
 
@@ -680,13 +680,14 @@ view: conversation_tags {
     type: count_distinct
     sql: ${TABLE}.session_id ;;
     filters:[tags:"%operation:transfer%"]
-    drill_fields: [created_date,session_id]
+    drill_fields: [created_date,session_id,ID_VC]
   }
 
   measure: total_escalated_calls {
     label: "Escalated"
     type: number
     sql: ${escalated_call_resolution} ;;
+    drill_fields: [created_date,session_id,ID_VC]
   }
 
   measure: containment {
