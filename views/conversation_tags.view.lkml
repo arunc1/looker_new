@@ -359,6 +359,19 @@ view: conversation_tags {
     ) ;;
   }
 
+  dimension: user_intent {
+    label: "User Intent"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'user_intent:([^|]+)') ;;
+  }
+
+  dimension: user_intent_journey {
+    label: "Hero Journey"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'user_intent_journey:([^|]+)') ;;
+  }
+
+
   #brand
   dimension: brand {
     label: "Brand"
