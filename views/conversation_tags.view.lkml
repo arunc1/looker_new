@@ -385,6 +385,8 @@ view: conversation_tags {
         OR ${tags} LIKE "%parameter:chat_company:avast%";;                                                                       label: "Avast"}
       when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%" OR ${tags} LIKE "%parameter:brandname:avg%"
         OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%";;                           label: "AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:ccleaner%" OR ${tags} LIKE "%parameter:brand:ccleaner%"
+        OR ${tags} LIKE "%parameter:chat_company:ccleaner%";;                                                                    label: "CCleaner"}
       else: "Other"
     }
   }
