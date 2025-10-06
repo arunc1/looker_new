@@ -756,7 +756,7 @@ view: conversation_tags {
       when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%";;                label: "Automation Eligible"       }
       when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;             label: "Sales Call Flow"           }
       when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;        label: "Basic Call Flow"           }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Automation Eligible (LL Mobile App)"      }
       when: {   sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;        label: "Direct to Agent Call"      }
       when: {   sql:  ${tags} LIKE "%parameter:entry:dial_by_ext%";;            label: "Direct to Agent Call"      }
       else: "Other"
