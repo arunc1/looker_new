@@ -749,16 +749,18 @@ view: conversation_tags {
     label: "Contact Type"
     type: string
     case: {
-      when: {   sql:  ${tags} LIKE "%parameter:automation_eligible:true%";;     label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:chattype:%chatbot%";;            label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:chattype:%agent%";;              label: "Direct to Agent Chat"      }
-      when: {   sql:  ${tags} LIKE "%parameter:fromIVR:true%";;                 label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%";;                label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;             label: "Sales Call Flow"           }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;        label: "Basic Call Flow"           }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";; label: "Automation Eligible"       }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;        label: "Direct to Agent Call"      }
-      when: {   sql:  ${tags} LIKE "%parameter:entry:dial_by_ext%";;            label: "Direct to Agent Call"      }
+      when: {   sql:  ${tags} LIKE "%parameter:routing_label:sales.norton.buy%";;   label: "Sales Chat"                }
+      when: {   sql:  ${tags} LIKE "%parameter:routing_label:sales.lifelock.buy%";; label: "Sales Chat"                }
+      when: {   sql:  ${tags} LIKE "%parameter:automation_eligible:true%";;         label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:%chatbot%";;                label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:chattype:%agent%";;                  label: "Direct to Agent Chat"      }
+      when: {   sql:  ${tags} LIKE "%parameter:fromIVR:true%";;                     label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:welcome%";;                    label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:sales_flow%";;                 label: "Sales Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:basic_call_flow%";;            label: "Basic Call Flow"           }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:app_contactus_lifelock%";;     label: "Automation Eligible"       }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:direct_to_agent%";;            label: "Direct to Agent Call"      }
+      when: {   sql:  ${tags} LIKE "%parameter:entry:dial_by_ext%";;                label: "Direct to Agent Call"      }
       else: "Other"
     }
   }
