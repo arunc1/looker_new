@@ -744,8 +744,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week}))
     END ;;
     value_format: "0.0%"
   }
@@ -755,8 +755,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month}))
     END ;;
     value_format: "0.0%"
   }
@@ -766,8 +766,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter}))
     END ;;
     value_format: "0.0%"
   }
@@ -777,30 +777,30 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter})) / LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${created_quarter})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${created_quarter}))
     END ;;
     value_format: "0.0%"
   }
 
-# Quarter-over-Quarter Change (Fiscal)
+# Fiscal QoQ
   measure: fiscal_qoq_change {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort}))
     END ;;
     value_format: "0.0%"
   }
 
-# Year-over-Year Change (Fiscal)
+# Fiscal YoY
   measure: fiscal_yoy_change {
     type: number
     sql:
     CASE
-      WHEN LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort}))
+      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort}))
     END ;;
     value_format: "0.0%"
   }
