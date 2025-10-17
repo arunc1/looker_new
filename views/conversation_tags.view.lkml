@@ -777,8 +777,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(COUNT(DISTINCT ${TABLE}.session_id), 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${TABLE}.session_id) - LAG(COUNT(DISTINCT ${TABLE}.session_id), 4) OVER (ORDER BY ${created_quarter})) / LAG(COUNT(DISTINCT ${TABLE}.session_id), 4) OVER (ORDER BY ${created_quarter}))
+      WHEN LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((COUNT(DISTINCT ${TABLE}.session_id) - COUNT(DISTINCT LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter}))) / COUNT(DISTINCT LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter})))
     END ;;
     value_format: "0.0%"
   }
