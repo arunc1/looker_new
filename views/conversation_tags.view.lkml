@@ -761,7 +761,7 @@ dimension: fiscal_quarter_sort {
     value_format: "0.0%"
   }
 
-# Quarter-over-Quarter Change
+# Quarter-over-Quarter Change (Calendar)
   measure: qoq_change {
     type: number
     sql:
@@ -772,13 +772,35 @@ dimension: fiscal_quarter_sort {
     value_format: "0.0%"
   }
 
-# Year-over-Year Change (4 quarters back)
+# Year-over-Year Change (Calendar)
   measure: yoy_change {
     type: number
     sql:
     CASE
       WHEN LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
       ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter})) / LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}))
+    END ;;
+    value_format: "0.0%"
+  }
+
+# Quarter-over-Quarter Change (Fiscal)
+  measure: fiscal_qoq_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort}))
+    END ;;
+    value_format: "0.0%"
+  }
+
+# Year-over-Year Change (Fiscal)
+  measure: fiscal_yoy_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort}))
     END ;;
     value_format: "0.0%"
   }
