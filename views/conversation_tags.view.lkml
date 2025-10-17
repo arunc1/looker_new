@@ -13,6 +13,31 @@ view: conversation_tags {
       year]
     sql: ${TABLE}.created_at ;;
   }
+
+  dimension: fiscal_quarter {
+    type: string
+    sql:
+    CASE
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 4 AND 6 THEN CONCAT('FY', EXTRACT(YEAR FROM ${TABLE}.created_at) + 1, 'Q1')
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 7 AND 9 THEN CONCAT('FY', EXTRACT(YEAR FROM ${TABLE}.created_at) + 1, 'Q2')
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 10 AND 12 THEN CONCAT('FY', EXTRACT(YEAR FROM ${TABLE}.created_at) + 1, 'Q3')
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 1 AND 3 THEN CONCAT('FY', EXTRACT(YEAR FROM ${TABLE}.created_at), 'Q4')
+    END ;;
+  }
+
+  dimension: fiscal_quarter_sort {
+    type: number
+    sql:
+    CASE
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 4 AND 6 THEN (EXTRACT(YEAR FROM ${TABLE}.created_at) * 10) + 1
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 7 AND 9 THEN (EXTRACT(YEAR FROM ${TABLE}.created_at) * 10) + 2
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 10 AND 12 THEN (EXTRACT(YEAR FROM ${TABLE}.created_at) * 10) + 3
+      WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 1 AND 3 THEN ((EXTRACT(YEAR FROM ${TABLE}.created_at) - 1) * 10) + 4
+    END ;;
+    hidden: yes
+  }
+
+
   dimension: session_id {
     label: "Conversation Id"
     primary_key: yes
