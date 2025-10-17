@@ -15,28 +15,29 @@ view: conversation_tags {
     sql: ${TABLE}.created_at ;;
   }
 
-  dimension: fiscal_quarter {
-    type: string
-    sql:
+dimension: fiscal_quarter {
+  type: string
+  sql:
     CASE
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 4 AND 6 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q1')
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 7 AND 9 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q2')
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 10 AND 12 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q3')
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 1 AND 3 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) AS STRING), 2), '-Q4')
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 4 AND 6 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q1')
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 7 AND 9 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q2')
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 10 AND 12 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) + 1 AS STRING), 2), '-Q3')
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 1 AND 3 THEN CONCAT('FY', RIGHT(CAST(EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) AS STRING), 2), '-Q4')
     END ;;
-  }
+}
 
-  dimension: fiscal_quarter_sort {
-    type: number
-    sql:
+dimension: fiscal_quarter_sort {
+  type: number
+  sql:
     CASE
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 4 AND 6 THEN (EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 1
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 7 AND 9 THEN (EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 2
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 10 AND 12 THEN (EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 3
-      WHEN EXTRACT(MONTH FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 1 AND 3 THEN ((EXTRACT(YEAR FROM TIMESTAMP(${TABLE}.created_at, "America/Los_Angeles")) - 1) * 10) + 4
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 4 AND 6 THEN (EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 1
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 7 AND 9 THEN (EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 2
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 10 AND 12 THEN (EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) * 10) + 3
+      WHEN EXTRACT(MONTH FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) BETWEEN 1 AND 3 THEN ((EXTRACT(YEAR FROM DATETIME(${TABLE}.created_at, "America/Los_Angeles")) - 1) * 10) + 4
     END ;;
-    hidden: yes
-  }
+  hidden: yes
+}
+
 
   dimension: session_id {
     label: "Conversation Id"
