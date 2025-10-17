@@ -25,6 +25,7 @@ view: conversation_tags {
     END ;;
   }
 
+
   dimension: fiscal_quarter_sort {
     type: number
     sql:
@@ -34,6 +35,7 @@ view: conversation_tags {
       WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 10 AND 12 THEN (EXTRACT(YEAR FROM ${TABLE}.created_at) * 10) + 3
       WHEN EXTRACT(MONTH FROM ${TABLE}.created_at) BETWEEN 1 AND 3 THEN ((EXTRACT(YEAR FROM ${TABLE}.created_at) - 1) * 10) + 4
     END ;;
+    hidden: yes
   }
 
 
