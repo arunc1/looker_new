@@ -739,6 +739,50 @@ dimension: fiscal_quarter_sort {
 
   }
 
+# Week-over-Week Change
+  measure: wow_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week}))
+    END ;;
+    value_format: "0.0%"
+  }
+
+# Month-over-Month Change
+  measure: mom_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month}))
+    END ;;
+    value_format: "0.0%"
+  }
+
+# Quarter-over-Quarter Change
+  measure: qoq_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter}))
+    END ;;
+    value_format: "0.0%"
+  }
+
+# Year-over-Year Change (4 quarters back)
+  measure: yoy_change {
+    type: number
+    sql:
+    CASE
+      WHEN LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter})) / LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}))
+    END ;;
+    value_format: "0.0%"
+  }
+
   dimension: welcome_sp_otp_escalated {
     label: "Norton HC Logged In Escalated"
     type: yesno
