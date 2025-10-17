@@ -744,8 +744,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_week}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_week}))
     END ;;
     value_format: "0.0%"
   }
@@ -755,8 +755,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_month}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_month}))
     END ;;
     value_format: "0.0%"
   }
@@ -766,8 +766,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${created_quarter}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${created_quarter}))
     END ;;
     value_format: "0.0%"
   }
@@ -777,8 +777,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter})) / LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${created_quarter}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter})) / LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${created_quarter}))
     END ;;
     value_format: "0.0%"
   }
@@ -788,8 +788,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(${conversation_tags.count_conversation}) OVER (ORDER BY ${fiscal_quarter_sort}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(SUM(${conversation_tags.count_conversation})) OVER (ORDER BY ${fiscal_quarter_sort}))
     END ;;
     value_format: "0.0%"
   }
@@ -799,8 +799,8 @@ dimension: fiscal_quarter_sort {
     type: number
     sql:
     CASE
-      WHEN LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((${conversation_tags.count_conversation} - LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(${conversation_tags.count_conversation}, 4) OVER (ORDER BY ${fiscal_quarter_sort}))
+      WHEN LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
+      ELSE ((SUM(${conversation_tags.count_conversation}) - LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(SUM(${conversation_tags.count_conversation}), 4) OVER (ORDER BY ${fiscal_quarter_sort}))
     END ;;
     value_format: "0.0%"
   }
