@@ -39,6 +39,124 @@ dimension: fiscal_quarter_sort {
 }
 
 
+
+# ------------ Month over Month (MoM) ------------
+  measure: count_conversation_prev_month {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: month
+    kind: previous
+    label: "Conversations Last Month"
+    description: "Row count from the previous complete month."
+  }
+
+  measure: count_conversation_mom_diff {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: month
+    kind: difference
+    label: "Conversations MoM Δ"
+    description: "Difference vs previous month."
+    value_format_name: decimal_0
+  }
+
+  measure: count_conversation_mom_pct {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: month
+    kind: relative_change
+    label: "Conversations MoM %"
+    description: "Percent change vs previous month."
+    value_format_name: percent_1
+  }
+
+# ------------ Year over Year (YoY) ------------
+  measure: count_conversation_prev_year {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: year
+    kind: previous
+    label: "Conversations Last Year (same period)"
+    description: "Row count from the comparable period last year."
+  }
+
+  measure: count_conversation_yoy_diff {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: year
+    kind: difference
+    label: "Conversations YoY Δ"
+    description: "Difference vs same period last year."
+    value_format_name: decimal_0
+  }
+
+  measure: count_conversation_yoy_pct {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: year
+    kind: relative_change
+    label: "Conversations YoY %"
+    description: "Percent change vs same period last year."
+    value_format_name: percent_1
+  }
+
+# ------------ To-Date comparisons (partial-period safe) ------------
+# Month-to-date vs Prior MTD
+  measure: count_conversation_mtd_prior_mtd {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: month
+    kind: difference
+    value_to_date: yes
+    label: "Conversations MTD vs Prior MTD Δ"
+    description: "Difference between current MTD and prior MTD."
+    value_format_name: decimal_0
+  }
+
+  measure: count_conversation_mtd_prior_mtd_pct {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: month
+    kind: relative_change
+    value_to_date: yes
+    label: "Conversations MTD vs Prior MTD %"
+    description: "Percent change between current MTD and prior MTD."
+    value_format_name: percent_1
+  }
+
+# Year-to-date vs Prior YTD
+  measure: count_conversation_ytd_prior_ytd {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: year
+    kind: difference
+    value_to_date: yes
+    label: "Conversations YTD vs Prior YTD Δ"
+    description: "Difference between current YTD and prior YTD."
+    value_format_name: decimal_0
+  }
+
+  measure: count_conversation_ytd_prior_ytd_pct {
+    type: period_over_period
+    based_on: count_conversation
+    based_on_time: created_date
+    period: year
+    kind: relative_change
+    value_to_date: yes
+    label: "Conversations YTD vs Prior YTD %"
+    description: "Percent change between current YTD and prior YTD."
+    value_format_name: percent_1
+  }
+
   dimension: session_id {
     label: "Conversation Id"
     primary_key: yes
@@ -739,71 +857,6 @@ dimension: fiscal_quarter_sort {
 
   }
 
-# Week-over-Week Change
-  measure: wow_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_week}))
-    END ;;
-    value_format: "0.0%"
-  }
-
-# Month-over-Month Change
-  measure: mom_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_month}))
-    END ;;
-    value_format: "0.0%"
-  }
-
-# Quarter-over-Quarter Change (Calendar)
-  measure: qoq_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${created_quarter}))
-    END ;;
-    value_format: "0.0%"
-  }
-
-# Year-over-Year Change (Calendar)
-  measure: yoy_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${TABLE}.session_id) - COUNT(DISTINCT LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter}))) / COUNT(DISTINCT LAG(${TABLE}.session_id, 4) OVER (ORDER BY ${created_quarter})))
-    END ;;
-    value_format: "0.0%"
-  }
-
-# Fiscal QoQ
-  measure: fiscal_qoq_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id})) OVER (ORDER BY ${fiscal_quarter_sort}))
-    END ;;
-    value_format: "0.0%"
-  }
-
-# Fiscal YoY
-  measure: fiscal_yoy_change {
-    type: number
-    sql:
-    CASE
-      WHEN LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort}) IS NULL THEN NULL
-      ELSE ((COUNT(DISTINCT ${conversation_tags.session_id}) - LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort})) / LAG(COUNT(DISTINCT ${conversation_tags.session_id}), 4) OVER (ORDER BY ${fiscal_quarter_sort}))
-    END ;;
-    value_format: "0.0%"
-  }
 
   dimension: welcome_sp_otp_escalated {
     label: "Norton HC Logged In Escalated"
