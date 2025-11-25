@@ -1,4 +1,4 @@
-connection: "voice_stage_eu"
+connection: "voice_stage"
 label: "Automation-IVA"
 
 # include all the views

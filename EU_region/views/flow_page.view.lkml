@@ -1,5 +1,5 @@
 view: flow_page {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.flow_page`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.flow_page`
     ;;
 
   dimension: flowid {

@@ -1,5 +1,5 @@
 view: conversations_agent_environment {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.conversations_agent_environment` ;;
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.conversations_agent_environment` ;;
 
   dimension: agent_id {
     type: string

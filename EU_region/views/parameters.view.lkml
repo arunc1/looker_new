@@ -1,5 +1,5 @@
 view: parameters {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.parameters`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.parameters`
     ;;
 
   dimension: insertid {

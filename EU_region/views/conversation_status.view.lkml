@@ -1,5 +1,5 @@
 view: conversation_status {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.conversation_status`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.conversation_status`
     ;;
 
 #Time/Duration metrics&dimensions

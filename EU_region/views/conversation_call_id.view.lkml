@@ -1,5 +1,5 @@
 view: conversation_call_id {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.conversation_call_id` ;;
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.conversation_call_id` ;;
 
   dimension: call_id {
     type: string
