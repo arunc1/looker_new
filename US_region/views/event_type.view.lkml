@@ -1,5 +1,5 @@
 view: event_type {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.event_type`
+  sql_table_name: `support-df-stage-yikgre.df_cx_iva_us.event_type`
     ;;
 
   dimension: event_type {

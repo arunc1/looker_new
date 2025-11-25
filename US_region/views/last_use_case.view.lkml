@@ -1,5 +1,5 @@
 view: last_use_case {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.last_use_case` ;;
+  sql_table_name: `support-df-stage-yikgre.df_cx_iva_us.last_use_case` ;;
 
   dimension: brand {
     label: "Brand"

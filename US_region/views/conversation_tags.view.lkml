@@ -1,5 +1,5 @@
 view: conversation_tags {
-  sql_table_name: `support-df-stage-yikgre.df_cx_iva_eu.conversation_tags` ;;
+  sql_table_name: `support-df-stage-yikgre.df_cx_iva_us.conversation_tags` ;;
 
   dimension_group: created {
     type: time

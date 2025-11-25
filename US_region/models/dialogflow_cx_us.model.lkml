@@ -2,8 +2,8 @@ connection: "voice_stage_eu"
 label: "Automation-IVA"
 
 # include all the views
-include: "/EU_region/views/**/*.view"
-include: "/EU_region/dashboards/*.dashboard.lookml"
+include: "/US_region/views/**/*.view"
+include: "/US_region/dashboards/*.dashboard.lookml"
 
 
 
