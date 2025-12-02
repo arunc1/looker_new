@@ -828,7 +828,7 @@ dimension: fiscal_quarter_sort {
     description: "Conversations that have been transfered to a live agent"
     type: count_distinct
     sql: ${TABLE}.session_id ;;
-    filters:[tags:"%parameter:call_resolution:escalation%" ]
+    filters:[tags:"%parameter:call_resolution:escalat%" ]
     drill_fields: [created_date,session_id]
 
   }
