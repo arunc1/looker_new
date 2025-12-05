@@ -1,5 +1,5 @@
 view: event_type {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.event_type`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.event_type`
     ;;
 
   dimension: event_type {
@@ -120,7 +120,7 @@ view: event_type {
     case: {
       when: {
         sql: ${origin_tfn} in ("Norton", "Norton Priority","LifeLock", "LifeLock Priority",
-        "Norton Tech", "Employee Benefits","Norton HC Logged In") ;;
+          "Norton Tech", "Employee Benefits","Norton HC Logged In") ;;
         label: "L1"
       }
       when: {
@@ -155,8 +155,8 @@ view: event_type {
     label: "Lookup Success"
     type: count_distinct
     sql:${event_value} IN ("account.lookup_by_ani.success","account.lookup_by_email.success","account.lookup_by_ssn4_yob_ani.success",
-"account.lookup_by_ssn4_yob_zip.success")
-      AND ${page_name} != "%authenticate" ;;
+      "account.lookup_by_ssn4_yob_zip.success")
+            AND ${page_name} != "%authenticate" ;;
   }
 
   measure: session_count {

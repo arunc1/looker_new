@@ -1,5 +1,5 @@
 view: event {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.event`
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.event`
     ;;
 
   dimension: insert_id {
@@ -9,7 +9,7 @@ view: event {
   }
 
   dimension_group: receive_timestamp {
-   type: time
+    type: time
     timeframes: [
       raw,
       time,
@@ -73,7 +73,7 @@ view: event {
     description: "Escalated (Transfer) vs Contained (Disconnect, Hangup)"
     type:  string
     sql: CASE WHEN ${operation} in ("DISCONNECT", "HANGUP") THEN "CONTAINED"
-        ELSE "ESCALATED" END;;
+      ELSE "ESCALATED" END;;
   }
 
   measure: escalated {

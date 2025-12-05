@@ -1,5 +1,5 @@
 view: last_use_case {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.last_use_case` ;;
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.last_use_case` ;;
 
   dimension: brand {
     label: "Brand"
@@ -27,11 +27,11 @@ view: last_use_case {
     type: string
     sql: ${TABLE}.use_case ;;
   }
- measure: conversation_count {
-   label: "Conversation Count"
-   type: count_distinct
-   sql: ${TABLE}.session_id ;;
- }
+  measure: conversation_count {
+    label: "Conversation Count"
+    type: count_distinct
+    sql: ${TABLE}.session_id ;;
+  }
   dimension: routing_queue {
     label: "Routing Queue"
     type: string

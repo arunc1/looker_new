@@ -1,5 +1,5 @@
 view: conversations_agent_environment {
-  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva.conversations_agent_environment` ;;
+  sql_table_name: `support-df-cx-26hwzn7k.df_cx_iva_eu.conversations_agent_environment` ;;
 
   dimension: agent_id {
     type: string
@@ -28,6 +28,6 @@ view: conversations_agent_environment {
       when: {        sql: ${environment_id} = "c2fe5684-aa20-4215-8294-9afd06f4c122" ;;              label: "Agent-CCAIP-Japanese Chatbot"}
       when: {        sql: ${environment_id} = "f3003d70-117f-44ad-b2a1-860799eea913" ;;              label: "Agent-CCAIP-NSL Chatbot"}
       else: "Other"
-      }
     }
+  }
 }

@@ -4,15 +4,15 @@ view: conversation_turn_per_session {
           (DATE(conversation_status.receiveTimestamp , 'America/Los_Angeles')) AS conversation_status_receive_timestamp_date,
           conversation_status.session_id,
           COUNT(DISTINCT conversation_status.insertId) as conversation_turn_count
-      FROM `support-df-cx-26hwzn7k.df_cx_iva.conversation_status`
+      FROM `support-df-cx-26hwzn7k.df_cx_iva_eu.conversation_status`
            AS conversation_status
 
       GROUP BY
-          conversation_status_receive_timestamp_date,
-          conversation_status.session_id
+      conversation_status_receive_timestamp_date,
+      conversation_status.session_id
       ORDER BY
-          conversation_turn_count DESC
-       ;;
+      conversation_turn_count DESC
+      ;;
   }
 
   measure: count {
