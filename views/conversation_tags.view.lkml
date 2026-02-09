@@ -517,23 +517,39 @@ dimension: fiscal_quarter_sort {
 
 
   #brand
+  # dimension: brand {
+  #   label: "Brand"
+  #   type: string
+  #   case: {
+  #     when: {sql:  ${tags} LIKE "%parameter:brandname:norton%" OR ${tags} LIKE "%parameter:tfn_company:norton%"
+  #       OR ${tags} LIKE "%parameter:tfn_company:nortonvip%" OR ${tags} LIKE "%parameter:chat_company:norton%";;                  label: "Norton"}
+  #     when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%" OR ${tags} LIKE "%parameter:tfn_company:ll%"
+  #       OR ${tags} LIKE "%parameter:tfn_company:llvip%" OR ${tags} LIKE "%parameter:chat_company:lifelock%";;                    label: "LifeLock"}
+  #     when: {sql:  ${tags} LIKE "%parameter:brandname:avast%" OR ${tags} LIKE "%parameter:tfn_company:avast%"
+  #       OR ${tags} LIKE "%parameter:chat_company:avast%";;                                                                       label: "Avast"}
+  #     when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%" OR ${tags} LIKE "%parameter:brandname:avg%"
+  #       OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%";;                           label: "AVG"}
+  #     when: {sql:  ${tags} LIKE "%parameter:brandname:ccleaner%" OR ${tags} LIKE "%parameter:brand:ccleaner%"
+  #       OR ${tags} LIKE "%parameter:chat_company:ccleaner%";;                                                                    label: "CCleaner"}
+  #     else: "Other"
+  #   }
+  # }
+  # Brand new setup Including tenantid for NGP VRA
   dimension: brand {
     label: "Brand"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:brandname:norton%" OR ${tags} LIKE "%parameter:tfn_company:norton%"
-        OR ${tags} LIKE "%parameter:tfn_company:nortonvip%" OR ${tags} LIKE "%parameter:chat_company:norton%";;                  label: "Norton"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%" OR ${tags} LIKE "%parameter:tfn_company:ll%"
-        OR ${tags} LIKE "%parameter:tfn_company:llvip%" OR ${tags} LIKE "%parameter:chat_company:lifelock%";;                    label: "LifeLock"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:avast%" OR ${tags} LIKE "%parameter:tfn_company:avast%"
-        OR ${tags} LIKE "%parameter:chat_company:avast%";;                                                                       label: "Avast"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%" OR ${tags} LIKE "%parameter:brandname:avg%"
-        OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%";;                           label: "AVG"}
-      when: {sql:  ${tags} LIKE "%parameter:brandname:ccleaner%" OR ${tags} LIKE "%parameter:brand:ccleaner%"
-        OR ${tags} LIKE "%parameter:chat_company:ccleaner%";;                                                                    label: "CCleaner"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:norton%" OR ${tags} LIKE "%parameter:tfn_company:norton%" OR ${tags} LIKE "%parameter:tfn_company:nortonvip%" OR ${tags} LIKE "%parameter:chat_company:norton%"OR ${tags} LIKE"%parameter:tenant_id:de527324-05e3-46eb-a2a7-43ab29c1aff7%";; label: "Norton"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:lifelock%" OR ${tags} LIKE "%parameter:tfn_company:ll%" OR ${tags} LIKE "%parameter:tfn_company:llvip%" OR ${tags} LIKE "%parameter:chat_company:lifelock%";;                    label: "LifeLock"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:avast%" OR ${tags} LIKE "%parameter:tfn_company:avast%" OR ${tags} LIKE "%parameter:chat_company:avast%" OR ${tags} LIKE "%parameter:tenant_id:7fdb0f68-e691-44b6-8ac4-f9b30784e212%" ;;         label: "Avast"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:A V G%" OR ${tags} LIKE "%parameter:brandname:avg%" OR ${tags} LIKE "%parameter:tfn_company:avg%" OR ${tags} LIKE "%parameter:chat_company:avg%" OR ${tags} LIKE "%parameter:tenant_id:0e888298-0312-41d5-972e-1382b9709983%";; label: "AVG"}
+      when: {sql:  ${tags} LIKE "%parameter:brandname:ccleaner%" OR ${tags} LIKE "%parameter:brand:ccleaner%" OR ${tags} LIKE "%parameter:chat_company:ccleaner%" OR ${tags} LIKE "%parameter:tenant_id:b7131725-25cd-4979-8bf3-3ac64165c050%";; label: "CCleaner"}
+      when: {sql:  ${tags} LIKE "%parameter:tenant_id:de527324-05e3-46eb-a2a7-43ab29c1aff7%" ;; label: "Avira"}
       else: "Other"
     }
   }
+
+
 
 #### Auth Dimensions added on 30july25##
 
@@ -659,7 +675,7 @@ dimension: fiscal_quarter_sort {
 
 
 
-##dimensions - call resolution status(parameters)
+##dimensions - call resolution status(parameters) Added "end_session" for NGP VRA
 
   dimension: call_resolution {
     label: "Contact Resolution"
@@ -671,6 +687,7 @@ dimension: fiscal_quarter_sort {
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation_default_quque%";;                                                              label: "Escalation Default Queue"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;                                                                            label: "Disconnect"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:sre_dc%";;                                                                                label: "SRE Monitoring"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:end_session%";;                                                                           label: "End Session"}
       # possibly more when statements
       else: "Other"
     }
@@ -700,6 +717,26 @@ dimension: fiscal_quarter_sort {
         when: {sql:  ${tags} LIKE "%parameter:termination_reason:resolved%";;                 label: "Resolved"}
         when: {sql:  ${tags} LIKE "%parameter:termination_reason:ghost%";;                    label: "Ghost"}
         when: {sql:  ${tags} LIKE "%parameter:termination_reason:robocall%";;                 label: "Robocall"}
+        ## NGPVRA resolution reasons
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:webhook_error%";;                       label: "webhook_error"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:cancel_reason_requires_escalation%";;   label: "cancel_reason_requires_escalation"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:product_problem_unresolved%";;          label: "product_problem_unresolved"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:offer_accepted_but_no_fulfillment%";;   label: "offer_accepted_but_no_fulfillment"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:tool_error%";;                          label: "tool_error"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:dangerous_content%";;                   label: "dangerous_content"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:ar_off%";;                              label: "ar_off"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:retained%";;                            label: "retained"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_educate_playbook%";;            label: "aborted_educate_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_escalate_playbook%";;           label: "aborted_escalate_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_technical_support_playbook%";;  label: "aborted_technical_support_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_offers_playbook%";;             label: "aborted_offers_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_welcome_playbook%";;            label: "aborted_welcome_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_closing_playbook%";;            label: "aborted_closing_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:aborted_digging_deeper_playbook%";;     label: "aborted_digging_deeper_playbook"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:ask_for_agent%";;                       label: "Asked For Agent"}
+
+
+
       # possibly more when statements
       else: "Other"
     }
@@ -1676,11 +1713,19 @@ dimension: routing_queue_nlok {
 
 # Retention Dimensions
 
+  #dimension: customer_retention_flow {
+  # label: "Retention Flow"
+  #  type: yesno
+  # sql: ${tags} LIKE "%parameter:customer_retention_flow:true%";;
+  #}
+  #Changing the dimension to string for NGP VRA
+
   dimension: customer_retention_flow {
     label: "Retention Flow"
-    type: yesno
-    sql: ${tags} LIKE "%parameter:customer_retention_flow:true%";;
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'customer_retention_flow:([^|]+)') ;;
   }
+
 
 
   dimension: retention_info_collected {
@@ -1711,6 +1756,9 @@ dimension: routing_queue_nlok {
     case: {
       when: {sql:  ${tags} LIKE "%parameter:ret_status:cancel%";;                  label: "Cancelled"}
       when: {sql:  ${tags} LIKE "%parameter:ret_status:retained%";;                  label: "Retained"}
+      ##### NGP VRA status added
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:retained%";;                  label: "Retained"}
+      when: {sql:  ${tags} LIKE "%parameter:resolution_reason:ar_off%";;                  label: "Cancelled"}
       else: "Other"
     }
   }
@@ -2121,6 +2169,47 @@ dimension: retention_offer_accepted {
       else: "Other"
     }
   }
+
+  ########################## NGP VRA Dimensions newly added ############
+
+  dimension: PSN {
+    label: "PSN"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'psn:([^|]+)') ;;
+  }
+
+  dimension: CancelReason_Sub {
+    label: "CancelReason_Sub"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'cancelreasonsubcategory:([^|]+)') ;;
+  }
+
+  dimension: NGPVRA_AcceptedofferID {
+    label: "NGPVRA_AO_ID"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'acceptedofferid:([^|]+)') ;;
+  }
+
+  dimension: NGPVRA_Acceptedoffer_Type {
+    label: "NGPVRA_AO_Type"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'acceptedoffer:([^|]+)') ;;
+  }
+
+  dimension: NGPVRA_Accepted_Discount {
+    label: "NGPVRA_AO_Discount"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'accepteddiscountpct:([^|]+)') ;;
+  }
+
+  dimension: NGPVRA_lastPresentedOfferStep {
+    label: "NGPVRA_lastPOStep"
+    type: number
+    sql: SAFE_CAST(REGEXP_EXTRACT(${tags}, 'lastpresentedofferstep:([^|]+)') AS INT64) ;;
+  }
+
+
+###################################################################
   set: detail {
     fields: [
       session_id,

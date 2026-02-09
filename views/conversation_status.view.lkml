@@ -123,4 +123,45 @@ view: conversation_status {
 
     ]}
 
+  ######### NGP VRA Dimensions ######
+
+  dimension: NGPVRA_Offer1_a {
+    type: yesno
+    sql:${NGPVRA_Offers.Offer1} = ${conversation_tags.NGPVRA_AcceptedofferID} ;;
+  }
+
+  dimension: NGPVRA_Offer2_a {
+    type: yesno
+    sql:${NGPVRA_Offers.Offer2} = ${conversation_tags.NGPVRA_AcceptedofferID} ;;
+  }
+
+  dimension: NGPVRA_Offer3_a {
+    type: yesno
+    sql:${NGPVRA_Offers.Offer3} = ${conversation_tags.NGPVRA_AcceptedofferID} ;;
+  }
+
+  dimension: NGPVRA_Offer4_a {
+    type: yesno
+    sql:${NGPVRA_Offers.Offer4} = ${conversation_tags.NGPVRA_AcceptedofferID} ;;
+  }
+
+  dimension: NGPVRA_Offer1_p {
+    type: yesno
+    sql:${conversation_tags.NGPVRA_lastPresentedOfferStep} >= 1;;
+  }
+
+  dimension: NGPVRA_Offer2_p {
+    type: yesno
+    sql:${conversation_tags.NGPVRA_lastPresentedOfferStep} >= 2;;
+  }
+
+  dimension: NGPVRA_Offer3_p {
+    type: yesno
+    sql:${conversation_tags.NGPVRA_lastPresentedOfferStep} >= 3;;
+  }
+
+  dimension: NGPVRA_Offer4_p {
+    type: yesno
+    sql:${conversation_tags.NGPVRA_lastPresentedOfferStep} = 4;;
+  }
 }

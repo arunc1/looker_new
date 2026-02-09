@@ -64,6 +64,13 @@ explore: conversation_status {
     sql_on: ${conversation_status.session_id}=${conversations_agent_environment.session_id} ;;
     relationship: many_to_many
   }
+
+  join: NGPVRA_Offers {
+    type: left_outer
+    sql_on: ${conversation_status.session_id} =${NGPVRA_Offers.session_id};;
+    relationship: one_to_one
+  }
+
 }
 
 explore: conversation_tags {
@@ -73,5 +80,10 @@ explore: conversation_tags {
 explore: last_use_case {
   label: "Conversations-Last Use Case"
 }
+
+explore: NGPVRA_Offers {
+  label: "NGPVRA-Offers"
+}
+
 
 week_start_day: sunday
