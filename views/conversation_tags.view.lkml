@@ -1724,6 +1724,7 @@ dimension: routing_queue_nlok {
     label: "Retention Flow"
     type: string
     sql: REGEXP_EXTRACT(${tags}, 'customer_retention_flow:([^|]+)') ;;
+
   }
 
 
