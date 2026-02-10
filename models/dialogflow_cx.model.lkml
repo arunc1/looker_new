@@ -85,5 +85,4 @@ explore: NGPVRA_Offers {
   label: "NGPVRA-Offers"
 }
 
-
 week_start_day: sunday
