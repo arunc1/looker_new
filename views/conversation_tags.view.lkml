@@ -206,6 +206,13 @@ dimension: fiscal_quarter_sort {
     sql: ${tags} LIKE "%parameter:ingress:%" ;;
   }
 
+  dimension: ingress_value {
+    label: "ingress_value"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'parameter:ingress:([^|]+)') ;;
+  }
+
+
   dimension: wait_time {
     type: number
     sql: ${tags} LIKE "%parameter:wait_time:%";;
