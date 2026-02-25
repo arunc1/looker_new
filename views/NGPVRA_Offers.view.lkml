@@ -3,27 +3,24 @@ view: NGPVRA_Offers
   derived_table: {
     sql:SELECT
         session_id,
-        Original_Price,
-        currency,
-        IneligibleReason,
+        MAX(currency) AS currency,
+        MAX(IneligibleReason) AS IneligibleReason ,
+        MAX(Original_Price) AS Original_Price,
         MAX(IF(step = '1', offerId, NULL)) AS offer_1,
         MAX(IF(step = '2', offerId, NULL)) AS offer_2,
         MAX(IF(step = '3', offerId, NULL)) AS offer_3,
         MAX(IF(step = '4', offerId, NULL)) AS offer_4,
-        MAX(IF(step = '1', concat(offer_type,"-",Discount_percentage), NULL)) AS offer1type,
-        MAX(IF(step = '2', concat(offer_type,"-",Discount_percentage), NULL)) AS offer2type,
-        MAX(IF(step = '3', concat(offer_type,"-",Discount_percentage), NULL)) AS offer3type,
-        MAX(IF(step = '4', concat(offer_type,"-",Discount_percentage), NULL)) AS offer4type,
-        MAX(IF(SAFE_CAST(step as INT64) = 1,"Yes","NO")) AS offer_2Pr,
+        MAX(IF(step = '1', concat(offer_type,"-",coalesce(Discount_percentage,"")), NULL)) AS offer1type,
+        MAX(IF(step = '2', concat(offer_type,"-",coalesce(Discount_percentage,"")), NULL)) AS offer2type,
+        MAX(IF(step = '3', concat(offer_type,"-",coalesce(Discount_percentage,"")), NULL)) AS offer3type,
+        MAX(IF(step = '4', concat(offer_type,"-",coalesce(Discount_percentage,"")), NULL)) AS offer4type,
+        MAX(IF(SAFE_CAST(step as INT64) = 1,"Yes","NO")) AS offer_1Pr,
         MAX(IF(SAFE_CAST(step as INT64) > 1,"Yes","NO")) AS offer_2Pr,
         MAX(IF(SAFE_CAST(step as INT64) > 2,"Yes","NO")) AS offer_3Pr,
         MAX(IF(SAFE_CAST(step as INT64) > 3,"Yes","NO")) AS offer_4Pr
       FROM `support-df-cx-26hwzn7k.df_cx_iva_eu.NGPVRA_Offer_Details`
       GROUP BY
-      session_id,
-      Original_Price,
-      currency,
-      IneligibleReason ;;
+      session_id;;
   }
 
   dimension: session_id {
