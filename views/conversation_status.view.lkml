@@ -164,4 +164,22 @@ view: conversation_status {
     type: yesno
     sql:${conversation_tags.NGPVRA_lastPresentedOfferStep} = 4;;
   }
+
+
+  dimension: NGP_saved_amount {
+    type: number
+    sql:
+    CASE
+      WHEN ${conversation_tags.NGPVRA_Accepted_Discount} IS NOT NULL
+           AND NULLIF(${conversation_tags.NGPVRA_Accepted_Discount}, '') IS NOT NULL
+      THEN
+        ${NGPVRA_Offers.Original_Price}
+        - (
+            ${NGPVRA_Offers.Original_Price}
+            * (CAST(${conversation_tags.NGPVRA_Accepted_Discount} AS NUMERIC) / 100.0)
+          )
+      ELSE NULL
+    END
+  ;;
+  }
 }
