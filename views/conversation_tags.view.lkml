@@ -1417,16 +1417,32 @@ dimension: fiscal_quarter_sort {
     label: "Cancel Refund Reason"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:high_price%";;               label: "Price too High"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:no_longer_needed%";;         label: "No Longer needed"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:ar_questions%";;             label: "AR Questions"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_product%";;        label: "Product Complaint"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:switch_competitor%";;        label: "Switch to Competitor"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:wrong_product%";;            label: "Wrong Product"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_support%";;        label: "Support Complaint"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:deceased customer%";;        label: "Deceased customer"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product_errors%";;           label: "Technical Issues"}
-      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:multiple_purchase%";;        label: "Multiple Purchases"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:high_price%";;                      label: "Price too High"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:no_longer_needed%";;                label: "No Longer needed"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:ar_questions%";;                    label: "AR Questions"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_product%";;               label: "Product Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:switch_competitor%";;               label: "Switch to Competitor"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:wrong_product%";;                   label: "Wrong Product"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:complaint_support%";;               label: "Support Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:deceased customer%";;               label: "Deceased customer"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product_errors%";;                  label: "Technical Issues"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:multiple_purchase%";;               label: "Multiple Purchases"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:price-too-high%";;                  label: "Price too High"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:switched-to-competitor%";;          label: "Switch to Competitor"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:didnt-know-subscription-ar%";;      label: "Unaware of AR enrollment"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:duplicate-purchase%";;              label: "Duplicate Purhcase"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:dissatisfied-with-product%";;       label: "Product dissatisfaction"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:need-control-over-payments%";;      label: "Control over payment"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:not-willing-to-respond%";;          label: "Unwilling to respond"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:no-reason-selected%";;              label: "No reason selected"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:installation-issue%";;              label: "Installation issue"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:stopped-using-device%";;            label: "Device retired"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:tech-issues-with-product%";;        label: "Technical Issues"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:bought-the-same-product-twice%";;   label: "Duplicate Purhcase"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:too-many-marketing-messages%";;     label: "Excessive marketing"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product-not-needed%";;              label: "No Longer needed"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:want-more-details-on-features%";;   label: "Seeking feature clarity"}
+
       else: "Other"
     }
   }
