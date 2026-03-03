@@ -166,7 +166,7 @@ view: conversation_status {
   }
 
 
-  dimension: NGP_saved_amount {
+  dimension: NGP_Saved_Amount {
     type: number
     sql:
     CASE
