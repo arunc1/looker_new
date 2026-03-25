@@ -2234,6 +2234,16 @@ dimension: retention_offer_accepted {
 
 
 ###################################################################
+
+  dimension: ShopContext {
+    label: "Shop context"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'shopcontext:([^|]+)') ;;
+
+  }
+
+
+
   set: detail {
     fields: [
       session_id,
