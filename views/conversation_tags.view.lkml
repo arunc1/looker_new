@@ -1734,6 +1734,12 @@ dimension: routing_queue_nlok {
   }
 }
 
+  dimension: Collected_Refund_Reason {
+    label: "collected_reason"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'collected_reason:([^|]+)') ;;
+  }
+
 # Retention Dimensions
 
   #dimension: customer_retention_flow {
@@ -1750,7 +1756,11 @@ dimension: routing_queue_nlok {
 
   }
 
-
+  dimension: billingPhase {
+    label: "Billing_Phase"
+    type: string
+    sql: REGEXP_EXTRACT(${tags}, 'billingphase:([^|]+)') ;;
+  }
 
   dimension: retention_info_collected {
     label: "Ret_Info Collected"
