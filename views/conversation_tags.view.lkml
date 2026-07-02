@@ -689,12 +689,12 @@ dimension: fiscal_quarter_sort {
     type: string
     case: {
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:contactus_link%" OR ${tags} LIKE "%parameter:call_resolution:escalation_contactus%";;     label: "Link to Contact Us"}
-      when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation%" OR ${tags} LIKE "%parameter:call_resolution:escalated%";;                    label: "Escalation"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation%" OR ${tags} LIKE "%parameter:resolution:escalation%" OR ${tags} LIKE "%parameter:call_resolution:escalated%";;                    label: "Escalation"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:hangup%";;                                                                                label: "User Hangup"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:escalation_default_quque%";;                                                              label: "Escalation Default Queue"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:disconnect%";;                                                                            label: "Disconnect"}
       when: {sql:  ${tags} LIKE "%parameter:call_resolution:sre_dc%";;                                                                                label: "SRE Monitoring"}
-      when: {sql:  ${tags} LIKE "%parameter:call_resolution:end_session%";;                                                                           label: "End Session"}
+      when: {sql:  ${tags} LIKE "%parameter:call_resolution:end_session%" OR ${tags} LIKE "%parameter:resolution:end_session%";;                      label: "End Session"}
       # possibly more when statements
       else: "Other"
     }
@@ -1443,6 +1443,32 @@ dimension: fiscal_quarter_sort {
       when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:product-not-needed%";;              label: "No Longer needed"}
       when: {sql:  ${tags} LIKE "%parameter:cancel_refund_cust_reason:want-more-details-on-features%";;   label: "Seeking feature clarity"}
 
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:high_price%";;                      label: "Price too High"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:no_longer_needed%";;                label: "No Longer needed"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:ar_questions%";;                    label: "AR Questions"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:complaint_product%";;               label: "Product Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:switch_competitor%";;               label: "Switch to Competitor"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:wrong_product%";;                   label: "Wrong Product"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:complaint_support%";;               label: "Support Complaint"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:deceased customer%";;               label: "Deceased customer"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:product_errors%";;                  label: "Technical Issues"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:multiple_purchase%";;               label: "Multiple Purchases"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:price-too-high%";;                  label: "Price too High"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:switched-to-competitor%";;          label: "Switch to Competitor"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:didnt-know-subscription-ar%";;      label: "Unaware of AR enrollment"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:duplicate-purchase%";;              label: "Duplicate Purhcase"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:dissatisfied-with-product%";;       label: "Product dissatisfaction"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:need-control-over-payments%";;      label: "Control over payment"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:not-willing-to-respond%";;          label: "Unwilling to respond"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:no-reason-selected%";;              label: "No reason selected"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:installation-issue%";;              label: "Installation issue"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:stopped-using-device%";;            label: "Device retired"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:tech-issues-with-product%";;        label: "Technical Issues"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:bought-the-same-product-twice%";;   label: "Duplicate Purhcase"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:too-many-marketing-messages%";;     label: "Excessive marketing"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:product-not-needed%";;              label: "No Longer needed"}
+      when: {sql:  ${tags} LIKE "%parameter:cancel_reason:want-more-details-on-features%";;   label: "Seeking feature clarity"}
+
       else: "Other"
     }
   }
@@ -1759,7 +1785,7 @@ dimension: routing_queue_nlok {
   dimension: billingPhase {
     label: "Billing_Phase"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'billingphase:([^|]+)') ;;
+    sql: COALESCE(REGEXP_EXTRACT(${tags}, 'billingphase:([^|]+)'), REGEXP_EXTRACT(${tags}, 'billing_phase:([^|]+)')) ;;
   }
 
   dimension: retention_info_collected {
@@ -1801,13 +1827,13 @@ dimension: routing_queue_nlok {
   dimension: Is_Itps {
     label: "Is Itps"
     type: yesno
-    sql: ${tags} LIKE "%parameter:sub_info-is_itps:true%";;
+    sql: ${tags} LIKE "%parameter:sub_info-is_itps:true%" OR ${tags} LIKE "%parameter:has_itps:true%";;
   }
 
   dimension: Product_Name {
     label: "Product Name"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'sub_info-product_name:([^|]+)') ;;
+    sql: COALESCE(REGEXP_EXTRACT(tags, 'sub_info-product_name:([^|]+)'), REGEXP_EXTRACT(tags, 'product_name:([^|]+)')) ;;
   }
 
 
@@ -1816,8 +1842,8 @@ dimension: routing_queue_nlok {
     label: "Billing Cycle"
     type: string
     case: {
-      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:annual%";;                  label: "Annual"}
-      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:monthly%";;                  label: "Monthly"}
+      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:annual%" OR ${tags} LIKE "%parameter:billing_cycle:yearly%";;                  label: "Annual"}
+      when: {sql:  ${tags} LIKE "%parameter:sub_info-billing_cycle:monthly%" OR ${tags} LIKE "%parameter:billing_cycle:monthly%";;                  label: "Monthly"}
       else: "Other"
     }
   }
@@ -1833,7 +1859,7 @@ dimension: routing_queue_nlok {
   dimension: renewal_count {
     label: "Renewal Count"
     type: number
-    sql: safe_cast(REGEXP_EXTRACT(${tags}, 'sub_info-renewal_count:([0-9]+)') as INTEGER) ;;
+    sql: COALESCE(safe_cast(REGEXP_EXTRACT(${tags}, 'sub_info-renewal_count:([0-9]+)') as INTEGER), safe_cast(REGEXP_EXTRACT(${tags}, 'renewal_count:([0-9]+)') as INTEGER));;
   }
 
   dimension: Currency_Code {
@@ -2239,7 +2265,7 @@ dimension: retention_offer_accepted {
   dimension: NGPVRA_lastPresentedOfferStep {
     label: "NGPVRA_lastPOStep"
     type: number
-    sql: SAFE_CAST(REGEXP_EXTRACT(${tags}, 'lastpresentedofferstep:([^|]+)') AS INT64) ;;
+    sql: COALESCE(SAFE_CAST(REGEXP_EXTRACT(${tags}, 'lastpresentedofferstep:([^|]+)') AS INT64), SAFE_CAST(REGEXP_EXTRACT(${tags}, 'last_presented_offer_step:([^|]+)') AS INT64));;
   }
 
 
