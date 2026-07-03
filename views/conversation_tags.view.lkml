@@ -2247,7 +2247,7 @@ dimension: retention_offer_accepted {
   dimension: NGPVRA_AcceptedofferID {
     label: "NGPVRA_AO_ID"
     type: string
-    sql: REGEXP_EXTRACT(${tags}, 'acceptedofferid:([^|]+)') ;;
+    sql: COALESCE(REGEXP_EXTRACT(${tags}, 'acceptedofferid:([^|]+)'), REGEXP_EXTRACT(${tags}, 'accepted_offer_id:([^|]+)'));;
   }
 
   dimension: NGPVRA_Acceptedoffer_Type {
