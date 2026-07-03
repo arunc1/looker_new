@@ -1805,7 +1805,7 @@ dimension: routing_queue_nlok {
   dimension: Purchase_Price {
     label: "Order Price"
     type: number
-    sql: safe_cast(REGEXP_EXTRACT(${tags}, 'purchase_price:([0-9.]+)') as FLOAT64) ;;
+    sql: COALESCE(safe_cast(REGEXP_EXTRACT(${tags}, 'purchase_price:([0-9.]+)') as FLOAT64), safe_cast(REGEXP_EXTRACT(${tags}, 'estimated_renewal_price:([0-9.]+)') as FLOAT64))  ;;
     value_format: "#.00"
   }
 
